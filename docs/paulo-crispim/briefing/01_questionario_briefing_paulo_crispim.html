@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Questionario de Briefing Estrategico | Paulo Crispim</title>
+    <style>
+      :root {
+        --ink: #101418;
+        --muted: #5f6b75;
+        --soft: #edf1f4;
+        --paper: #ffffff;
+        --panel: #f7f9fa;
+        --graphite: #22282e;
+        --petrol: #0f4c5c;
+        --green: #34c759;
+        --line: #d7dee4;
+        --pending-bg: #fff7e6;
+        --pending-text: #7a4b00;
+        --confirmed-bg: #eaf7ee;
+        --confirmed-text: #176431;
+        --validation-bg: #eaf3ff;
+        --validation-text: #164f86;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(135deg, rgba(15, 76, 92, 0.08), transparent 36rem),
+          linear-gradient(180deg, #f3f6f7 0%, #ffffff 28rem);
+        color: var(--ink);
+        font-family:
+          Arial,
+          Helvetica,
+          sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .document {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .cover {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 32px;
+        min-height: 440px;
+        padding: 48px;
+        background:
+          linear-gradient(145deg, rgba(16, 20, 24, 0.98), rgba(34, 40, 46, 0.95)),
+          var(--graphite);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .cover::after {
+        content: "";
+        position: absolute;
+      }
+
+      .kicker {
+        margin: 0 0 18px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.12;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(2.4rem, 6vw, 5.2rem);
+        font-weight: 800;
+      }
+
+      .cover p {
+        max-width: 660px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 1.05rem;
+      }
+
+      .cover-aside {
+        align-self: end;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .cover-aside dl {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+      }
+
+      .cover-aside dt {
+        color: rgba(255, 255, 255, 0.54);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .cover-aside dd {
+        margin: 3px 0 0;
+        font-weight: 700;
+      }
+
+      .notice {
+        margin: 24px 0;
+        padding: 20px 24px;
+        border-left: 4px solid var(--green);
+        background: var(--paper);
+        color: var(--graphite);
+        box-shadow: 0 14px 35px rgba(17, 24, 39, 0.08);
+      }
+
+      .toc {
+        margin: 24px 0;
+        padding: 24px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+
+      .toc h2 {
+        margin-top: 0;
+      }
+
+      .toc ol {
+        columns: 2;
+        gap: 28px;
+        margin-bottom: 0;
+        padding-left: 1.25rem;
+      }
+
+      .toc li {
+        break-inside: avoid;
+        margin: 0 0 8px;
+      }
+
+      section {
+        margin: 28px 0;
+        padding: 32px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        color: var(--graphite);
+        font-size: clamp(1.45rem, 2vw, 2rem);
+      }
+
+      h3 {
+        margin: 28px 0 12px;
+        color: var(--petrol);
+        font-size: 1.05rem;
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      ul {
+        margin: 0 0 16px;
+        padding-left: 1.25rem;
+      }
+
+      table {
+        width: 100%;
+        margin: 16px 0 24px;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+      }
+
+      th,
+      td {
+        padding: 11px 12px;
+        border: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #eef3f5;
+        color: var(--graphite);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      tr:nth-child(even) td {
+        background: #fbfcfd;
+      }
+
+      .status {
+        display: inline-block;
+        padding: 0.18rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .confirmed {
+        background: var(--confirmed-bg);
+        color: var(--confirmed-text);
+      }
+
+      .pending {
+        background: var(--pending-bg);
+        color: var(--pending-text);
+      }
+
+      .validation {
+        background: var(--validation-bg);
+        color: var(--validation-text);
+      }
+
+      .source-note {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .question-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin: 18px 0 24px;
+      }
+
+      .question {
+        min-height: 116px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .question strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--graphite);
+      }
+
+      .answer-line {
+        display: block;
+        min-height: 32px;
+        margin-top: 10px;
+        color: var(--pending-text);
+        border-bottom: 1px solid #c8d0d7;
+      }
+
+      .approval {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .signature {
+        min-height: 96px;
+        padding: 16px;
+        border: 1px dashed #9aa6b2;
+        background: #fbfcfd;
+      }
+
+      code {
+        padding: 0.1rem 0.3rem;
+        background: #eef3f5;
+        color: #0f4c5c;
+        font-family:
+          "Courier New",
+          monospace;
+        font-size: 0.9em;
+      }
+
+      .footer {
+        color: var(--muted);
+        font-size: 0.88rem;
+        text-align: center;
+      }
+
+      @media (max-width: 780px) {
+        .cover,
+        .approval,
+        .question-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cover {
+          padding: 28px;
+        }
+
+        section {
+          padding: 22px;
+        }
+
+        .toc ol {
+          columns: 1;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+          white-space: normal;
+        }
+      }
+
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 14mm;
+        }
+
+        body {
+          background: #fff;
+        }
+
+        .document {
+          width: 100%;
+          padding: 0;
+        }
+
+        .cover,
+        section,
+        .toc,
+        .notice {
+          box-shadow: none;
+          break-inside: avoid;
+        }
+
+        section {
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="document">
+      <header class="cover">
+        <div>
+          <p class="kicker">Etapa 1 | Briefing estrategico</p>
+          <h1>Questionario de Briefing Paulo Crispim</h1>
+          <p>
+            Documento de reuniao para registrar decisoes estrategicas antes de
+            avancar para diagnostico, direcionamento de marca, identidade visual
+            e materiais consolidados.
+          </p>
+        </div>
+        <aside class="cover-aside" aria-label="Resumo do documento">
+          <dl>
+            <div>
+              <dt>Projeto</dt>
+              <dd>Presenca Digital de Paulo Crispim</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>Em validacao</dd>
+            </div>
+            <div>
+              <dt>Preparacao</dt>
+              <dd>20/06/2026</dd>
+            </div>
+            <div>
+              <dt>Regra central</dt>
+              <dd>Sem slogan, logo ou textos finais nesta etapa</dd>
+            </div>
+          </dl>
+        </aside>
+      </header>
+
+      <div class="notice">
+        Este documento preenche somente informacoes confirmadas e marca lacunas
+        como <strong>[A confirmar com Paulo]</strong> ou
+        <strong>[Pendente de validacao]</strong>. Materiais existentes em
+        <code>/plano</code> e <code>/proposta</code> podem orientar a conversa,
+        mas nao substituem aprovacao formal.
+      </div>
+
+      <nav class="toc" aria-label="Sumario">
+        <h2>Sumario</h2>
+        <ol>
+          <li><a href="#identificacao">Identificacao do projeto</a></li>
+          <li><a href="#objetivo">Objetivo da presenca digital</a></li>
+          <li><a href="#posicionamento">Posicionamento profissional</a></li>
+          <li><a href="#publicos">Publicos prioritarios</a></li>
+          <li><a href="#servicos">Servicos oferecidos</a></li>
+          <li><a href="#diferenciais">Diferenciais e provas de autoridade</a></li>
+          <li><a href="#problemas">Problemas que Paulo ajuda a resolver</a></li>
+          <li><a href="#conversao">Acao principal desejada no site</a></li>
+          <li><a href="#inventario">Inventario de materiais</a></li>
+          <li><a href="#guia">Avaliacao do guia digital</a></li>
+          <li><a href="#leituras">Referencias tematicas de leitura</a></li>
+          <li><a href="#visual">Direcao visual preliminar</a></li>
+          <li><a href="#pendencias">Tabela de pendencias</a></li>
+          <li><a href="#aprovacao">Pagina de aprovacao</a></li>
+          <li><a href="#decisoes">Decisoes obrigatorias</a></li>
+        </ol>
+      </nav>
+
+      <section id="identificacao">
+        <h2>1. Identificacao do projeto</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Resposta</th>
+              <th>Status</th>
+              <th>Fonte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nome da marca</td>
+              <td>Paulo Crispim</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+              <td>Pedido anexado</td>
+            </tr>
+            <tr>
+              <td>Profissional</td>
+              <td>Engenheiro eletrico, palestrante, mentor e consultor</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+              <td>Pedido anexado</td>
+            </tr>
+            <tr>
+              <td>Prioridade de posicionamento</td>
+              <td>Palestrante</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+              <td>Pedido anexado</td>
+            </tr>
+            <tr>
+              <td>Foco comercial principal</td>
+              <td>Venda de palestras</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+              <td>Pedido anexado</td>
+            </tr>
+            <tr>
+              <td>Complemento profissional da marca</td>
+              <td>[A confirmar com Paulo]</td>
+              <td><span class="status pending">Pendente</span></td>
+              <td>Briefing</td>
+            </tr>
+            <tr>
+              <td>Dominio</td>
+              <td>paulocrispim.com.br</td>
+              <td><span class="status validation">Pendente de validacao</span></td>
+              <td>Encontrado em <code>src/app/plano/page.tsx</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="source-note">
+          Este documento nao define slogan, logo final, identidade final,
+          precos, contrato, proposta comercial ou textos finais do site.
+        </p>
+      </section>
+
+      <section id="objetivo">
+        <h2>2. Objetivo da presenca digital</h2>
+        <p>
+          Objetivo principal informado: estruturar a presenca digital de Paulo
+          Crispim com prioridade comercial na venda de palestras.
+        </p>
+        <p><span class="status confirmed">Confirmado</span></p>
+        <div class="question-grid">
+          <div class="question">
+            <strong>Qual deve ser o principal resultado esperado do site nos primeiros 90 dias?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>A prioridade e gerar convites, pedidos de proposta, reunioes ou autoridade institucional?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>O site deve funcionar como pagina institucional, pagina de venda de palestras ou central de autoridade?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>Havera campanha paga direcionando trafego para o site no lancamento?</strong>
+            <span class="answer-line">[Pendente de validacao]</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="posicionamento">
+        <h2>3. Posicionamento profissional</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Atuacao</th>
+              <th>Papel no posicionamento</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Palestras</td>
+              <td>Atuacao prioritaria</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+            </tr>
+            <tr>
+              <td>Mentoria</td>
+              <td>Atuacao complementar</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+            </tr>
+            <tr>
+              <td>Consultoria</td>
+              <td>Atuacao complementar</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+            </tr>
+            <tr>
+              <td>Engenharia eletrica</td>
+              <td>Base tecnica e profissional</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="question-grid">
+          <div class="question">
+            <strong>Qual complemento deve acompanhar o nome Paulo Crispim?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>O complemento deve enfatizar palestras, engenharia, lideranca, gestao, desenvolvimento ou consultoria?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>Existem cargos, certificacoes, formacoes ou experiencias que podem ser publicados?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>Existem empresas, projetos ou resultados que podem ser citados como prova de autoridade?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="publicos">
+        <h2>4. Publicos prioritarios</h2>
+        <p>Paulo deseja atuar com empresas, lideres, equipes tecnicas, engenheiros e profissionais em crescimento.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Grupo</th>
+              <th>Publicos</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Publico corporativo prioritario</td>
+              <td>Empresas, lideres, equipes tecnicas e engenheiros</td>
+              <td><span class="status validation">Pendente de validacao</span></td>
+            </tr>
+            <tr>
+              <td>Publico complementar</td>
+              <td>Profissionais em crescimento</td>
+              <td><span class="status validation">Pendente de validacao</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="question-grid">
+          <div class="question">
+            <strong>Qual publico corporativo deve ser priorizado no inicio?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>Quais segmentos empresariais devem ser priorizados?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>Paulo quer falar com RH, diretoria, engenharia, operacoes, seguranca, manutencao ou liderancas tecnicas?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+          <div class="question">
+            <strong>Profissionais em crescimento devem receber conteudos, mentorias, palestras abertas ou materiais gratuitos?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicos">
+        <h2>5. Servicos oferecidos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Servico</th>
+              <th>Prioridade</th>
+              <th>Status</th>
+              <th>Observacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Palestras</td>
+              <td>Principal</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+              <td>Foco comercial principal</td>
+            </tr>
+            <tr>
+              <td>Mentorias</td>
+              <td>Complementar</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+              <td>Escopo a detalhar</td>
+            </tr>
+            <tr>
+              <td>Consultoria para empresas</td>
+              <td>Complementar</td>
+              <td><span class="status confirmed">Confirmado</span></td>
+              <td>Escopo a detalhar</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Perguntas sobre palestras</h3>
+        <div class="question-grid">
+          <div class="question"><strong>Quais temas de palestra ja estao prontos para venda?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Existem titulos oficiais de palestras?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Qual duracao media das palestras?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>As palestras sao presenciais, online ou hibridas?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+        </div>
+        <h3>Perguntas sobre mentoria e consultoria</h3>
+        <div class="question-grid">
+          <div class="question"><strong>Mentorias serao individuais, em grupo ou corporativas?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Qual problema central a mentoria resolve?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Quais problemas empresariais a consultoria resolve?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Consultoria sera tecnica, de processos, de gestao, de lideranca ou combinada?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+        </div>
+      </section>
+
+      <section id="diferenciais">
+        <h2>6. Diferenciais e provas de autoridade</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tema inicial</th>
+              <th>Status</th>
+              <th>Fonte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Gente e gestao</td><td><span class="status confirmed">Confirmado</span></td><td>Pedido anexado</td></tr>
+            <tr><td>Processos</td><td><span class="status confirmed">Confirmado</span></td><td>Pedido anexado</td></tr>
+            <tr><td>Lideranca</td><td><span class="status confirmed">Confirmado</span></td><td>Pedido anexado</td></tr>
+            <tr><td>Engenharia</td><td><span class="status confirmed">Confirmado</span></td><td>Pedido anexado</td></tr>
+            <tr><td>Desenvolvimento profissional</td><td><span class="status confirmed">Confirmado</span></td><td>Pedido anexado</td></tr>
+            <tr><td>Consultoria para empresas</td><td><span class="status confirmed">Confirmado</span></td><td>Pedido anexado</td></tr>
+          </tbody>
+        </table>
+        <div class="question-grid">
+          <div class="question"><strong>Quais experiencias profissionais podem ser citadas publicamente?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Quais formacoes podem ser publicadas?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Existem numeros, resultados, indicadores ou conquistas publicaveis?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>O que diferencia Paulo de outros palestrantes, mentores e consultores?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+        </div>
+      </section>
+
+      <section id="problemas">
+        <h2>7. Problemas que Paulo ajuda a resolver</h2>
+        <p>As hipoteses abaixo nao devem ser tratadas como promessa final. Elas servem para orientar a conversa.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Possivel problema</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Liderancas tecnicas com dificuldade de desenvolver pessoas</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Equipes tecnicas com falhas de comunicacao, processo ou direcao</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Profissionais em crescimento que precisam de disciplina, clareza e desenvolvimento</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Empresas que precisam integrar conhecimento tecnico, gestao e execucao</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Engenheiros que precisam ampliar visao de lideranca e carreira</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="conversao">
+        <h2>8. Acao principal desejada no site</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Acao</th>
+              <th>Status</th>
+              <th>Observacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>WhatsApp</td><td><span class="status validation">Pendente de validacao</span></td><td>Canal aparece em materiais existentes, mas numero nao esta confirmado</td></tr>
+            <tr><td>Formulario</td><td><span class="status validation">Pendente de validacao</span></td><td>Precisa definir campos e destino</td></tr>
+            <tr><td>Reuniao</td><td><span class="status validation">Pendente de validacao</span></td><td>Precisa definir ferramenta ou processo</td></tr>
+            <tr><td>Solicitacao de proposta</td><td><span class="status validation">Pendente de validacao</span></td><td>Relevante para venda de palestras</td></tr>
+          </tbody>
+        </table>
+        <div class="question-grid">
+          <div class="question"><strong>Qual sera a principal chamada para acao do site?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>O contato deve ir diretamente para Paulo ou para outra pessoa?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Qual WhatsApp pode ser divulgado?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Qual e-mail pode ser divulgado?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+        </div>
+      </section>
+
+      <section id="inventario">
+        <h2>9. Inventario de materiais</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>Status</th>
+              <th>Observacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Fotos profissionais</td><td><span class="status pending">Pendente</span></td><td>Fotos em estudio com blazer e gravata ainda serao produzidas</td></tr>
+            <tr><td>Biografia</td><td><span class="status pending">A confirmar</span></td><td>Necessaria para site e materiais</td></tr>
+            <tr><td>Curriculo</td><td><span class="status pending">A confirmar</span></td><td>Necessario para autoridade e provas</td></tr>
+            <tr><td>Temas de palestras</td><td><span class="status pending">A confirmar</span></td><td>Essencial para venda de palestras</td></tr>
+            <tr><td>Mentorias</td><td><span class="status pending">A confirmar</span></td><td>Escopo complementar</td></tr>
+            <tr><td>Consultoria</td><td><span class="status pending">A confirmar</span></td><td>Escopo complementar</td></tr>
+            <tr><td>Videos</td><td><span class="status pending">A confirmar</span></td><td>Palestras, falas, aulas ou apresentacoes</td></tr>
+            <tr><td>Depoimentos</td><td><span class="status pending">A confirmar</span></td><td>Usar somente com autorizacao</td></tr>
+            <tr><td>Redes sociais</td><td><span class="status pending">A confirmar</span></td><td>LinkedIn, Instagram, YouTube ou outros</td></tr>
+            <tr><td>E-mail</td><td><span class="status pending">A confirmar</span></td><td>Canal publico pendente</td></tr>
+            <tr><td>WhatsApp</td><td><span class="status pending">A confirmar</span></td><td>Numero publico pendente</td></tr>
+            <tr><td>Guia digital</td><td><span class="status validation">Pendente de validacao</span></td><td>Ver secao especifica</td></tr>
+            <tr><td>Dominio</td><td><span class="status validation">Pendente de validacao</span></td><td><code>paulocrispim.com.br</code> aparece no projeto</td></tr>
+            <tr><td>Identidade visual</td><td><span class="status pending">Pendente</span></td><td>Ainda nao aprovada</td></tr>
+            <tr><td>Logotipo</td><td><span class="status pending">Pendente</span></td><td>Ainda nao criado/aprovado</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="guia">
+        <h2>10. Avaliacao do Guia "Primeiros Passos no Mundo Digital"</h2>
+        <p>
+          Existe mencao ao Guia "Primeiros Passos no Mundo Digital", voltado ao
+          cidadao. O arquivo do guia nao foi encontrado no repositorio durante a
+          inspecao inicial.
+        </p>
+        <p><span class="status validation">Pendente de validacao</span></p>
+        <h3>Regras de uso</h3>
+        <ul>
+          <li>Nao tratar automaticamente como produto.</li>
+          <li>Nao tratar automaticamente como servico.</li>
+          <li>Nao tratar automaticamente como isca digital.</li>
+          <li>Nao tratar automaticamente como material de captacao.</li>
+          <li>Nao publicar sem validar autoria, autorizacao e objetivo.</li>
+        </ul>
+        <div class="question-grid">
+          <div class="question"><strong>Paulo e autor integral do guia?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Ha autorizacao para uso publico do guia no site?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Qual objetivo do guia dentro da presenca digital?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>O guia conversa com o posicionamento prioritario de palestrante corporativo?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+        </div>
+      </section>
+
+      <section id="leituras">
+        <h2>11. Referencias tematicas de leitura</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Referencia</th>
+              <th>Uso permitido no projeto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Habitos Atomicos</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>A Psicologia Financeira</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>O Poder da Acao</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>O Milagre da Manha</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>Como Fazer Amigos e Influenciar Pessoas</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>Inteligencia Emocional</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>Os 7 Habitos das Pessoas Altamente Eficazes</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>As Coisas que Voce So Ve Quando Desacelera</td><td>Tema possivel de conteudo</td></tr>
+            <tr><td>Cafe com Deus Pai 2026</td><td>Tema possivel de conteudo; nao posicionar a marca como religiosa sem aprovacao</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Temas derivados permitidos: habitos, lideranca, inteligencia
+          emocional, relacionamentos, desenvolvimento, reflexao, proposito,
+          disciplina e comunicacao.
+        </p>
+        <p>
+          Restricao: nao copiar capas, textos, frases ou trechos protegidos por
+          direitos autorais.
+        </p>
+        <div class="question-grid">
+          <div class="question">
+            <strong>Paulo deseja mencionar fe, proposito ou valores religiosos na comunicacao?</strong>
+            <span class="answer-line">[A confirmar com Paulo]</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="visual">
+        <h2>12. Direcao visual preliminar</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Personalidade humana, inspiradora, tecnica, corporativa, moderna, atual, profissional e estruturada</td><td><span class="status confirmed">Confirmado</span></td></tr>
+            <tr><td>Preto, grafite, cinza moderno, branco ou cinza claro</td><td><span class="status confirmed">Confirmado</span></td></tr>
+            <tr><td>Azul-petroleo</td><td><span class="status confirmed">Confirmado</span></td></tr>
+            <tr><td>Verde pulsante como detalhe controlado</td><td><span class="status confirmed">Confirmado</span></td></tr>
+            <tr><td>Fotos profissionais de Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+          </tbody>
+        </table>
+        <h3>Artefatos visuais esperados</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Arquivo</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>01_moodboard_direcao_visual_paulo_crispim.png</code></td><td>Artefato visual pendente de geracao ou aprovacao.</td></tr>
+            <tr><td><code>02_sistema_visual_energia_com_direcao.png</code></td><td>Artefato visual pendente de geracao ou aprovacao.</td></tr>
+            <tr><td><code>03_aplicacao_palestras_e_consultoria.png</code></td><td>Artefato visual pendente de geracao ou aprovacao.</td></tr>
+            <tr><td><code>04_aplicacao_autoridade_profissional.png</code></td><td>Artefato visual pendente de geracao ou aprovacao.</td></tr>
+          </tbody>
+        </table>
+        <div class="question-grid">
+          <div class="question"><strong>Paulo prefere uma marca mais tecnica e estruturada ou mais humana e fluida?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Ha preferencia por fonte, simbolo, geometria ou estilo de logotipo?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>Quais fotos poderao ser usadas no site e nos materiais?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+          <div class="question"><strong>O verde deve aparecer apenas como detalhe ou pode ter papel maior em pontos de destaque?</strong><span class="answer-line">[A confirmar com Paulo]</span></div>
+        </div>
+      </section>
+
+      <section id="pendencias">
+        <h2>13. Tabela de pendencias</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Pendencia</th>
+              <th>Impacto</th>
+              <th>Responsavel</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Validar publico corporativo prioritario</td><td>Define mensagem e jornada do site</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+            <tr><td>Validar publico complementar</td><td>Define conteudos e ofertas secundarias</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+            <tr><td>Listar temas de palestras prontos para venda</td><td>Necessario para paginas e chamadas comerciais</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+            <tr><td>Confirmar diferenciais e provas publicaveis</td><td>Necessario para autoridade</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+            <tr><td>Confirmar canais de contato</td><td>Necessario para conversao</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+            <tr><td>Definir uso do guia digital</td><td>Evita uso indevido ou desalinhado</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+            <tr><td>Confirmar nivel de presenca de fe/proposito</td><td>Define tom e limites de comunicacao</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+            <tr><td>Produzir/enviar fotos profissionais</td><td>Necessario para direcao visual final</td><td>Paulo</td><td><span class="status pending">Pendente</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="aprovacao">
+        <h2>14. Pagina de aprovacao</h2>
+        <p>
+          Este questionario serve para conduzir a reuniao de briefing e registrar
+          decisoes estrategicas. A aprovacao desta etapa nao aprova diagnostico,
+          posicionamento, complemento de marca, slogan, identidade visual,
+          logotipo, kit final ou PDF consolidado.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Questionario revisado por Paulo</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Informacoes confirmadas corretamente registradas</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Pendencias reconhecidas</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Autorizacao para seguir para Etapa 2 apos preenchimento</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+          </tbody>
+        </table>
+        <div class="approval">
+          <div class="signature">
+            <strong>Assinatura/confirmacao de Paulo</strong>
+          </div>
+          <div class="signature">
+            <strong>Data</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="decisoes">
+        <h2>Decisoes obrigatorias para avancar a Etapa 2</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Decisao</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Publico corporativo prioritario validado</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Publico complementar validado</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Servico prioritario definido</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Acao principal de conversao definida</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Diferenciais autorizados</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Materiais autorizados</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Uso do guia definido</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+            <tr><td>Nivel de presenca de proposito e fe definido</td><td><span class="status validation">Pendente de validacao</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <p class="footer">
+        Etapa 1 - Questionario de Briefing Estrategico | Paulo Crispim
+      </p>
+    </main>
+  </body>
+</html>

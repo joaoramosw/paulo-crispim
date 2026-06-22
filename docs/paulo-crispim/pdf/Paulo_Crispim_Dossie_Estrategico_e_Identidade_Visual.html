@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paulo Crispim | Dossiê Estratégico e Identidade Visual</title>
+    <style>
+      :root{
+        --black:#050708;--graphite:#151B20;--metal:#A8B2BA;--white:#F4F7F8;--petrol:#063A46;--green:#35F06A;--line:#2d3940;--paper:#ffffff;--ink:#101418
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{margin:0;background:#101418;color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.45}
+      a{color:inherit;text-decoration:none}
+      .deck{width:100%;background:#101418}
+      .page{position:relative;min-height:100vh;padding:46px 58px;break-after:page;page-break-after:always;overflow:hidden;background:linear-gradient(135deg,var(--black),var(--graphite) 58%,#041f26);border-bottom:1px solid rgba(255,255,255,.08)}
+      .page.light{background:var(--paper);color:var(--ink)}
+      .page.split{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+      .page::after{content:"Paulo Crispim | " counter(page);position:absolute;right:34px;bottom:20px;color:rgba(244,247,248,.55);font-size:12px;letter-spacing:1px}
+      .page.light::after{color:rgba(16,20,24,.5)}
+      h1,h2,h3{line-height:1.04;letter-spacing:0;margin:0}
+      h1{font-size:68px;max-width:900px}
+      h2{font-size:42px;margin-bottom:18px}
+      h3{font-size:21px;margin:20px 0 8px;color:var(--green)}
+      p{font-size:18px;margin:0 0 14px;max-width:930px}
+      ul,ol{font-size:17px;margin:0;padding-left:22px}
+      li{margin:7px 0}
+      table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:rgba(255,255,255,.03)}
+      th,td{border:1px solid rgba(168,178,186,.35);padding:9px 10px;text-align:left;vertical-align:top}
+      th{background:rgba(53,240,106,.12);color:var(--white);text-transform:uppercase;font-size:11px;letter-spacing:1px}
+      .light th{background:#edf1f4;color:#151B20}.light td{border-color:#d7dee4}
+      .kicker{display:inline-block;margin-bottom:20px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:13px}
+      .muted{color:rgba(244,247,248,.72)}.light .muted{color:#5f6b75}
+      .status{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.3px}
+      .ok{background:#143d24;color:#aaf5bd}.val{background:#17324a;color:#a9d7ff}.pend{background:#493915;color:#ffe2a6}
+      .hero-line{position:absolute;left:0;right:0;bottom:95px;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent)}
+      .orb{position:absolute;right:82px;top:82px;width:10px;height:10px;background:var(--green);border-radius:50%;box-shadow:0 0 35px var(--green)}
+      .toc{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px;margin-top:28px}
+      .toc a{display:block;padding:12px 0;border-bottom:1px solid rgba(168,178,186,.32);font-size:18px}
+      .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+      .card{border:1px solid rgba(168,178,186,.36);padding:18px;background:rgba(255,255,255,.04);min-height:150px}
+      .light .card{background:#f7f9fa;border-color:#d7dee4}
+      .visual{width:100%;height:auto;border:1px solid rgba(168,178,186,.35);display:block}
+      .logo-frame{background:#050708;border:1px solid rgba(168,178,186,.35);padding:12px}
+      .logo-frame img{width:100%;height:auto;display:block}
+      .swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:22px 0}
+      .swatch{height:105px;padding:10px;display:flex;align-items:end;font-weight:700;border:1px solid rgba(168,178,186,.3)}
+      blockquote{margin:22px 0;padding:18px 22px;border-left:5px solid var(--green);background:rgba(255,255,255,.06);font-size:24px}
+      .light blockquote{background:#f7f9fa}
+      .small{font-size:14px}
+      @media print{
+        @page{size:A4 landscape;margin:0}
+        body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+        .page{width:297mm;height:210mm;min-height:210mm;padding:14mm 17mm;break-after:page;page-break-after:always}
+        h1{font-size:48pt}h2{font-size:30pt}p{font-size:13pt}li{font-size:12pt}
+        .toc a{font-size:13pt}.card{min-height:31mm}
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="page" id="capa">
+        <span class="kicker">Dossiê estratégico e identidade visual</span>
+        <h1>Paulo Crispim</h1>
+        <p class="muted" style="font-size:24px;margin-top:24px">Presença digital, posicionamento de marca e rota visual para aprovação.</p>
+        <div style="margin-top:44px;display:flex;gap:12px;flex-wrap:wrap">
+          <span class="status ok">Confirmado: palestras como prioridade</span>
+          <span class="status val">Em validação: posicionamento e identidade</span>
+          <span class="status pend">Pendente: fotos, contatos e provas</span>
+        </div>
+        <div class="orb"></div>
+        <div class="hero-line"></div>
+      </section>
+
+      <section class="page" id="sumario">
+        <span class="kicker">Sumário clicável</span>
+        <h2>Mapa do documento</h2>
+        <nav class="toc">
+          <a href="#status">1. Status do projeto</a>
+          <a href="#resumo">2. Resumo executivo</a>
+          <a href="#briefing">3. Briefing e diagnóstico</a>
+          <a href="#publico">4. Público, serviços e prioridade</a>
+          <a href="#materiais">5. Materiais e pendências</a>
+          <a href="#marca">6. Direcionamento de marca</a>
+          <a href="#posicionamentos">7. Posicionamentos e assinaturas</a>
+          <a href="#autoridade">8. Autoridade e tom de voz</a>
+          <a href="#conteudo">9. Referências de conteúdo</a>
+          <a href="#guia">10. Guia digital</a>
+          <a href="#criativo">11. Brief criativo</a>
+          <a href="#visual-a">12. Direção visual A</a>
+          <a href="#visual-b">13. Direção visual B</a>
+          <a href="#comparativo">14. Comparativo</a>
+          <a href="#aprovacao">15. Página de aprovação</a>
+          <a href="#kit">16. Kit em validação</a>
+          <a href="#proximos">17. Próximos passos</a>
+        </nav>
+      </section>
+
+      <section class="page light" id="status">
+        <span class="kicker">Status do projeto</span>
+        <h2>O que está confirmado, em validação e pendente</h2>
+        <table>
+          <tr><th>Categoria</th><th>Itens</th><th>Status</th></tr>
+          <tr><td>Confirmado</td><td>Nome Paulo Crispim; engenheiro elétrico, palestrante, mentor e consultor; palestras como prioridade; paleta escura com petróleo e verde controlado.</td><td><span class="status ok">Aprovado como base</span></td></tr>
+          <tr><td>Em validação</td><td>Posicionamento, promessa, complemento profissional, direção visual B como recomendação, kit preliminar.</td><td><span class="status val">Recomendação estratégica</span></td></tr>
+          <tr><td>Pendente</td><td>Fotos profissionais, canais de contato, temas oficiais de palestras, provas de autoridade, autorização do guia digital e nível de presença de fé/proposito.</td><td><span class="status pend">A confirmar</span></td></tr>
+        </table>
+      </section>
+
+      <section class="page" id="resumo">
+        <span class="kicker">Resumo executivo</span>
+        <h2>Direção recomendada</h2>
+        <blockquote>Paulo Crispim conecta engenharia, liderança e desenvolvimento humano para ajudar empresas e profissionais técnicos a evoluírem com clareza, processo e direção.</blockquote>
+        <p class="muted">Esta frase é recomendação estratégica em validação. Ela organiza a presença digital em torno de palestras, mantendo mentorias e consultoria como extensões de autoridade.</p>
+      </section>
+
+      <section class="page light" id="briefing">
+        <span class="kicker">Briefing e diagnóstico</span>
+        <h2>Fonte de verdade preliminar</h2>
+        <div class="grid">
+          <div class="card"><h3>Foco</h3><p>Palestras corporativas como prioridade comercial.</p></div>
+          <div class="card"><h3>Base</h3><p>Engenharia elétrica, liderança, processos e desenvolvimento profissional.</p></div>
+          <div class="card"><h3>Cuidados</h3><p>Não transformar inferências em fatos sem validação de Paulo.</p></div>
+        </div>
+        <table>
+          <tr><th>Tema</th><th>Direção</th><th>Status</th></tr>
+          <tr><td>Público corporativo</td><td>Empresas, líderes, equipes técnicas e engenheiros.</td><td>Em validação</td></tr>
+          <tr><td>Público complementar</td><td>Profissionais em crescimento.</td><td>Em validação</td></tr>
+          <tr><td>Jornada</td><td>Autoridade, temas, prova, contato/reunião/proposta.</td><td>Recomendado</td></tr>
+        </table>
+      </section>
+
+      <section class="page light" id="publico">
+        <span class="kicker">Público e serviços</span>
+        <h2>Prioridade comercial</h2>
+        <table>
+          <tr><th>Serviço</th><th>Papel</th><th>Mensagem</th></tr>
+          <tr><td>Palestras</td><td>Principal</td><td>Conteúdos para empresas, líderes e equipes técnicas que buscam evolução com clareza.</td></tr>
+          <tr><td>Mentorias</td><td>Complementar</td><td>Desenvolvimento profissional, disciplina e maturidade de carreira.</td></tr>
+          <tr><td>Consultoria</td><td>Complementar</td><td>Processos, gestão, liderança e estruturação empresarial.</td></tr>
+        </table>
+      </section>
+
+      <section class="page light" id="materiais">
+        <span class="kicker">Materiais disponíveis e pendências</span>
+        <h2>Inventário</h2>
+        <table>
+          <tr><th>Disponível</th><th>Uso no dossiê</th></tr>
+          <tr><td>brainstorm.png</td><td>Moodboard de direção executiva, tecnológica e editorial.</td></tr>
+          <tr><td>brainstorm 2.png</td><td>Sistema visual de energia, fluxo e direção.</td></tr>
+          <tr><td>ideias de logo.png</td><td>Referência de estudo visual; não copiada como logo final.</td></tr>
+        </table>
+        <table>
+          <tr><th>Pendente</th><th>Impacto</th></tr>
+          <tr><td>Fotos profissionais</td><td>Necessárias para capas, site e materiais finais.</td></tr>
+          <tr><td>Biografia, currículo e provas</td><td>Necessários para autoridade.</td></tr>
+          <tr><td>Contatos</td><td>Necessários para conversão.</td></tr>
+        </table>
+      </section>
+
+      <section class="page" id="marca">
+        <span class="kicker">Direcionamento de marca</span>
+        <h2>Mensagem central</h2>
+        <p>Uma marca profissional, técnica, humana e corporativa. O tom evita exageros motivacionais e trabalha com clareza, segurança e aplicabilidade.</p>
+        <div class="grid">
+          <div class="card"><h3>Engenharia</h3><p class="small">Base técnica e método.</p></div>
+          <div class="card"><h3>Liderança</h3><p class="small">Desenvolvimento de pessoas e direção.</p></div>
+          <div class="card"><h3>Processos</h3><p class="small">Clareza, execução e evolução.</p></div>
+        </div>
+      </section>
+
+      <section class="page light" id="posicionamentos">
+        <span class="kicker">Posicionamentos, complementos e assinaturas</span>
+        <h2>Opções para aprovação</h2>
+        <table>
+          <tr><th>Tipo</th><th>Recomendação</th><th>Alternativas</th></tr>
+          <tr><td>Frase</td><td>Une engenharia, liderança e desenvolvimento humano para transformar conhecimento técnico em direção, processo e evolução.</td><td>Ajuda empresas e equipes técnicas a evoluírem com clareza, liderança e execução.</td></tr>
+          <tr><td>Promessa</td><td>Clareza técnica e humana para equipes que precisam evoluir com direção.</td><td>Palestras que conectam liderança, processos e desenvolvimento profissional.</td></tr>
+          <tr><td>Complemento</td><td>Palestrante e Consultor em Liderança Técnica</td><td>Palestrante Corporativo; Engenharia, Liderança e Desenvolvimento.</td></tr>
+        </table>
+      </section>
+
+      <section class="page" id="autoridade">
+        <span class="kicker">Pilares de autoridade e tom de voz</span>
+        <h2>Como a marca deve soar</h2>
+        <table>
+          <tr><th>Deve ser</th><th>Evitar</th><th>CTAs</th></tr>
+          <tr>
+            <td>Clara, segura, técnica sem ser fria, inspiradora sem exagero, corporativa e humana.</td>
+            <td>Coach genérico, promessas grandiosas, excesso de jargão, tom religioso sem autorização e venda agressiva.</td>
+            <td>Conversar sobre uma palestra; solicitar proposta; agendar reunião.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="page light" id="conteudo">
+        <span class="kicker">Referências temáticas</span>
+        <h2>Conteúdo sem copiar obras</h2>
+        <p>As leituras citadas orientam temas possíveis, não textos, frases, capas ou trechos.</p>
+        <div class="grid">
+          <div class="card"><h3>Desenvolvimento</h3><p>Hábitos, disciplina, carreira e evolução.</p></div>
+          <div class="card"><h3>Liderança</h3><p>Comunicação, inteligência emocional e relações profissionais.</p></div>
+          <div class="card"><h3>Propósito</h3><p>Somente se Paulo aprovar o nível de presença de fé e valores.</p></div>
+        </div>
+      </section>
+
+      <section class="page light" id="guia">
+        <span class="kicker">Guia digital</span>
+        <h2>Uso estratégico do Guia "Primeiros Passos no Mundo Digital"</h2>
+        <p>O guia pode reforçar didática e contribuição pública, mas não deve ser tratado automaticamente como produto, serviço, isca digital ou material de captação.</p>
+        <table>
+          <tr><th>Antes de usar</th><th>Status</th></tr>
+          <tr><td>Validar autoria e autorização.</td><td>Pendente</td></tr>
+          <tr><td>Definir público e objetivo dentro do site.</td><td>Pendente</td></tr>
+          <tr><td>Confirmar se conversa com o foco de palestras corporativas.</td><td>Pendente</td></tr>
+        </table>
+      </section>
+
+      <section class="page split" id="criativo">
+        <div>
+          <span class="kicker">Brief criativo</span>
+          <h2>Paleta e linguagem</h2>
+          <p class="muted">Preto, grafite, cinza moderno, branco frio, azul-petróleo e verde pulsante como energia controlada.</p>
+          <div class="swatches">
+            <div class="swatch" style="background:#050708">#050708</div>
+            <div class="swatch" style="background:#151B20">#151B20</div>
+            <div class="swatch" style="background:#A8B2BA;color:#101418">#A8B2BA</div>
+            <div class="swatch" style="background:#F4F7F8;color:#101418">#F4F7F8</div>
+            <div class="swatch" style="background:#063A46">#063A46</div>
+            <div class="swatch" style="background:#35F06A;color:#051009">#35F06A</div>
+          </div>
+        </div>
+        <img class="visual" src="pdf-assets/brainstorm.png" alt="Moodboard visual Paulo Crispim">
+      </section>
+
+      <section class="page split" id="visual-a">
+        <div>
+          <span class="kicker">Direção visual A</span>
+          <h2>Executiva e técnica</h2>
+          <p class="muted">Mais estruturada, geométrica e precisa. Boa para engenharia, consultoria e autoridade institucional.</p>
+          <p><span class="status val">Em validação</span></p>
+        </div>
+        <div class="logo-frame"><img src="../identidade/05_logo_proposta_a_paulo_crispim.svg" alt="Proposta A Paulo Crispim"></div>
+      </section>
+
+      <section class="page split" id="visual-b">
+        <div>
+          <span class="kicker">Direção visual B</span>
+          <h2>Humana e fluida</h2>
+          <p class="muted">Mais conectada a palestras, desenvolvimento, movimento e evolução. É a rota recomendada para validação.</p>
+          <p><span class="status val">Recomendação estratégica</span></p>
+        </div>
+        <div class="logo-frame"><img src="../identidade/06_logo_proposta_b_paulo_crispim.svg" alt="Proposta B Paulo Crispim"></div>
+      </section>
+
+      <section class="page split" id="comparativo">
+        <div>
+          <span class="kicker">Comparativo</span>
+          <h2>A versus B</h2>
+          <table>
+            <tr><th>Critério</th><th>A</th><th>B</th></tr>
+            <tr><td>Sensação</td><td>Precisão</td><td>Movimento</td></tr>
+            <tr><td>Força</td><td>Autoridade técnica</td><td>Energia humana</td></tr>
+            <tr><td>Melhor uso</td><td>Consultoria/engenharia</td><td>Palestras/liderança</td></tr>
+          </table>
+        </div>
+        <img class="visual" src="pdf-assets/brainstorm-2.png" alt="Sistema visual de energia e direção">
+      </section>
+
+      <section class="page light" id="aprovacao">
+        <span class="kicker">Página de aprovação</span>
+        <h2>Decisões necessárias</h2>
+        <table>
+          <tr><th>Decisão</th><th>Status atual</th><th>Escolha/Aprovação</th></tr>
+          <tr><td>Validar frase de posicionamento</td><td>Em validação</td><td></td></tr>
+          <tr><td>Escolher complemento profissional</td><td>Em validação</td><td></td></tr>
+          <tr><td>Aprovar Proposta A ou B</td><td>B recomendada</td><td></td></tr>
+          <tr><td>Autorizar uso do guia digital</td><td>Pendente</td><td></td></tr>
+          <tr><td>Confirmar contatos e fotos</td><td>Pendente</td><td></td></tr>
+        </table>
+      </section>
+
+      <section class="page split" id="kit">
+        <div>
+          <span class="kicker">Kit em validação</span>
+          <h2>Identidade recomendada</h2>
+          <p class="muted">O kit usa a Proposta B como recomendação, com versões horizontal, reduzida, monocromática, fundo claro e fundo escuro dentro do SVG.</p>
+          <ul>
+            <li>Logo principal em SVG.</li>
+            <li>Paleta HEX e RGB.</li>
+            <li>Tipografia sem serifa.</li>
+            <li>Direção de imagens executiva e tecnológica.</li>
+            <li>Aplicações para site, apresentação, card, LinkedIn e cartão digital.</li>
+          </ul>
+        </div>
+        <div class="logo-frame"><img src="../identidade/assets/identidade/paulo-crispim-logo-recomendado.svg" alt="Logo recomendado Paulo Crispim"></div>
+      </section>
+
+      <section class="page light" id="proximos">
+        <span class="kicker">Próximos passos</span>
+        <h2>Fechamento do ciclo de aprovação</h2>
+        <ol>
+          <li>Paulo revisa briefing, diagnóstico, direcionamento e brief criativo.</li>
+          <li>Escolhe ou ajusta a proposta de logotipo.</li>
+          <li>Confirma complemento profissional, contatos e nível de presença de propósito/fé.</li>
+          <li>Envia fotos profissionais e provas de autoridade autorizadas.</li>
+          <li>Após aprovação, o kit deixa de ser "em validação" e passa a ser identidade final.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

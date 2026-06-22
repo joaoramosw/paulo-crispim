@@ -24,3 +24,77 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media print {
+  .proposal-root {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .proposal-slides-track {
+    transform: none !important;
+  }
+
+  .proposal-slide {
+    min-height: 0 !important;
+    height: auto !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    color: #111827 !important;
+    background: #ffffff !important;
+    padding: 2rem 0 !important;
+  }
+
+  .proposal-slide * {
+    color: #111827 !important;
+    box-shadow: none !important;
+  }
+
+  .proposal-chrome,
+  .proposal-modal {
+    display: none !important;
+  }
+
+  .proposal-payment-table {
+    display: block !important;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.8125rem;
+  }
+
+  .proposal-payment-table caption {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
+  .proposal-payment-table th,
+  .proposal-payment-table td {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .proposal-payment-table th {
+    background: #f3f4f6;
+    font-weight: 700;
+  }
+
+  .proposal-payment-table .proposal-empty {
+    display: block !important;
+  }
+
+  .proposal-print-only {
+    display: block !important;
+  }
+
+  .proposal-screen-only {
+    display: none !important;
+  }
+}
