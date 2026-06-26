@@ -65,7 +65,7 @@ const steps: ProjectStep[] = [
     title: "Posicionamento da marca",
     duration: "2 a 3 dias",
     description: "Definir mensagem central, diferenciais e foco comercial.",
-    icon: "positioning",
+    icon: "positioning", 
     items: [
       { id: "frase-posicionamento", label: "Criar frase de posicionamento." },
       { id: "promessa-principal", label: "Definir promessa principal da marca." },
