@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Plano do projeto Paulo Crispim",
-  description: "Painel de acompanhamento das etapas do projeto Paulo Crispim.",
+  title: "Paulo Crispim | Palestras, Lideranca e Alta Performance",
+  description:
+    "Palestras corporativas sobre lideranca, gestao, engenharia, seguranca, alta performance e desenvolvimento de pessoas.",
 };
 
 export default function RootLayout({
