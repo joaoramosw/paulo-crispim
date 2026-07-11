@@ -1,183 +1,237 @@
 export const homeContent = {
   brand: {
     name: "Paulo Crispim",
-    signature: "Lideranca / Engenharia / Alta Performance",
+    signature: "Liderança / Engenharia / Alta Performance",
   },
   navigation: [
-    { label: "Inicio", href: "/" },
-    { label: "Palestras", href: "#palestras" },
-    { label: "Temas", href: "#temas" },
-    { label: "Trajetoria", href: "#trajetoria" },
-    { label: "Contato", href: "#contato" },
+    { label: "Início", href: "/" },
+    { label: "Palestras", href: "/palestras" },
+    { label: "Portfólio", href: "/portfolio" },
+    { label: "Contato", href: "/contato" },
   ],
   hero: {
-    eyebrow: "Palestras, lideranca e resultados",
+    eyebrow: "Palestras, liderança e resultados",
     title:
-      "Lideranca, estrategia e alta performance para transformar desafios em resultados.",
+      "Clareza e liderança para equipes em evolução.",
     description:
-      "Paulo Crispim une engenharia, operacoes e gestao de pessoas para desenvolver lideres, fortalecer equipes e preparar profissionais para agir com clareza, seguranca e disciplina diante de grandes desafios.",
-    primaryCta: { label: "Conheca as palestras", href: "#palestras" },
-    secondaryCta: { label: "Ver trajetoria", href: "#trajetoria" },
+      "Palestras que conectam engenharia, pessoas e execução para gerar direção, atitude e evolução profissional.",
+    primaryCta: { label: "Conheça as palestras", href: "#palestras" },
+    secondaryCta: { label: "Ver trajetória", href: "#trajetoria" },
     highlights: [
-      "Engenharia Eletrica",
-      "Administracao de Empresas",
-      "Gestao Executiva",
+      "Engenharia Elétrica",
+      "Administração de Empresas",
+      "Gestão Executiva",
       "Desenvolvimento de Pessoas",
     ],
     panelItems: [
-      "Lideranca em campo",
-      "Gestao de equipes",
-      "Operacoes criticas",
-      "Cultura de seguranca",
+      "Liderança em campo",
+      "Gestão de equipes",
+      "Operações críticas",
+      "Cultura de segurança",
     ],
   },
   credibility: {
-    intro: "Uma visao construida entre estrategia, campo, pessoas e execucao.",
+    intro: "Uma visão construída entre estratégia, campo, pessoas e execução.",
     items: [
-      "Engenharia Eletrica",
-      "Administracao de Empresas",
-      "Gestao, Operacoes e Lideranca",
+      "Engenharia Elétrica",
+      "Administração de Empresas",
+      "Gestão, Operações e Liderança",
       "Desenvolvimento de Pessoas",
     ],
   },
   talks: {
     eyebrow: "Palestras corporativas",
-    title: "Palestras que conectam experiencia pratica, pessoas e resultado.",
+    title: "Palestras que conectam experiência prática, pessoas e resultado.",
     description:
-      "Conteudos para empresas, lideres e equipes que precisam desenvolver atitude, responsabilidade, comunicacao e performance em ambientes de alta exigencia.",
+      "Conteúdos para empresas, líderes e equipes que precisam desenvolver atitude, responsabilidade, comunicação e performance em ambientes de alta exigência.",
     items: [
       {
-        title: "Lideranca e Gestao de Pessoas",
+        title: "Liderança e Gestão de Pessoas",
+        category: "Liderança",
         description:
-          "Como liderar com clareza, responsabilidade e presenca, fortalecendo equipes mais comprometidas e preparadas para entregar resultados.",
+          "Como liderar com clareza, responsabilidade e presença, fortalecendo equipes mais comprometidas e preparadas para entregar resultados.",
       },
       {
         title: "Alta Performance e Produtividade",
+        category: "Performance",
         description:
-          "Disciplina, foco e execucao aplicados ao dia a dia profissional, com uma abordagem pratica para transformar intencao em movimento.",
+          "Disciplina, foco e execução aplicados ao dia a dia profissional, com uma abordagem prática para transformar intenção em movimento.",
       },
       {
-        title: "Inteligencia Emocional e Resiliencia",
+        title: "Inteligência Emocional e Resiliência",
+        category: "Pessoas",
         description:
-          "Reflexoes e ferramentas para lidar com pressao, mudanca, conflito e tomada de decisao em contextos desafiadores.",
+          "Reflexões e ferramentas para lidar com pressão, mudança, conflito e tomada de decisão em contextos desafiadores.",
       },
       {
-        title: "Seguranca do Trabalho e Cultura Prevencionista",
+        title: "Segurança do Trabalho e Cultura Prevencionista",
+        category: "Segurança",
         description:
-          "Uma abordagem humana e estrategica sobre responsabilidade, prevencao, comportamento seguro e cuidado com as pessoas.",
+          "Uma abordagem humana e estratégica sobre responsabilidade, prevenção, comportamento seguro e cuidado com as pessoas.",
       },
       {
-        title: "Gestao de Projetos e Operacoes",
+        title: "Gestão de Projetos e Operações",
+        category: "Processos",
         description:
-          "Licoes de planejamento, execucao, indicadores e coordenacao de equipes aplicadas a operacoes e projetos complexos.",
+          "Lições de planejamento, execução, indicadores e coordenação de equipes aplicadas a operações e projetos complexos.",
       },
       {
-        title: "Desenvolvimento de Carreira e Formacao de Lideres",
+        title: "Desenvolvimento de Carreira e Formação de Líderes",
+        category: "Carreira",
         description:
-          "Caminhos para profissionais que desejam crescer com preparo tecnico, postura, aprendizado continuo e visao de futuro.",
+          "Caminhos para profissionais que desejam crescer com preparo técnico, postura, aprendizado contínuo e visão de futuro.",
       },
     ],
   },
   audiences: {
-    title: "Para empresas e pessoas que precisam transformar pressao em evolucao.",
+    title: "Para empresas e pessoas que precisam transformar pressão em evolução.",
     description:
-      "A palestra pode ser direcionada para convencoes, SIPATs, encontros de lideranca, treinamentos internos, semanas academicas e eventos de desenvolvimento profissional.",
+      "A palestra pode ser direcionada para convenções, SIPATs, encontros de liderança, treinamentos internos, semanas acadêmicas e eventos de desenvolvimento profissional.",
     items: [
       "Empresas e equipes corporativas",
-      "Liderancas e gestores",
+      "Lideranças e gestores",
       "Times operacionais",
-      "Instituicoes de ensino",
+      "Instituições de ensino",
       "Profissionais em desenvolvimento",
       "Empreendedores",
     ],
+    contexts: [
+      {
+        id: "empresas-equipes",
+        index: "01",
+        title: "Empresas e equipes corporativas",
+        featured: true,
+        description:
+          "Ambientes que buscam mais clareza entre pessoas, estratégia e execução.",
+      },
+      { id: "liderancas-gestores", index: "02", title: "Lideranças e gestores" },
+      { id: "times-operacionais", index: "03", title: "Times operacionais" },
+      { id: "instituicoes-ensino", index: "04", title: "Instituições de ensino" },
+      {
+        id: "profissionais-desenvolvimento",
+        index: "05",
+        title: "Profissionais em desenvolvimento",
+      },
+      { id: "empreendedores", index: "06", title: "Empreendedores" },
+    ],
   },
   topics: {
-    title: "Temas que unem engenharia, gestao e comportamento humano.",
+    title: "Temas que unem engenharia, gestão e comportamento humano.",
     description:
-      "Cada palestra pode ser adaptada ao contexto do evento, ao perfil do publico e aos desafios especificos da organizacao.",
+      "Cada palestra pode ser adaptada ao contexto do evento, ao perfil do público e aos desafios específicos da organização.",
     items: [
-      "Lideranca",
-      "Gestao de Pessoas",
-      "Operacoes",
-      "Engenharia Eletrica",
-      "Energias Renovaveis",
-      "Seguranca do Trabalho",
-      "Planejamento Estrategico",
-      "Gestao de Projetos",
-      "Desenvolvimento Profissional",
-      "Empreendedorismo e Inovacao",
+      {
+        title: "Liderança",
+        description: "Fortalecimento de líderes técnicos, gestores e equipes que precisam tomar decisões com clareza.",
+      },
+      {
+        title: "Gestão de Pessoas",
+        description: "Comunicação, responsabilidade e desenvolvimento de times em ambientes de alta exigência.",
+      },
+      {
+        title: "Operações",
+        description: "Disciplina operacional, indicadores, rotina e execução com foco em resultado.",
+      },
+      {
+        title: "Engenharia Elétrica",
+        description: "Conhecimento técnico aplicado à realidade corporativa, ao campo e à infraestrutura.",
+      },
+      {
+        title: "Energias Renováveis",
+        description: "Visão de futuro, eficiência e soluções conectadas à transformação do setor elétrico.",
+      },
+      {
+        title: "Segurança do Trabalho",
+        description: "Cultura prevencionista, comportamento seguro e cuidado com pessoas.",
+      },
+      {
+        title: "Planejamento Estratégico",
+        description: "Direção, prioridades e método para transformar intenção em execução consistente.",
+      },
+      {
+        title: "Gestão de Projetos",
+        description: "Planejamento, coordenação, riscos e entregas em projetos complexos.",
+      },
+      {
+        title: "Desenvolvimento Profissional",
+        description: "Maturidade de carreira, postura, aprendizado contínuo e visão de futuro.",
+      },
+      {
+        title: "Empreendedorismo e Inovação",
+        description: "Mentalidade de construção, melhoria contínua e criação de oportunidades.",
+      },
     ],
   },
   trajectory: {
-    eyebrow: "Trajetoria aplicada",
-    title: "Uma trajetoria construida no campo, nas operacoes e na lideranca.",
+    eyebrow: "Trajetória aplicada",
+    title: "Uma trajetória construída no campo, nas operações e na liderança.",
     description:
-      "A autoridade de Paulo Crispim vem da pratica: da vivencia operacional a gestao de equipes, contratos, projetos e pessoas em diferentes contextos.",
+      "A autoridade de Paulo Crispim vem da prática: da vivência operacional à gestão de equipes, contratos, projetos e pessoas em diferentes contextos.",
     items: [
       {
         title: "Base operacional",
         description:
-          "Contato direto com rotinas, desafios de campo, disciplina, seguranca e execucao.",
+          "Contato direto com rotinas, desafios de campo, disciplina, segurança e execução.",
       },
       {
-        title: "Formacao tecnica e administrativa",
+        title: "Formação técnica e administrativa",
         description:
-          "Construcao de uma visao que combina Engenharia Eletrica, Administracao de Empresas e Docencia do Ensino Superior.",
+          "Construção de uma visão que combina Engenharia Elétrica, Administração de Empresas e Docência do Ensino Superior.",
       },
       {
-        title: "Gestao e lideranca",
+        title: "Gestão e liderança",
         description:
-          "Atuacao com equipes multidisciplinares, operacoes, indicadores, contratos, atendimento e desenvolvimento profissional.",
+          "Atuação com equipes multidisciplinares, operações, indicadores, contratos, atendimento e desenvolvimento profissional.",
       },
       {
         title: "Projetos, energia e infraestrutura",
         description:
-          "Experiencia relacionada a distribuicao de energia, eletrificacao, manutencao, energia renovavel e solucoes operacionais.",
+          "Experiência relacionada à distribuição de energia, eletrificação, manutenção, energia renovável e soluções operacionais.",
       },
       {
         title: "Palestras e desenvolvimento humano",
         description:
-          "Uso da experiencia pratica para inspirar pessoas, desenvolver lideres e transformar desafios em oportunidades.",
+          "Uso da experiência prática para inspirar pessoas, desenvolver líderes e transformar desafios em oportunidades.",
       },
     ],
   },
   approach: {
-    title: "Da experiencia a acao: uma abordagem pratica para gerar movimento.",
+    title: "Da experiência à ação: uma abordagem prática para gerar movimento.",
     items: [
       {
         title: "Entender o contexto",
         description:
-          "Cada publico tem uma realidade, uma pressao e um desafio. A palestra parte dessa leitura.",
+          "Cada público tem uma realidade, uma pressão e um desafio. A palestra parte dessa leitura.",
       },
       {
-        title: "Conectar pratica e reflexao",
+        title: "Conectar prática e reflexão",
         description:
-          "Experiencias de gestao, engenharia e lideranca sao traduzidas em mensagens claras e aplicaveis.",
+          "Experiências de gestão, engenharia e liderança são traduzidas em mensagens claras e aplicáveis.",
       },
       {
-        title: "Transformar consciencia em atitude",
+        title: "Transformar consciência em atitude",
         description:
-          "O objetivo e provocar mudanca de postura, responsabilidade, seguranca e compromisso com resultados.",
+          "O objetivo é provocar mudança de postura, responsabilidade, segurança e compromisso com resultados.",
       },
     ],
   },
   purpose: {
-    title: "Proposito que direciona a mensagem.",
+    title: "Propósito que direciona a mensagem.",
     quote:
-      "Inspirar pessoas, desenvolver lideres e transformar desafios em oportunidades, promovendo crescimento profissional, realizacao pessoal e resultados extraordinarios.",
+      "Inspirar pessoas, desenvolver líderes e transformar desafios em oportunidades, promovendo crescimento profissional, realização pessoal e resultados consistentes.",
   },
   contact: {
     isMock: true,
     status: "em breve",
     title:
-      "Leve uma palestra que transforma experiencia em movimento para o seu evento.",
+      "Leve uma palestra que transforma experiência em movimento para o seu evento.",
     description:
-      "Se a sua empresa, instituicao ou equipe precisa fortalecer lideranca, seguranca, disciplina e alta performance, esta e a proxima conversa.",
+      "Se a sua empresa, instituição ou equipe precisa fortalecer liderança, segurança, disciplina e alta performance, esta é a próxima conversa.",
     ctaLabel: "Solicitar palestra em breve",
     preparationItems: [
       "Briefing do evento",
       "Tema de interesse",
-      "Perfil do publico",
+      "Perfil do público",
       "Canal de contato a confirmar",
     ],
   },

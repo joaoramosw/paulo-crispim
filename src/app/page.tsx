@@ -1,4 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { startTransition, useState } from "react";
+import { AudienceEcosystem } from "@/components/home/AudienceEcosystem";
+import { FloatingContactButton } from "@/components/shared/FloatingContactButton";
+import { RevealSection } from "@/components/shared/RevealSection";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { homeContent } from "@/content/paulo-crispim";
 
 function DecorativeField() {
@@ -93,24 +101,8 @@ function SectionHeader({
   );
 }
 
-function BrandMark() {
-  return (
-    <Link href="/" aria-label="Paulo Crispim - inicio" className="group inline-flex flex-col gap-1 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708]">
-      <span className="text-base font-semibold uppercase tracking-[0.28em] text-[#F4F7F8] transition group-hover:text-[#C8F8D2] sm:text-lg">
-        Paulo
-      </span>
-      <span className="text-xs font-medium uppercase tracking-[0.46em] text-[#A8B2BA] sm:text-sm">
-        Crispim
-      </span>
-      <span className="mt-1 h-px w-24 bg-[#35F06A]" />
-    </Link>
-  );
-}
-
 export default function Home() {
   const {
-    brand,
-    navigation,
     hero,
     credibility,
     talks,
@@ -121,50 +113,48 @@ export default function Home() {
     purpose,
     contact,
   } = homeContent;
+  const [activeTalkCategory, setActiveTalkCategory] = useState("Todos");
+  const [activeTopicTitle, setActiveTopicTitle] = useState(topics.items[0].title);
+  const talkCategories = [
+    "Todos",
+    ...Array.from(new Set(talks.items.map((talk) => talk.category))),
+  ];
+  const visibleTalks =
+    activeTalkCategory === "Todos"
+      ? talks.items
+      : talks.items.filter((talk) => talk.category === activeTalkCategory);
+  const activeTopic =
+    topics.items.find((topic) => topic.title === activeTopicTitle) ?? topics.items[0];
+
+  function selectTalkCategory(category: string) {
+    startTransition(() => {
+      setActiveTalkCategory(category);
+    });
+  }
+
+  function selectTopic(topicTitle: string) {
+    startTransition(() => {
+      setActiveTopicTitle(topicTitle);
+    });
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050708] text-[#F4F7F8]">
       <DecorativeField />
+      <SiteHeader />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-7 sm:px-10 lg:px-14">
-        <header className="flex flex-col gap-6 border-b border-white/10 pb-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center justify-between gap-5">
-            <BrandMark />
-            <span className="hidden max-w-44 text-right text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-[#A8B2BA] sm:block lg:hidden">
-              {brand.signature}
-            </span>
-          </div>
-
-          <nav aria-label="Navegacao principal" className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#A8B2BA]">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-full px-3 py-2 transition hover:bg-white/8 hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link
-              href="#contato"
-              className="ml-0 rounded-full border border-[#35F06A]/40 bg-[#35F06A]/10 px-4 py-2 text-[#C8F8D2] transition hover:bg-[#35F06A] hover:text-[#050708] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708] lg:ml-2"
-            >
-              Solicitar palestra
-            </Link>
-          </nav>
-        </header>
-
-        <section className="grid min-h-[calc(100vh-7rem)] items-center gap-12 py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.72fr)] lg:py-20">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 sm:px-10 lg:px-14 lg:pt-22">
+        <section className="grid items-center gap-8 py-10 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.68fr)] lg:gap-10 lg:py-6">
           <div className="max-w-5xl">
             <SectionLabel>{hero.eyebrow}</SectionLabel>
-            <h1 className="max-w-5xl text-5xl font-semibold leading-[0.98] tracking-tight text-[#F4F7F8] sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="max-w-4xl text-4xl font-semibold leading-[0.98] tracking-tight text-[#F4F7F8] sm:text-5xl md:text-6xl lg:text-7xl">
               {hero.title}
             </h1>
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-[#D8DEE2] sm:text-xl">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-[#D8DEE2] sm:text-lg">
               {hero.description}
             </p>
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={hero.primaryCta.href}
                 className="inline-flex min-h-12 items-center justify-center border border-[#35F06A] bg-[#35F06A] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[#050708] transition hover:bg-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708]"
@@ -179,23 +169,36 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-10 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-7 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {hero.highlights.map((highlight) => (
-                <div key={highlight} className="border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-medium text-[#D8DEE2] backdrop-blur-sm">
+                <div key={highlight} className="border border-white/10 bg-white/[0.035] px-4 py-2.5 text-sm font-medium text-[#D8DEE2] backdrop-blur-sm">
                   {highlight}
                 </div>
               ))}
             </div>
           </div>
 
-          <aside className="relative min-h-[27rem] overflow-hidden border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm sm:p-8" aria-label="Frentes de autoridade de Paulo Crispim">
+          <aside className="group relative overflow-hidden border border-white/10 bg-white/[0.035] p-5 shadow-2xl shadow-black/30 backdrop-blur-sm transition hover:border-[#35F06A]/30 sm:p-6" aria-label="Frentes de autoridade de Paulo Crispim">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35F06A] to-transparent opacity-70" />
             <div aria-hidden="true" className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#35F06A]/10 blur-3xl" />
+            <div className="relative mb-6 overflow-hidden border border-white/10 bg-[#050708]/60 p-4">
+              <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(53,240,106,0.13),transparent_30%),linear-gradient(135deg,rgba(6,58,70,0.42),transparent)]" />
+              <div className="relative grid h-40 grid-cols-5 gap-2 sm:h-44 lg:h-48">
+                {Array.from({ length: 25 }).map((_, index) => (
+                  <span key={index} className={`border border-white/10 bg-white/[0.025] ${index === 6 || index === 18 ? "bg-[#35F06A]/15 shadow-[0_0_24px_rgba(53,240,106,0.22)]" : ""}`} />
+                ))}
+              </div>
+              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-4 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#C8F8D2]">
+                <span>Palco</span>
+                <span className="h-px flex-1 bg-[#35F06A]/45" />
+                <span>Campo</span>
+              </div>
+            </div>
             <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#A8B2BA]">
               Autoridade aplicada
             </p>
 
-            <div className="mt-10 space-y-6">
+            <div className="mt-6 space-y-4">
               {hero.panelItems.map((item, index) => (
                 <div key={item} className="flex items-center gap-5">
                   <span className="font-mono text-sm text-[#35F06A]">0{index + 1}</span>
@@ -207,14 +210,14 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="absolute bottom-7 left-6 right-6 sm:left-8 sm:right-8">
+            <div className="mt-6">
               <div className="grid grid-cols-4 gap-2" aria-hidden="true">
                 {Array.from({ length: 16 }).map((_, index) => (
                   <span key={index} className="h-1 rounded-full bg-[#A8B2BA]/20" />
                 ))}
               </div>
-              <p className="mt-6 border-l border-[#35F06A] pl-5 text-sm leading-6 text-[#A8B2BA]">
-                Palestras com base em experiencia executiva, gestao de operacoes e desenvolvimento humano.
+              <p className="mt-5 border-l border-[#35F06A] pl-4 text-sm leading-6 text-[#A8B2BA]">
+                Experiência executiva, gestão de operações e desenvolvimento humano em uma mensagem prática.
               </p>
             </div>
           </aside>
@@ -235,12 +238,36 @@ export default function Home() {
 
         <section id="palestras" className="scroll-mt-8 py-20 lg:py-28">
           <SectionHeader eyebrow={talks.eyebrow} title={talks.title} description={talks.description} />
+          <div className="mt-10 flex flex-wrap gap-3" aria-label="Filtrar palestras por categoria">
+            {talkCategories.map((category) => {
+              const isActive = category === activeTalkCategory;
+
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => selectTalkCategory(category)}
+                  className={`border px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708] ${
+                    isActive
+                      ? "border-[#35F06A] bg-[#35F06A] text-[#050708]"
+                      : "border-white/10 bg-white/[0.035] text-[#A8B2BA] hover:border-[#35F06A]/40 hover:text-[#C8F8D2]"
+                  }`}
+                  aria-pressed={isActive}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
           <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {talks.items.map((talk, index) => (
-              <article key={talk.title} className="group relative min-h-64 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition hover:border-[#35F06A]/40 hover:bg-[#35F06A]/[0.045]">
+            {visibleTalks.map((talk, index) => (
+              <article key={talk.title} className="group relative min-h-64 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition hover:-translate-y-1 hover:border-[#35F06A]/40 hover:bg-[#35F06A]/[0.045]">
                 <div aria-hidden="true" className="absolute right-5 top-5 font-mono text-5xl font-semibold text-white/[0.035] transition group-hover:text-[#35F06A]/10">
                   0{index + 1}
                 </div>
+                <span className="mb-5 inline-flex border border-[#35F06A]/25 bg-[#35F06A]/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#C8F8D2]">
+                  {talk.category}
+                </span>
                 <div className="mb-8 flex h-10 w-10 items-center justify-center border border-[#35F06A]/35 bg-[#35F06A]/10 font-mono text-sm text-[#35F06A]">
                   {index + 1}
                 </div>
@@ -250,32 +277,67 @@ export default function Home() {
                 <p className="mt-5 text-sm leading-7 text-[#A8B2BA]">
                   {talk.description}
                 </p>
+                <Link href="#contato" className="mt-7 inline-flex text-xs font-bold uppercase tracking-[0.18em] text-[#C8F8D2] transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]">
+                  Ver aplicação desse tema
+                </Link>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="grid gap-10 border-y border-white/10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <SectionHeader title={audiences.title} description={audiences.description} />
-          <div className="grid gap-3 sm:grid-cols-2">
-            {audiences.items.map((item) => (
-              <div key={item} className="flex items-start gap-3 border border-white/10 bg-white/[0.03] p-4 text-sm font-semibold text-[#D8DEE2]">
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#35F06A] shadow-[0_0_20px_rgba(53,240,106,0.65)]" />
-                {item}
+        <section className="grid gap-10 border-y border-white/10 py-16 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:py-20">
+          <RevealSection>
+            <div className="max-w-3xl lg:sticky lg:top-28">
+              <SectionLabel>Para quem é</SectionLabel>
+              <h2 className="text-3xl font-semibold tracking-tight text-[#F4F7F8] sm:text-4xl lg:text-5xl">
+                {audiences.title}
+              </h2>
+              <p className="mt-5 text-base leading-8 text-[#D8DEE2] sm:text-lg">
+                {audiences.description}
+              </p>
+              <div aria-hidden="true" className="mt-8 h-px w-full max-w-sm overflow-hidden bg-white/10">
+                <span className="pc-flow block h-px w-2/3 bg-gradient-to-r from-transparent via-[#35F06A] to-transparent" />
               </div>
-            ))}
-          </div>
+              <p className="mt-5 max-w-md text-sm leading-7 text-[#A8B2BA]">
+                Contextos diferentes. Uma mesma busca por clareza, direção e evolução.
+              </p>
+            </div>
+          </RevealSection>
+          <AudienceEcosystem contexts={audiences.contexts} />
         </section>
 
         <section id="temas" className="scroll-mt-8 py-20 lg:py-28">
           <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
             <SectionHeader title={topics.title} description={topics.description} />
-            <div className="flex flex-wrap gap-3">
-              {topics.items.map((item) => (
-                <span key={item} className="border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-[#D8DEE2] transition hover:border-[#35F06A]/35 hover:text-[#C8F8D2]">
-                  {item}
-                </span>
-              ))}
+            <div>
+              <div className="flex flex-wrap gap-3" aria-label="Selecionar tema de palestra">
+                {topics.items.map((item) => (
+                  <button
+                    key={item.title}
+                    type="button"
+                    onClick={() => selectTopic(item.title)}
+                    className={`border px-4 py-3 text-left text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708] ${
+                      item.title === activeTopic.title
+                        ? "border-[#35F06A]/70 bg-[#35F06A]/10 text-[#C8F8D2]"
+                        : "border-white/10 bg-white/[0.035] text-[#D8DEE2] hover:border-[#35F06A]/35 hover:text-[#C8F8D2]"
+                    }`}
+                    aria-pressed={item.title === activeTopic.title}
+                  >
+                    {item.title}
+                  </button>
+                ))}
+              </div>
+              <article className="mt-6 border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C8F8D2]">
+                  Tema selecionado
+                </p>
+                <h3 className="mt-4 text-2xl font-semibold text-[#F4F7F8]">
+                  {activeTopic.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#D8DEE2]">
+                  {activeTopic.description}
+                </p>
+              </article>
             </div>
           </div>
         </section>
@@ -337,7 +399,7 @@ export default function Home() {
                   {contact.ctaLabel}
                 </button>
                 <p className="max-w-md text-sm leading-7 text-[#A8B2BA]">
-                  O WhatsApp e o e-mail oficiais serao conectados aqui assim que os canais forem confirmados.
+                  O WhatsApp e o e-mail oficiais serão conectados aqui assim que os canais forem confirmados.
                 </p>
               </div>
             </div>
@@ -358,21 +420,9 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="flex flex-col gap-5 border-t border-white/10 py-7 text-xs font-medium uppercase tracking-[0.22em] text-[#A8B2BA] sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <span className="text-[#F4F7F8]">{brand.name}</span>
-            <span className="mx-3 text-[#35F06A]">/</span>
-            <span>{brand.signature}</span>
-          </div>
-          <nav aria-label="Navegacao do rodape" className="flex flex-wrap gap-3">
-            {navigation.slice(0, 5).map((item) => (
-              <Link key={item.href} href={item.href} className="transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]">
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </footer>
       </div>
+      <SiteFooter />
+      <FloatingContactButton />
     </main>
   );
 }

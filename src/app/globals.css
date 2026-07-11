@@ -25,7 +25,136 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@keyframes pc-flow {
+  0% { transform: translateX(-18%); opacity: 0.2; }
+  45% { opacity: 0.78; }
+  100% { transform: translateX(18%); opacity: 0.24; }
+}
+
+@keyframes pc-draw-line {
+  from { stroke-dashoffset: 980; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pc-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.18); }
+}
+
+@keyframes pc-contact-pulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(53, 240, 106, 0.24); }
+  50% { box-shadow: 0 0 46px rgba(53, 240, 106, 0.42); }
+}
+
+.pc-grid {
+  background-image:
+    linear-gradient(rgba(244, 247, 248, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 247, 248, 0.032) 1px, transparent 1px);
+  background-size: 72px 72px;
+  animation: pc-flow 18s ease-in-out infinite alternate;
+}
+
+.pc-flow {
+  animation: pc-flow 10s ease-in-out infinite alternate;
+}
+
+.pc-draw-line {
+  stroke-dasharray: 980;
+  animation: pc-draw-line 4s ease-out both;
+}
+
+.pc-delay-1 { animation-delay: 240ms; }
+.pc-delay-2 { animation-delay: 480ms; }
+
+.pc-pulse-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pc-pulse 3.8s ease-in-out infinite;
+}
+
+.floating-contact {
+  animation: pc-contact-pulse 3.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .portfolio-print-root {
+    background: #ffffff !important;
+    color: #111827 !important;
+    overflow: visible !important;
+  }
+
+  .portfolio-print-root * {
+    animation: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+  }
+
+  .portfolio-print-root .site-header,
+  .portfolio-print-root .site-footer,
+  .portfolio-print-root .floating-contact,
+  .portfolio-print-root .portfolio-actions,
+  .portfolio-print-root .portfolio-print-action,
+  .portfolio-print-root .book-affiliate,
+  .portfolio-print-root [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  .portfolio-print-root > div {
+    padding-top: 0 !important;
+  }
+
+  .portfolio-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding: 1.2rem 0 !important;
+  }
+
+  .portfolio-card,
+  .book-card,
+  article {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #d1d5db !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .portfolio-print-root h1,
+  .portfolio-print-root h2,
+  .portfolio-print-root h3,
+  .portfolio-print-root p,
+  .portfolio-print-root span,
+  .portfolio-print-root a {
+    color: #111827 !important;
+  }
+
+  .portfolio-print-root a {
+    text-decoration: none !important;
+  }
+
   .proposal-root {
     height: auto !important;
     min-height: 0 !important;

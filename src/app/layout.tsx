@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Paulo Crispim | Palestras, Lideranca e Alta Performance",
+  title: "Paulo Crispim | Palestras, Liderança e Alta Performance",
   description:
-    "Palestras corporativas sobre lideranca, gestao, engenharia, seguranca, alta performance e desenvolvimento de pessoas.",
+    "Palestras corporativas sobre liderança, gestão, engenharia, segurança, alta performance e desenvolvimento de pessoas.",
 };
 
 export default function RootLayout({
