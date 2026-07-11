@@ -18,8 +18,21 @@ import { portfolioAbout, portfolioAreas, portfolioContactItems, portfolioDiffere
 import { contactConfig, getDefaultTalkMessage, getMailtoUrl, getWhatsAppUrl } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Portfólio | Paulo Crispim",
+  title: "Portfólio",
   description: "Portfólio institucional de Paulo Crispim para apresentação empresarial, temas de palestras e contato comercial.",
+  openGraph: {
+    title: "Portfólio | Paulo Crispim",
+    description: "Portfólio institucional de Paulo Crispim para apresentação empresarial, temas de palestras e contato comercial.",
+    url: "/portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfólio | Paulo Crispim",
+    description: "Portfólio institucional de Paulo Crispim para apresentação empresarial, temas de palestras e contato comercial.",
+  },
+  alternates: {
+    canonical: "/portfolio",
+  },
 };
 
 const areaIcons = [Users, Users, BriefcaseBusiness, Target, TrendingUp, Award, BookOpen, CheckCircle2];
