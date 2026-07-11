@@ -10,8 +10,21 @@ import { MagneticButton } from "@/components/shared/MagneticButton";
 import { contactConfig, getDefaultTalkMessage, getMailtoUrl, getWhatsAppUrl } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Contato | Paulo Crispim",
+  title: "Contato",
   description: "Contato oficial de Paulo Crispim para solicitação de palestras corporativas, eventos, convenções e encontros de liderança.",
+  openGraph: {
+    title: "Contato | Paulo Crispim",
+    description: "Contato oficial de Paulo Crispim para solicitação de palestras corporativas, eventos, convenções e encontros de liderança.",
+    url: "/contato",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contato | Paulo Crispim",
+    description: "Contato oficial de Paulo Crispim para solicitação de palestras corporativas, eventos, convenções e encontros de liderança.",
+  },
+  alternates: {
+    canonical: "/contato",
+  },
 };
 
 export default function ContatoPage() {

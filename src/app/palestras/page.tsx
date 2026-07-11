@@ -13,8 +13,28 @@ import { getDefaultTalkMessage, getWhatsAppUrl } from "@/lib/contact";
 import { talkBenefits, talkFormats, talkTopics, talkValuePoints } from "@/content/palestras";
 
 export const metadata: Metadata = {
-  title: "Palestras | Paulo Crispim",
+  title: "Palestras",
   description: "Palestras corporativas de Paulo Crispim para empresas, eventos, convenções, encontros de liderança e semanas acadêmicas ou profissionais.",
+  keywords: [
+    "palestras corporativas",
+    "palestrante liderança",
+    "treinamento empresas",
+    "conferencista",
+    "palestras motivação",
+  ],
+  openGraph: {
+    title: "Palestras Corporativas | Paulo Crispim",
+    description: "Palestras corporativas de Paulo Crispim para empresas, eventos, convenções, encontros de liderança e semanas acadêmicas ou profissionais.",
+    url: "/palestras",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Palestras Corporativas | Paulo Crispim",
+    description: "Palestras corporativas de Paulo Crispim para empresas, eventos, convenções, encontros de liderança e semanas acadêmicas ou profissionais.",
+  },
+  alternates: {
+    canonical: "/palestras",
+  },
 };
 
 const topicIcons = [Users, TrendingUp, Target, CheckCircle2, BriefcaseBusiness, Award];
