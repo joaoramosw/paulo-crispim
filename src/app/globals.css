@@ -12,6 +12,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/*
+ * Escala de corpo de texto levemente maior que o padrão do Tailwind
+ * (xs/sm/base/lg apenas, ~12% de aumento). text-xl e acima ficam
+ * intocados de propósito: é onde vivem os títulos (H1 da Hero,
+ * "Para quem é", H2 de seção) que já foram reduzidos e não devem
+ * voltar a crescer.
+ */
+@theme {
+  --text-xs: 0.84375rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 0.984375rem;
+  --text-sm--line-height: 1.40625rem;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.6875rem;
+  --text-lg: 1.265625rem;
+  --text-lg--line-height: 1.96875rem;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -46,6 +64,15 @@ body {
   50% { box-shadow: 0 0 46px rgba(53, 240, 106, 0.42); }
 }
 
+@keyframes pc-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.pc-marquee {
+  animation: pc-marquee 32s linear infinite;
+}
+
 .pc-grid {
   background-image:
     linear-gradient(rgba(244, 247, 248, 0.032) 1px, transparent 1px),
@@ -74,6 +101,15 @@ body {
 
 .floating-contact {
   animation: pc-contact-pulse 3.8s ease-in-out infinite;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

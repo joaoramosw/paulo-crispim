@@ -12,88 +12,114 @@ export const homeContent = {
   hero: {
     eyebrow: "Palestras, liderança e resultados",
     title:
-      "Clareza e liderança para equipes em evolução.",
+      "Transformando líderes, equipes e organizações através da engenharia, gestão e comportamento humano.",
     description:
-      "Palestras que conectam engenharia, pessoas e execução para gerar direção, atitude e evolução profissional.",
+      "Conteúdos práticos e inspiradores que unem engenharia, liderança, segurança, inovação e desenvolvimento humano para formar equipes de alta performance e organizações mais eficientes.",
     primaryCta: { label: "Conheça as palestras", href: "#palestras" },
     secondaryCta: { label: "Ver trajetória", href: "#trajetoria" },
     highlights: [
-      "Engenharia Elétrica",
-      "Administração de Empresas",
-      "Gestão Executiva",
-      "Desenvolvimento de Pessoas",
+      "Engenharia e Tecnologia",
+      "Liderança e Gestão",
+      "Cultura de Segurança",
+      "Alta Performance",
     ],
     panelItems: [
       "Liderança em campo",
       "Gestão de equipes",
       "Operações críticas",
       "Cultura de segurança",
+      "Comunicação Estratégica",
     ],
   },
   credibility: {
-    intro: "Uma visão construída entre estratégia, campo, pessoas e execução.",
+    intro: "Uma visão construída na integração entre estratégia, liderança, operações, pessoas e execução.",
     items: [
-      "Engenharia Elétrica",
-      "Administração de Empresas",
-      "Gestão, Operações e Liderança",
-      "Desenvolvimento de Pessoas",
+      "Engenharia e Tecnologia",
+      "Liderança Estratégica",
+      "Gestão e Operações",
+      "Educação e Desenvolvimento",
+      "Segurança e Performance",
     ],
+  },
+  partners: {
+    title: "Nossos Parceiros",
+    description: "Empresas que já confiaram no trabalho de Paulo Crispim para gerar clareza, liderança e resultado.",
   },
   talks: {
     eyebrow: "Palestras corporativas",
     title: "Palestras que conectam experiência prática, pessoas e resultado.",
     description:
-      "Conteúdos para empresas, líderes e equipes que precisam desenvolver atitude, responsabilidade, comunicação e performance em ambientes de alta exigência.",
+      "Conteúdo para empresas, gestores, líderes, equipes, educadores, universidades, indústrias, concessionárias de energia, órgãos públicos, empreendedores e profissionais de diversas áreas que desejam desenvolver liderança, cultura de segurança, comunicação estratégica, inteligência emocional, responsabilidade, inovação, produtividade e alta performance para alcançar resultados extraordinários em ambientes de elevada exigência.",
     items: [
       {
-        title: "Liderança e Gestão de Pessoas",
-        category: "Liderança",
+        title: "Comunicação Estratégica e de Alto Impacto",
+        category: "Comunicação",
         description:
-          "Como liderar com clareza, responsabilidade e presença, fortalecendo equipes mais comprometidas e preparadas para entregar resultados.",
+          "Comunicação assertiva, feedback estratégico, oratória profissional e influência para fortalecer a relação entre liderança e equipes, inclusive em momentos de crise.",
       },
       {
-        title: "Alta Performance e Produtividade",
-        category: "Performance",
+        title: "Educação e Formação de Líderes",
+        category: "Educação",
         description:
-          "Disciplina, foco e execução aplicados ao dia a dia profissional, com uma abordagem prática para transformar intenção em movimento.",
+          "Formação de líderes universitários, o papel do professor como líder, inteligência emocional na educação e preparação de estudantes para a carreira acadêmica e o mercado de trabalho.",
       },
       {
-        title: "Inteligência Emocional e Resiliência",
-        category: "Pessoas",
+        title: "Indústria, Engenharia e Alta Performance Operacional",
+        category: "Indústria e Engenharia",
         description:
-          "Reflexões e ferramentas para lidar com pressão, mudança, conflito e tomada de decisão em contextos desafiadores.",
+          "Cultura lean, segurança industrial, gestão da manutenção, confiabilidade operacional, eficiência energética e os desafios da Indústria 4.0 e da inteligência artificial aplicada à operação.",
       },
       {
-        title: "Segurança do Trabalho e Cultura Prevencionista",
-        category: "Segurança",
+        title: "Vendas, Relacionamento e Experiência do Cliente",
+        category: "Vendas e Relacionamento",
         description:
-          "Uma abordagem humana e estratégica sobre responsabilidade, prevenção, comportamento seguro e cuidado com as pessoas.",
+          "Atendimento de excelência, negociação estratégica, fidelização de clientes, inteligência comercial e marketing pessoal para times que vivem da relação com o cliente.",
       },
       {
-        title: "Gestão de Projetos e Operações",
-        category: "Processos",
+        title: "Engenharia do Futuro para Universidades",
+        category: "Universidades",
         description:
-          "Lições de planejamento, execução, indicadores e coordenação de equipes aplicadas a operações e projetos complexos.",
+          "Engenharia 5.0, inteligência artificial, empregabilidade, carreira internacional, inovação, empreendedorismo tecnológico e transição energética para estudantes e futuros engenheiros.",
       },
       {
-        title: "Desenvolvimento de Carreira e Formação de Líderes",
-        category: "Carreira",
+        title: "Gestão Pública, Governança e Inovação",
+        category: "Órgãos Públicos",
         description:
-          "Caminhos para profissionais que desejam crescer com preparo técnico, postura, aprendizado contínuo e visão de futuro.",
+          "Modernização da gestão pública, governo digital, inteligência artificial, ESG, compliance, cidades inteligentes e liderança no serviço público.",
+      },
+      {
+        title: "O Técnico do Futuro",
+        category: "Escolas Técnicas",
+        description:
+          "Indústria 4.0 e 5.0, automação, energias renováveis, segurança do trabalho além da NR-10 e carreira técnica de alta performance para quem está entrando no mercado de energia.",
+      },
+      {
+        title: "Alta Performance para Concursos",
+        category: "Concurseiros",
+        description:
+          "Técnicas científicas de aprendizagem, gestão do tempo, controle da ansiedade, disciplina e mentalidade vencedora para quem está em preparação de longo prazo.",
       },
     ],
   },
   audiences: {
-    title: "Para empresas e pessoas que precisam transformar pressão em evolução.",
+    title: "Para empresas, instituições e profissionais que transformam desafios em evolução.",
     description:
-      "A palestra pode ser direcionada para convenções, SIPATs, encontros de liderança, treinamentos internos, semanas acadêmicas e eventos de desenvolvimento profissional.",
+      "As palestras são desenvolvidas para convenções, SIPATs, encontros de liderança, treinamentos corporativos, indústrias, concessionárias de energia, órgãos públicos, universidades, escolas técnicas, programas de desenvolvimento profissional, formação de lideranças e eventos acadêmicos.",
     items: [
       "Empresas e equipes corporativas",
       "Lideranças e gestores",
       "Times operacionais",
-      "Instituições de ensino",
+      "Escolas técnicas",
+      "Universidades",
       "Profissionais em desenvolvimento",
       "Empreendedores",
+      "Concessionárias de energia",
+      "Indústrias",
+      "Órgãos públicos",
+      "Profissionais da segurança do trabalho",
+      "Concurseiros e jovens profissionais",
+      "Agronegócio e infraestrutura",
+      "Eventos corporativos e congressos",
     ],
     contexts: [
       {
@@ -104,21 +130,92 @@ export const homeContent = {
         description:
           "Ambientes que buscam mais clareza entre pessoas, estratégia e execução.",
       },
-      { id: "liderancas-gestores", index: "02", title: "Lideranças e gestores" },
-      { id: "times-operacionais", index: "03", title: "Times operacionais" },
-      { id: "instituicoes-ensino", index: "04", title: "Instituições de ensino" },
+      {
+        id: "liderancas-gestores",
+        index: "02",
+        title: "Lideranças e gestores",
+        description: "Gestores e líderes que precisam alinhar discurso, postura e decisão em ambientes de pressão.",
+      },
+      {
+        id: "times-operacionais",
+        index: "03",
+        title: "Times operacionais",
+        description: "Equipes de campo que dependem de disciplina, comunicação e execução no dia a dia.",
+      },
+      {
+        id: "escolas-tecnicas",
+        index: "04",
+        title: "Escolas técnicas",
+        description: "Formação técnica voltada para o profissional que o mercado de energia e indústria está buscando.",
+      },
+      {
+        id: "universidades",
+        index: "05",
+        title: "Universidades",
+        description: "Estudantes e futuros profissionais em busca de direção de carreira e visão de mercado.",
+      },
       {
         id: "profissionais-desenvolvimento",
-        index: "05",
+        index: "06",
         title: "Profissionais em desenvolvimento",
+        description: "Pessoas em transição ou evolução de carreira que buscam clareza e maturidade profissional.",
       },
-      { id: "empreendedores", index: "06", title: "Empreendedores" },
+      {
+        id: "empreendedores",
+        index: "07",
+        title: "Empreendedores",
+        description: "Quem constrói negócios e precisa transformar visão em execução consistente.",
+      },
+      {
+        id: "concessionarias-energia",
+        index: "08",
+        title: "Concessionárias de energia",
+        description:
+          "Equipes de distribuição, transmissão, geração, O&M, comercial, engenharia, manutenção e expansão.",
+      },
+      {
+        id: "industrias",
+        index: "09",
+        title: "Indústrias",
+        description:
+          "Organizações focadas em produtividade, confiabilidade, manutenção e melhoria contínua.",
+      },
+      {
+        id: "orgaos-publicos",
+        index: "10",
+        title: "Órgãos públicos",
+        description: "Prefeituras, secretarias, autarquias, empresas públicas e estatais.",
+      },
+      {
+        id: "seguranca-trabalho",
+        index: "11",
+        title: "Profissionais da segurança do trabalho",
+        description: "Profissionais dedicados a prevenção, comportamento seguro e cultura de cuidado com pessoas.",
+      },
+      {
+        id: "concurseiros",
+        index: "12",
+        title: "Concurseiros e jovens profissionais",
+        description: "Candidatos em preparação de longo prazo que buscam disciplina, foco e alta performance mental.",
+      },
+      {
+        id: "agronegocio-infraestrutura",
+        index: "13",
+        title: "Agronegócio e infraestrutura",
+        description: "Operações de grande porte que dependem de planejamento, segurança e eficiência operacional.",
+      },
+      {
+        id: "eventos-corporativos",
+        index: "14",
+        title: "Eventos corporativos e congressos",
+        description: "Congressos, convenções e encontros que buscam conteúdo de impacto e aplicação prática.",
+      },
     ],
   },
   topics: {
-    title: "Temas que unem engenharia, gestão e comportamento humano.",
+    title: "Temas que conectam engenharia, liderança, gestão, inovação e desenvolvimento humano.",
     description:
-      "Cada palestra pode ser adaptada ao contexto do evento, ao perfil do público e aos desafios específicos da organização.",
+      "Cada palestra é personalizada para empresas, indústrias, concessionárias de energia, universidades, escolas técnicas, órgãos públicos e instituições de ensino, considerando o perfil do público e os desafios específicos de cada organização.",
     items: [
       {
         title: "Liderança",
@@ -160,38 +257,73 @@ export const homeContent = {
         title: "Empreendedorismo e Inovação",
         description: "Mentalidade de construção, melhoria contínua e criação de oportunidades.",
       },
+      {
+        title: "Educação",
+        description: "Educação tecnológica, formação profissional e desenvolvimento de competências para o mercado do futuro.",
+      },
+      {
+        title: "Universidades",
+        description: "Carreira em engenharia, mercado de trabalho e empregabilidade para estudantes e recém-formados.",
+      },
+      {
+        title: "Escolas Técnicas",
+        description: "Formação técnica e as competências que vão definir o profissional do futuro.",
+      },
+      {
+        title: "Órgãos Públicos",
+        description: "Gestão pública, excelência no serviço público e eficiência operacional.",
+      },
+      {
+        title: "Indústria 4.0",
+        description: "Transformação digital, excelência operacional e cultura organizacional na indústria.",
+      },
+      {
+        title: "Concessionárias de Energia",
+        description: "Distribuição de energia, sistemas fotovoltaicos, redes elétricas, manutenção, O&M e eficiência energética.",
+      },
+      {
+        title: "Desenvolvimento Humano",
+        description: "Inteligência emocional, comunicação estratégica, alta performance, cultura de segurança e gestão da mudança.",
+      },
     ],
   },
   trajectory: {
     eyebrow: "Trajetória aplicada",
-    title: "Uma trajetória construída no campo, nas operações e na liderança.",
+    title: "Uma trajetória construída entre estratégia, operações, liderança e desenvolvimento de pessoas.",
     description:
-      "A autoridade de Paulo Crispim vem da prática: da vivência operacional à gestão de equipes, contratos, projetos e pessoas em diferentes contextos.",
+      "A experiência de Paulo Crispim foi construída em campo e consolidada na liderança de pessoas, operações e projetos. Sua atuação integra engenharia, gestão, educação corporativa e desenvolvimento humano, transformando desafios operacionais em resultados sustentáveis para empresas, concessionárias, indústrias, instituições de ensino e órgãos públicos.",
+    highlight:
+      "Mais do que compartilhar conhecimento, entrega experiências aplicáveis que transformam comportamento, cultura, liderança e performance.",
     items: [
       {
         title: "Base operacional",
         description:
-          "Contato direto com rotinas, desafios de campo, disciplina, segurança e execução.",
+          "Experiência construída diretamente no campo, atuando em operações críticas, manutenção, eletrificação, segurança, logística operacional e gestão de equipes em ambientes de alta exigência, desenvolvendo disciplina, resiliência e foco em resultados.",
       },
       {
-        title: "Formação técnica e administrativa",
+        title: "Formação Acadêmica, Técnica e Científica",
         description:
-          "Construção de uma visão que combina Engenharia Elétrica, Administração de Empresas e Docência do Ensino Superior.",
+          "Formação multidisciplinar que integra Engenharia Elétrica, Administração, Gestão, Educação e pesquisa aplicada, permitindo transformar conhecimento técnico em soluções práticas para empresas, instituições de ensino e organizações públicas.",
       },
       {
-        title: "Gestão e liderança",
+        title: "Liderança Estratégica e Desenvolvimento Organizacional",
         description:
-          "Atuação com equipes multidisciplinares, operações, indicadores, contratos, atendimento e desenvolvimento profissional.",
+          "Liderança de equipes multidisciplinares, gestão de contratos, indicadores, cultura organizacional, segurança comportamental, desenvolvimento de líderes e construção de equipes de alta performance.",
       },
       {
-        title: "Projetos, energia e infraestrutura",
+        title: "Engenharia, Energia, Infraestrutura e Inovação",
         description:
-          "Experiência relacionada à distribuição de energia, eletrificação, manutenção, energia renovável e soluções operacionais.",
+          "Atuação em projetos de distribuição de energia, sistemas isolados, energias renováveis, infraestrutura, eletrificação rural, manutenção, eficiência operacional, inovação tecnológica e soluções sustentáveis para organizações públicas e privadas.",
       },
       {
-        title: "Palestras e desenvolvimento humano",
+        title: "Educação, Palestras e Transformação de Pessoas",
         description:
-          "Uso da experiência prática para inspirar pessoas, desenvolver líderes e transformar desafios em oportunidades.",
+          "Compartilhamento de experiências reais por meio de palestras, treinamentos, mentorias e programas de desenvolvimento voltados para líderes, profissionais, estudantes e instituições que buscam excelência, inovação e impacto social.",
+      },
+      {
+        title: "Consultoria, Educação Corporativa e Impacto Institucional",
+        description:
+          "Desenvolvimento de programas para empresas, universidades, escolas técnicas e órgãos públicos nas áreas de liderança, cultura de segurança, gestão, inovação, engenharia, energia, sustentabilidade, comunicação, produtividade e transformação organizacional.",
       },
     ],
   },
