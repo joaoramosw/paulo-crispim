@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Paulo Crispim",
   },
   description:
-    "Palestras corporativas sobre liderança, gestão, engenharia, segurança, alta performance e desenvolvimento de pessoas. Solicite uma palestra com Paulo Crispim.",
+    "Palestrante Corporativo · Engenheiro Eletricista · Administrador · Gestor Executivo · Professor · Influenciador Digital",
   keywords: [
     "palestras corporativas",
     "palestrante motivacional",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "Paulo Crispim",
     title: "Paulo Crispim | Palestras, Liderança e Alta Performance",
     description:
-      "Palestras corporativas sobre liderança, gestão, engenharia, segurança, alta performance e desenvolvimento de pessoas.",
+      "Palestrante Corporativo · Engenheiro Eletricista · Administrador · Gestor Executivo · Professor · Influenciador Digital",
     images: [
       {
         url: OG_IMAGE,
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Paulo Crispim | Palestras, Liderança e Alta Performance",
     description:
-      "Palestras corporativas sobre liderança, gestão, engenharia, segurança, alta performance e desenvolvimento de pessoas.",
+      "Palestrante Corporativo · Engenheiro Eletricista · Administrador · Gestor Executivo · Professor · Influenciador Digital",
     images: [OG_IMAGE],
   },
   icons: {
@@ -89,7 +89,7 @@ const jsonLd = {
   name: "Paulo Crispim",
   jobTitle: "Palestrante, Engenheiro Elétrico, Mentor e Consultor",
   description:
-    "Palestras corporativas sobre liderança, gestão, engenharia, segurança, alta performance e desenvolvimento de pessoas.",
+    "Palestrante Corporativo · Engenheiro Eletricista · Administrador · Gestor Executivo · Professor · Influenciador Digital",
   url: SITE_URL,
   image: `${SITE_URL}${OG_IMAGE}`,
   knowsAbout: [

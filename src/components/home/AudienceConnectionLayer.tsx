@@ -2,7 +2,7 @@ export function AudienceConnectionLayer() {
   return (
     <svg
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-60"
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-30"
       viewBox="0 0 720 520"
       fill="none"
       preserveAspectRatio="none"
