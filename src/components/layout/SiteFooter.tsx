@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { contactConfig, getDefaultTalkMessage, getMailtoUrl, getWhatsAppUrl } from "@/lib/contact";
@@ -16,8 +17,14 @@ export function SiteFooter() {
     <footer className="site-footer relative z-10 border-t border-white/10 bg-[#050708] px-6 py-10 text-[#A8B2BA] sm:px-10 lg:px-14">
       <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-end">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#F4F7F8]">Paulo Crispim</p>
-          <p className="mt-3 max-w-xl text-sm leading-7">Palestras corporativas para empresas, líderes e equipes que buscam clareza, direção e evolução profissional.</p>
+          <Image
+            src="/paulo-crispim/logos/logo-paulo-crispim-full.png"
+            alt="Paulo Crispim"
+            width={436}
+            height={255}
+            className="h-9 w-auto"
+          />
+          <p className="mt-4 max-w-xl text-sm leading-7">Palestras corporativas para empresas, líderes e equipes que buscam clareza, direção e evolução profissional.</p>
           <div className="mt-5 flex flex-col gap-3 text-sm sm:flex-row sm:flex-wrap">
             <a href={getWhatsAppUrl(getDefaultTalkMessage())} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
               <MessageCircle aria-hidden="true" className="h-4 w-4" /> WhatsApp

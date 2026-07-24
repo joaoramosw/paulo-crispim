@@ -10,7 +10,7 @@ type TopicCardProps = {
 
 export function TopicCard({ title, description, category, icon: Icon, index = 0 }: TopicCardProps) {
   return (
-    <article className="group relative min-h-72 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#35F06A]/45 hover:bg-[#35F06A]/[0.045] focus-within:border-[#35F06A]/45">
+    <article className="group relative h-full min-h-72 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#35F06A]/45 hover:bg-[#35F06A]/[0.045] focus-within:border-[#35F06A]/45">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-[#35F06A] to-transparent transition duration-500 group-hover:scale-x-100" />
       <div aria-hidden="true" className="absolute right-5 top-5 font-mono text-5xl font-semibold text-white/[0.035] transition group-hover:text-[#35F06A]/10">0{index + 1}</div>
       <div className="mb-7 flex h-12 w-12 items-center justify-center border border-[#35F06A]/30 bg-[#35F06A]/10 text-[#35F06A] transition group-hover:scale-105 group-hover:bg-[#35F06A] group-hover:text-[#050708]">

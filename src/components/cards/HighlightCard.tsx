@@ -8,7 +8,7 @@ type HighlightCardProps = {
 
 export function HighlightCard({ title, description, icon: Icon }: HighlightCardProps) {
   return (
-    <article className="group border border-white/10 bg-white/[0.03] p-5 transition hover:-translate-y-1 hover:border-[#35F06A]/35 hover:bg-white/[0.055]">
+    <article className="group h-full border border-white/10 bg-white/[0.03] p-5 transition hover:-translate-y-1 hover:border-[#35F06A]/35 hover:bg-white/[0.055]">
       <div className="mb-6 inline-flex h-10 w-10 items-center justify-center border border-white/10 bg-[#050708]/50 text-[#35F06A] transition group-hover:border-[#35F06A]/40 group-hover:shadow-[0_0_24px_rgba(53,240,106,0.18)]">
         <Icon aria-hidden="true" className="h-5 w-5" />
       </div>
