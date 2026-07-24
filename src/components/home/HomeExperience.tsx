@@ -275,7 +275,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {visibleTalks.map((talk, index) => (
-              <article key={talk.title} className="group relative min-h-64 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition hover:-translate-y-1 hover:border-[#35F06A]/40 hover:bg-[#35F06A]/[0.045]">
+              <article key={talk.title} className="group relative h-full min-h-64 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition hover:-translate-y-1 hover:border-[#35F06A]/40 hover:bg-[#35F06A]/[0.045]">
                 <div aria-hidden="true" className="absolute right-5 top-5 font-mono text-5xl font-semibold text-white/[0.035] transition group-hover:text-[#35F06A]/10">
                   0{index + 1}
                 </div>
@@ -365,7 +365,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </p>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {trajectory.items.map((item, index) => (
-              <article key={item.title} className="relative border border-white/10 bg-white/[0.03] p-5">
+              <article key={item.title} className="relative h-full border border-white/10 bg-white/[0.03] p-5">
                 <span className="font-mono text-sm text-[#35F06A]">0{index + 1}</span>
                 <h3 className="mt-8 text-lg font-semibold leading-snug text-[#F4F7F8]">
                   {item.title}

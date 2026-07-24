@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Award, BookOpen, BriefcaseBusiness, CheckCircle2, Mail, MessageCircle, Presentation, Target, TrendingUp, Users } from "lucide-react";
+import { Award, BookOpen, BriefcaseBusiness, CheckCircle2, GraduationCap, Mail, MessageCircle, Presentation, ShieldCheck, Target, TrendingUp, Users } from "lucide-react";
 import { InternalPageLayout } from "@/components/layout/InternalPageLayout";
 import { ExpertiseCard } from "@/components/cards/ExpertiseCard";
 import { HighlightCard } from "@/components/cards/HighlightCard";
 import { ContactChannelCard } from "@/components/cards/ContactChannelCard";
-import { ProfessionalTimeline } from "@/components/portfolio/ProfessionalTimeline";
+import { BioSection } from "@/components/portfolio/BioSection";
+import { TrajectoryTimeline } from "@/components/portfolio/TrajectoryTimeline";
 import { PortfolioPrintAction } from "@/components/portfolio/PortfolioPrintAction";
 import { ReadingReferenceGrid } from "@/components/portfolio/ReadingReferenceGrid";
 import { RevealSection } from "@/components/shared/RevealSection";
@@ -12,9 +13,20 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { MagneticButton } from "@/components/shared/MagneticButton";
 import { TechnicalDivider } from "@/components/shared/TechnicalDivider";
+import { Tag } from "@/components/shared/Tag";
 import { bookReferences } from "@/content/books";
 import { talkTopics } from "@/content/palestras";
-import { portfolioAbout, portfolioAreas, portfolioContactItems, portfolioDifferentials, portfolioIntro, portfolioTrajectory } from "@/content/portfolio";
+import {
+  portfolioAbout,
+  portfolioAreas,
+  portfolioAreasHeading,
+  portfolioContactItems,
+  portfolioDifferentials,
+  portfolioIdentityThemes,
+  portfolioIntro,
+  portfolioTrajectoryHeading,
+  portfolioTrajectoryStages,
+} from "@/content/portfolio";
 import { contactConfig, getDefaultTalkMessage, getMailtoUrl, getWhatsAppUrl } from "@/lib/contact";
 
 export const metadata: Metadata = {
@@ -35,7 +47,8 @@ export const metadata: Metadata = {
   },
 };
 
-const areaIcons = [Users, Users, BriefcaseBusiness, Target, TrendingUp, Award, BookOpen, CheckCircle2];
+// posição de cada ícone corresponde ao índice do mesmo registro em portfolioAreas — manter os dois arrays na mesma ordem
+const areaIcons = [Users, Users, BriefcaseBusiness, Target, TrendingUp, Award, BookOpen, CheckCircle2, ShieldCheck, GraduationCap];
 const differentialIcons = [Target, Presentation, CheckCircle2];
 
 export default function PortfolioPage() {
@@ -77,23 +90,49 @@ export default function PortfolioPage() {
         <RevealSection>
           <SectionHeader eyebrow="Quem é" title={portfolioAbout.title} description={portfolioAbout.description} />
         </RevealSection>
+        <BioSection about={portfolioAbout} />
       </section>
 
       <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
         <RevealSection>
-          <SectionHeader eyebrow="Trajetória profissional" title="Uma trajetória construída no campo, nas operações e na liderança." description="A leitura abaixo organiza a experiência de forma qualitativa, sem datas, cargos, empresas ou resultados não autorizados." />
+          <SectionHeader
+            eyebrow={portfolioTrajectoryHeading.eyebrow}
+            title={portfolioTrajectoryHeading.title}
+            description={portfolioTrajectoryHeading.description}
+          />
         </RevealSection>
-        <ProfessionalTimeline items={portfolioTrajectory} />
+        <TrajectoryTimeline stages={portfolioTrajectoryStages} />
       </section>
 
       <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
         <RevealSection>
-          <SectionHeader eyebrow="Formação e repertório" title="Base técnica, gestão e desenvolvimento profissional em uma mesma mensagem." description="A atuação apresentada combina engenharia elétrica, administração, docência, liderança e desenvolvimento humano conforme conteúdo já disponível no projeto." />
+          <SectionHeader
+            eyebrow={portfolioAreasHeading.eyebrow}
+            title={portfolioAreasHeading.title}
+            description={portfolioAreasHeading.description}
+          />
         </RevealSection>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
           {portfolioAreas.map((area, index) => (
             <RevealSection key={area.title} delay={index * 70}>
               <HighlightCard title={area.title} description={area.description} icon={areaIcons[index] ?? Target} />
+            </RevealSection>
+          ))}
+        </div>
+      </section>
+
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+        <RevealSection>
+          <SectionHeader
+            eyebrow="Identidade profissional"
+            title="Temas que fazem parte da identidade profissional de Paulo Crispim."
+            description="Um repertório de competências e temas que atravessam toda a sua atuação, da engenharia à liderança."
+          />
+        </RevealSection>
+        <div className="mt-12 flex flex-wrap gap-3">
+          {portfolioIdentityThemes.map((theme, index) => (
+            <RevealSection key={theme} delay={index * 30} variant="scale">
+              <Tag>{theme}</Tag>
             </RevealSection>
           ))}
         </div>

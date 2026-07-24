@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const SITE_URL = "https://paulocrispim.com.br";
-const OG_IMAGE = "/paulo-crispim/logos/logo quadrado minima paulo crispim.png";
+const OG_IMAGE = "/paulo-crispim/logos/logo-quadrado-minima-paulo-crispim.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,8 +75,8 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
   },
   icons: {
-    icon: "/paulo-crispim/logos/paulo-crispim-logo-recomendado.svg",
-    apple: "/paulo-crispim/logos/logo quadrado minima paulo crispim.png",
+    icon: "/paulo-crispim/logos/logo-quadrado-minima-paulo-crispim.png",
+    apple: "/paulo-crispim/logos/logo-quadrado-minima-paulo-crispim.png",
   },
   alternates: {
     canonical: SITE_URL,

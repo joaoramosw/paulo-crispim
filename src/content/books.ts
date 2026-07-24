@@ -24,7 +24,7 @@ export const bookReferences: BookReference[] = [
     author: "Morgan Housel",
     category: "Comportamento",
     description: "Repertório sobre decisões, comportamento e visão de longo prazo.",
-    coverImage: "https://covers.openlibrary.org/b/isbn/9786555601738-L.jpg",
+    coverImage: "/capas-livros/capa-a-psicologia-financeira.jpg",
     isAffiliateAvailable: false,
   },
   {
@@ -49,7 +49,7 @@ export const bookReferences: BookReference[] = [
     author: "Dale Carnegie",
     category: "Comunicação",
     description: "Repertório clássico sobre relacionamento, influência e comunicação humana.",
-    coverImage: "https://covers.openlibrary.org/b/isbn/9788504018025-L.jpg",
+    coverImage: "/capas-livros/capa-como-fazer-amigos-e-influenciar-pessoas.jpg",
     isAffiliateAvailable: false,
   },
   {
@@ -57,7 +57,7 @@ export const bookReferences: BookReference[] = [
     author: "Daniel Goleman",
     category: "Pessoas",
     description: "Base de leitura sobre emoções, comportamento e relações no trabalho.",
-    coverImage: "https://covers.openlibrary.org/b/isbn/9788539001910-L.jpg",
+    coverImage: "/capas-livros/capa-inteligencia-emocional.jpg",
     isAffiliateAvailable: false,
   },
   {
@@ -81,6 +81,28 @@ export const bookReferences: BookReference[] = [
     author: "Junior Rostirola",
     category: "Desenvolvimento",
     description: "Item de leitura exibido sem destaque religioso adicional ou chamada comercial.",
+    coverImage: "/capas-livros/capa-cafe-com-deus-pai.jpg",
+    isAffiliateAvailable: false,
+  },
+  {
+    title: "As 21 Irrefutáveis Leis da Liderança",
+    author: "John C. Maxwell",
+    category: "Liderança",
+    coverImage: "/capas-livros/capa-as-21-irrefutaveis-leis-da-lideranca.jpg",
+    isAffiliateAvailable: false,
+  },
+  {
+    title: "Execução: A Disciplina para Atingir Resultados",
+    author: "Larry Bossidy e Ram Charan",
+    category: "Execução",
+    coverImage: "/capas-livros/capa-execucao-a-disciplina-para-atingir-resultados.jpg",
+    isAffiliateAvailable: false,
+  },
+  {
+    title: "Comece pelo Porquê",
+    author: "Simon Sinek",
+    category: "Propósito",
+    coverImage: "https://covers.openlibrary.org/b/isbn/9788543106632-L.jpg",
     isAffiliateAvailable: false,
   },
 ];
