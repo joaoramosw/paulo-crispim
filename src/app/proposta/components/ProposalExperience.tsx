@@ -223,7 +223,7 @@ export function ProposalExperience() {
               essa autoridade com clareza, confiança e direção comercial.
             </p>
             <p className="max-w-3xl rounded-lg border border-white/10 bg-white/7 p-5 text-base leading-7 text-slate-200 shadow-2xl shadow-black/10">
-              Paulo Crispim é engenheiro elétrico, palestrante, mentor e consultor.
+              Paulo Crispim é Engenheiro Eletricista, palestrante, mentor e consultor.
               Atua com gente e gestão, processos, liderança, engenharia,
               desenvolvimento profissional e consultoria para empresas.
             </p>

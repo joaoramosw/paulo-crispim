@@ -514,7 +514,7 @@ export default function PlanoPage() {
               Da construção da marca à captação de clientes com site e Google Ads
             </p>
             <p className="max-w-4xl text-base leading-7 text-slate-600">
-              Paulo Crispim é engenheiro elétrico, palestrante, mentor e consultor.
+              Paulo Crispim é engenheiro eletricista, palestrante, mentor e consultor.
               Atua com gente e gestão, processos, liderança, engenharia,
               desenvolvimento profissional e consultoria para empresas.
             </p>

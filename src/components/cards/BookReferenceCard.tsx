@@ -24,11 +24,11 @@ export function BookReferenceCard({ book }: { book: BookReference }) {
           </div>
         )}
       </div>
-      <div className="pt-5">
+      <div className="pt-4">
         <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#C8F8D2]">{book.category}</p>
-        <h3 className="mt-3 text-lg font-semibold leading-snug text-[#F4F7F8]">{book.title}</h3>
-        <p className="mt-1 text-sm text-[#A8B2BA]">{book.author}</p>
-        {book.description ? <p className="mt-4 text-sm leading-7 text-[#A8B2BA]">{book.description}</p> : null}
+        <h3 className="mt-2 text-lg font-semibold leading-snug text-[#F4F7F8]">{book.title}</h3>
+        <p className="mt-1.5 text-sm text-[#A8B2BA]">{book.author}</p>
+        {book.description ? <p className="mt-3 text-sm leading-7 text-[#A8B2BA]">{book.description}</p> : null}
         {book.isAffiliateAvailable && book.affiliateUrl ? (
           <span className="book-affiliate mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#C8F8D2] transition group-hover:text-[#35F06A]">
             Ver recomendação <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
