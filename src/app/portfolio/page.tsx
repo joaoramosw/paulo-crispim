@@ -54,7 +54,7 @@ const differentialIcons = [Target, Presentation, CheckCircle2];
 export default function PortfolioPage() {
   return (
     <InternalPageLayout backgroundIntensity="strong" printMode>
-      <section className="portfolio-section mx-auto grid min-h-[calc(100svh-7rem)] w-full max-w-7xl items-center gap-12 px-6 py-16 sm:px-10 lg:grid-cols-[1fr_0.8fr] lg:px-14 lg:py-24">
+      <section className="portfolio-section mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-10 sm:px-10 lg:grid-cols-[1fr_0.8fr] lg:px-14 lg:py-14">
         <RevealSection>
           <SectionLabel>{portfolioIntro.eyebrow}</SectionLabel>
           <h1 className="max-w-5xl text-5xl font-semibold leading-[0.96] tracking-tight text-[#F4F7F8] sm:text-6xl md:text-7xl">
@@ -86,14 +86,14 @@ export default function PortfolioPage() {
         </RevealSection>
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <SectionHeader eyebrow="Quem é" title={portfolioAbout.title} description={portfolioAbout.description} />
         </RevealSection>
         <BioSection about={portfolioAbout} />
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <SectionHeader
             eyebrow={portfolioTrajectoryHeading.eyebrow}
@@ -104,7 +104,7 @@ export default function PortfolioPage() {
         <TrajectoryTimeline stages={portfolioTrajectoryStages} />
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <SectionHeader
             eyebrow={portfolioAreasHeading.eyebrow}
@@ -121,7 +121,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <SectionHeader
             eyebrow="Identidade profissional"
@@ -138,7 +138,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <SectionHeader eyebrow="Temas de palestra" title="Temas para provocar reflexão, clareza e ação." description="Os temas abaixo são os mesmos estruturados na comunicação atual, apresentados como repertório comercial de palestras." />
         </RevealSection>
@@ -151,7 +151,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <SectionHeader eyebrow="Diferenciais" title="Uma presença profissional com rigor técnico e leitura humana." description="Diferenciais qualitativos, sem métricas, clientes ou provas não autorizadas." />
         </RevealSection>
@@ -164,16 +164,16 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <SectionHeader eyebrow="Repertório" title="Referências que formam seu repertório" description="Uma curadoria editorial de leitura associada a disciplina, comunicação, comportamento, liderança e evolução contínua." />
         </RevealSection>
-        <div className="mt-12">
+        <div className="mt-8">
           <ReadingReferenceGrid books={bookReferences} />
         </div>
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
         <RevealSection>
           <div className="portfolio-card border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-8 sm:p-10 lg:p-14">
             <SectionHeader title="Solicite uma palestra para o seu evento." description="Use os canais oficiais para iniciar uma conversa sobre tema, público e contexto." />
@@ -185,11 +185,11 @@ export default function PortfolioPage() {
         </RevealSection>
       </section>
 
-      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 pb-24 pt-10 sm:px-10 lg:px-14 lg:pb-32">
+      <section className="portfolio-section mx-auto w-full max-w-7xl px-6 pb-20 pt-10 sm:px-10 lg:px-14 lg:pb-24">
         <RevealSection>
           <SectionHeader eyebrow="Contatos" title="Canais oficiais" description="Contatos centralizados para solicitação de palestras e envio deste portfólio." />
         </RevealSection>
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
           <ContactChannelCard title="WhatsApp" value="Solicitar uma palestra" href={getWhatsAppUrl(getDefaultTalkMessage())} icon={MessageCircle} external />
           <ContactChannelCard title="E-mail" value={contactConfig.email} href={getMailtoUrl("Solicitação de palestra")} icon={Mail} />
         </div>

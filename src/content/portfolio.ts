@@ -8,7 +8,7 @@ export const portfolioIntro = {
 export const portfolioAbout = {
   title: "Quem é Paulo Crispim",
   description:
-    "Paulo Crispim é engenheiro elétrico, palestrante, mentor e consultor. Sua atuação conecta conhecimento técnico, liderança, processos e desenvolvimento profissional.",
+    "Paulo Crispim é engenheiro eletricista, palestrante, mentor e consultor. Sua atuação conecta conhecimento técnico, liderança, processos e desenvolvimento profissional.",
   paragraphs: [
     "Paulo Crispim é Engenheiro Eletricista, Administrador de Empresa, especialista em gestão operacional, palestrante corporativo, professor, mentor, consultor e estrategista em desenvolvimento de pessoas, liderança e alta performance. Sua trajetória foi construída na prática, liderando operações complexas, formando equipes de alto desempenho e conduzindo projetos em ambientes de elevada exigência técnica e gerencial.",
     "Ao longo de sua carreira, consolidou uma visão integrada entre engenharia, gestão, inovação, comportamento humano e estratégia, transformando conhecimento técnico em soluções aplicáveis que geram resultados concretos para empresas, instituições de ensino, órgãos públicos e profissionais de diferentes segmentos.",

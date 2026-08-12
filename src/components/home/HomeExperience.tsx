@@ -80,7 +80,7 @@ function SectionLabel({ children }: { children: string }) {
   );
 }
 
-const SECTION_TITLE_CLASS = "text-2xl font-semibold tracking-tight text-[#F4F7F8] sm:text-3xl md:text-4xl";
+const SECTION_TITLE_CLASS = "text-3xl font-semibold tracking-tight text-[#F4F7F8] sm:text-4xl lg:text-5xl";
 
 function SectionHeader({
   eyebrow,
@@ -151,8 +151,8 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
       <DecorativeField />
       <SiteHeader />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 sm:px-10 lg:px-14 lg:pt-22">
-        <section className="grid items-center gap-8 py-10 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.68fr)] lg:gap-10 lg:py-6">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 sm:px-10 lg:px-14 lg:pt-28">
+        <section className="grid items-center gap-8 py-8 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.68fr)] lg:gap-10 lg:py-6">
           <div className="max-w-5xl">
             <SectionLabel>{hero.eyebrow}</SectionLabel>
             <h1 className="max-w-4xl text-2xl font-semibold leading-tight tracking-tight text-[#F4F7F8] sm:text-3xl md:text-4xl">
@@ -187,7 +187,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
             </div>
           </div>
 
-          <aside className="group relative overflow-hidden border border-white/10 bg-white/[0.035] p-5 shadow-2xl shadow-black/30 backdrop-blur-sm transition hover:border-[#35F06A]/30 sm:p-6" aria-label="Frentes de autoridade de Paulo Crispim">
+          <aside className="group relative overflow-hidden border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm transition hover:border-[#35F06A]/30" aria-label="Frentes de autoridade de Paulo Crispim">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35F06A] to-transparent opacity-70" />
             <div aria-hidden="true" className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#35F06A]/10 blur-3xl" />
             <div className="relative mb-6 overflow-hidden border border-white/10 bg-[#050708]/60 p-4">
@@ -232,7 +232,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </aside>
         </section>
 
-        <section aria-label="Credenciais" className="border-y border-white/10 py-7">
+        <section aria-label="Credenciais" className="border-y border-white/10 py-8">
           <p className="max-w-2xl text-sm font-medium uppercase tracking-[0.22em] text-[#A8B2BA]">
             {credibility.intro}
           </p>
@@ -250,7 +250,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
 
         <PartnersMarquee title={partners.title} description={partners.description} logos={partnerLogos} />
 
-        <section id="palestras" className="scroll-mt-8 py-20 lg:py-28">
+        <section id="palestras" className="scroll-mt-8 py-14 lg:py-20">
           <SectionHeader eyebrow={talks.eyebrow} title={talks.title} description={talks.description} />
           <div className="mt-10 flex flex-wrap gap-3" aria-label="Filtrar palestras por categoria">
             {talkCategories.map((category) => {
@@ -299,7 +299,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </div>
         </section>
 
-        <section className="border-y border-white/10 py-16 lg:py-20">
+        <section className="border-y border-white/10 py-14 lg:py-20">
           <RevealSection>
             <div className="max-w-3xl">
               <SectionLabel>Para quem é</SectionLabel>
@@ -322,7 +322,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </div>
         </section>
 
-        <section id="temas" className="scroll-mt-8 py-20 lg:py-28">
+        <section id="temas" className="scroll-mt-8 py-14 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
             <SectionHeader title={topics.title} description={topics.description} />
             <div>
@@ -343,7 +343,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
                   </button>
                 ))}
               </div>
-              <article className="mt-6 border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-5">
+              <article className="mt-6 border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-6">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C8F8D2]">
                   Tema selecionado
                 </p>
@@ -358,14 +358,14 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </div>
         </section>
 
-        <section id="trajetoria" className="scroll-mt-8 border-y border-white/10 py-20 lg:py-28">
+        <section id="trajetoria" className="scroll-mt-8 border-y border-white/10 py-14 lg:py-20">
           <SectionHeader eyebrow={trajectory.eyebrow} title={trajectory.title} description={trajectory.description} />
           <p className="mt-5 max-w-3xl border-l border-[#35F06A] pl-4 text-sm leading-7 text-[#A8B2BA]">
             {trajectory.highlight}
           </p>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {trajectory.items.map((item, index) => (
-              <article key={item.title} className="relative h-full border border-white/10 bg-white/[0.03] p-5">
+              <article key={item.title} className="relative h-full border border-white/10 bg-white/[0.03] p-6">
                 <span className="font-mono text-sm text-[#35F06A]">0{index + 1}</span>
                 <h3 className="mt-8 text-lg font-semibold leading-snug text-[#F4F7F8]">
                   {item.title}
@@ -378,12 +378,12 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </div>
         </section>
 
-        <section className="py-20 lg:py-28">
+        <section className="py-14 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <SectionHeader title={approach.title} />
             <div className="space-y-4">
               {approach.items.map((item, index) => (
-                <article key={item.title} className="grid gap-4 border border-white/10 bg-white/[0.035] p-5 sm:grid-cols-[4rem_1fr]">
+                <article key={item.title} className="grid gap-4 border border-white/10 bg-white/[0.035] p-6 sm:grid-cols-[4rem_1fr]">
                   <span className="font-mono text-2xl text-[#35F06A]">0{index + 1}</span>
                   <div>
                     <h3 className="text-xl font-semibold text-[#F4F7F8]">{item.title}</h3>
@@ -405,7 +405,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </blockquote>
         </section>
 
-        <section id="contato" className="scroll-mt-8 py-20 lg:py-28">
+        <section id="contato" className="scroll-mt-8 py-14 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
             <div>
               <SectionHeader title={contact.title} description={contact.description} />
