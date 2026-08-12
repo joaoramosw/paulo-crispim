@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Paulo Crispim — Site institucional
 
-## Getting Started
+Site institucional do palestrante **Paulo Crispim** (engenheiro eletricista, administrador, gestor executivo e palestrante corporativo). Construído em Next.js (App Router) com Tailwind CSS, focado em apresentar palestras, portfólio e canais de contato, com forte trabalho de identidade visual, SEO e conversão.
 
-First, run the development server:
+Produção: **https://paulocrispim.com.br**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ⚠️ Antes de mexer no código
+
+Este projeto está no **Next.js 16**, uma versão recente cujas APIs e convenções podem divergir do que você (ou uma IA) já conhece de projetos Next mais antigos. Antes de implementar algo que dependa de uma API específica do framework, confira a documentação local em:
+
+```
+node_modules/next/dist/docs/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Isso evita reintroduzir padrões depreciados (ex.: APIs antigas de `Image`, `Metadata`, roteamento etc.).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack técnica
 
-## Learn More
+| Camada | Tecnologia |
+| --- | --- |
+| Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
+| UI | [React 19](https://react.dev/) |
+| Estilo | [Tailwind CSS v4](https://tailwindcss.com/) (config via CSS, sem `tailwind.config.js`) |
+| Linguagem | TypeScript |
+| Ícones | [lucide-react](https://lucide.dev/) |
+| Carrossel | [embla-carousel-react](https://www.embla-carousel.com/) |
+| Lint | ESLint (`eslint-config-next`) |
+| Deploy | Vercel (padrão Next.js) |
 
-To learn more about Next.js, take a look at the following resources:
+Não há banco de dados nem backend próprio: o site é estático/prerenderizado, com conteúdo mantido em arquivos TypeScript (`src/content/*`) e envio de contato feito via link direto para WhatsApp/e-mail (sem formulário com backend).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Como rodar localmente
 
-## Deploy on Vercel
+Pré-requisito: Node.js 20+ (o projeto usa `@types/node` v20; Next 16 requer Node atualizado).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm install
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Abra [http://localhost:3000](http://localhost:3000).
+
+Outros scripts:
+
+```bash
+npm run build   # build de produção (também roda o type-check do TypeScript)
+npm run start   # sobe o build de produção localmente
+npm run lint    # ESLint
+```
+
+> Se já existir um `next dev` rodando fora do WSL/terminal atual (ex.: direto no Windows), o Next detecta e evita subir uma segunda instância na mesma porta — nesse caso, use a instância já ativa em vez de tentar forçar outra.
+
+---
+
+## Estrutura do projeto
+
+```
+src/
+├── app/                     # Rotas (App Router)
+│   ├── page.tsx             # Home
+│   ├── palestras/           # Página de palestras corporativas
+│   ├── portfolio/           # Portfólio institucional (com modo impressão)
+│   ├── contato/             # Contato (WhatsApp / e-mail)
+│   ├── links/                # Mini-landing "link in bio" (bento grid)
+│   ├── plano/                # Painel interno de acompanhamento do projeto (não indexado)
+│   ├── proposta/             # Proposta comercial enviada ao cliente (não indexado)
+│   ├── layout.tsx           # Layout raiz, metadata global, fontes
+│   ├── sitemap.ts / robots.ts
+│   └── globals.css          # Tema Tailwind v4 (tokens, cores, fontes)
+│
+├── components/
+│   ├── layout/               # Header, Footer, wrapper de páginas internas
+│   ├── home/                 # Seções específicas da Home
+│   ├── portfolio/             # Seções específicas do Portfólio
+│   ├── links/                 # Componentes da mini-landing de links
+│   ├── cards/                 # Cards reutilizáveis (destaque, tema, contato, livro...)
+│   ├── forms/                  # Formulário de contato
+│   └── shared/                 # Primitivos usados em várias páginas (botões, reveal on scroll, labels de seção, fundo animado)
+│
+├── content/                  # "CMS" do site: todo o texto/dados vive aqui, separado da UI
+│   ├── paulo-crispim.ts       # Conteúdo da Home (hero, credenciais, temas, trajetória...)
+│   ├── palestras.ts           # Conteúdo da página de Palestras
+│   ├── portfolio.ts           # Conteúdo do Portfólio
+│   ├── books.ts                # Curadoria de livros (com link de afiliado opcional)
+│   └── links.ts                 # Conteúdo da página /links
+│
+└── lib/
+    ├── contact.ts             # Helpers de WhatsApp/e-mail (número, mensagens padrão)
+    └── partners.ts             # Lê logos de parceiros direto de public/parceiros-logos
+
+public/
+├── paulo-crispim/            # Fotos, logos e identidade visual oficiais
+├── parceiros-logos/           # Logos de parceiros/clientes (lidos dinamicamente por lib/partners.ts)
+└── capas-livros/               # Capas para a curadoria de livros
+```
+
+### Convenção de conteúdo
+
+A regra do projeto é **separar texto de layout**: qualquer copy (títulos, descrições, listas) deve morar em `src/content/*.ts`, tipado, e ser importado pelos componentes/páginas — nunca hardcoded direto no JSX das páginas de produto. Isso facilita revisão de texto sem mexer em layout e vice-versa.
+
+---
+
+## Páginas e seu propósito
+
+| Rota | Indexada? | O que é |
+| --- | --- | --- |
+| `/` | ✅ | Home — hero, credenciais, parceiros, palestras, públicos-alvo, temas, trajetória, abordagem, CTA de contato |
+| `/palestras` | ✅ | Página comercial focada em palestras corporativas (proposta de valor, temas, formatos) |
+| `/portfolio` | ✅ | Portfólio institucional (bio, trajetória, áreas de atuação, repertório de leitura, contato) — com botão de impressão/exportação |
+| `/contato` | ✅ | Formulário que monta a mensagem e redireciona para WhatsApp, ou botão de e-mail direto |
+| `/links` | — | Mini-landing "link in bio" estilo bento grid, para uso em bio de redes sociais |
+| `/plano` | ❌ (`robots.ts`) | Painel interno de acompanhamento das etapas do projeto (uso do time/dev, com progresso salvo em `localStorage`) |
+| `/proposta` | ❌ (`robots.ts` + `robots: noindex` na própria página) | Proposta comercial estruturada, enviada ao cliente — não é conteúdo do site público |
+
+`sitemap.ts` e `robots.ts` já refletem essa distinção — `/plano` e `/proposta` são deliberadamente excluídas da indexação.
+
+---
+
+## Identidade visual
+
+O padrão visual "core" do site (Home, Palestras, Portfólio, Contato) é:
+
+- Fundo escuro quase preto (`#050708`), com gradientes/campos decorativos radiais em `AnimatedBackground`.
+- Acento verde `#35F06A` para CTAs, bordas de destaque e ícones.
+- Cards com bordas retas (sem `rounded`), `border-white/10`, fundo translúcido (`bg-white/[0.035]`).
+- Tipografia sem serifa (Geist), títulos com `tracking-tight`.
+- Espaçamento em grid de 8px: seções usam `py-14 lg:py-20`, cards `p-6`, topo de página `pt-24 lg:pt-28`.
+
+A página `/links` é intencionalmente uma identidade visual **separada** (glassmorphism, `rounded-2xl`, verde `#00FF66`), pensada como mini-landing de bio de rede social — não deve ser usada como referência para as demais páginas.
+
+Componentes de UI compartilhados (botões, labels de seção, cabeçalhos de seção, reveal-on-scroll) ficam em `src/components/shared/` e devem ser reaproveitados antes de criar variações novas.
+
+---
+
+## Contato / conversão
+
+Não há backend de formulário: `src/lib/contact.ts` centraliza o número de WhatsApp e o e-mail oficiais, e gera URLs (`wa.me`, `mailto:`) com mensagem pré-preenchida. Qualquer alteração de canal oficial (número, e-mail, mensagem padrão) deve ser feita **só nesse arquivo**.
+
+---
+
+## Deploy
+
+Projeto pensado para deploy na Vercel (build padrão do Next.js, sem configuração de servidor customizada). `metadataBase`, Open Graph e Twitter cards já apontam para `https://paulocrispim.com.br` em `src/app/layout.tsx` — atualize essa constante se o domínio mudar.
