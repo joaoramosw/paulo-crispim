@@ -1,11 +1,12 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import { startTransition, useState } from "react";
 import { AudienceEcosystem } from "@/components/home/AudienceEcosystem";
+import { FaqSection } from "@/components/home/FaqSection";
 import { PartnersMarquee } from "@/components/home/PartnersMarquee";
-import { FloatingContactButton } from "@/components/shared/FloatingContactButton";
+import { LeadAssistant } from "@/components/shared/LeadAssistant";
 import { RevealSection } from "@/components/shared/RevealSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -120,6 +121,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
     approach,
     purpose,
     contact,
+    faq,
   } = homeContent;
   const [activeTalkCategory, setActiveTalkCategory] = useState("Todos");
   const [activeTopicTitle, setActiveTopicTitle] = useState(topics.items[0].title);
@@ -151,43 +153,47 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
       <DecorativeField />
       <SiteHeader />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 sm:px-10 lg:px-14 lg:pt-28">
-        <section className="grid items-center gap-8 py-8 lg:min-h-[calc(100svh-5.5rem)] lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.68fr)] lg:gap-10 lg:py-6">
-          <div className="max-w-5xl">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pt-24 sm:px-10 sm:pt-28 lg:px-14 lg:pt-32">
+        <section className="grid items-start gap-10 pb-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.85fr)] lg:gap-14 lg:pb-16">
+          <div className="max-w-[46rem]">
             <SectionLabel>{hero.eyebrow}</SectionLabel>
-            <h1 className="max-w-4xl text-2xl font-semibold leading-tight tracking-tight text-[#F4F7F8] sm:text-3xl md:text-4xl">
+            <h1 className="mt-5 max-w-[46rem] text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-[#F4F7F8] sm:text-4xl sm:leading-[1.08] lg:text-5xl lg:leading-[1.06] xl:text-[3.35rem]">
               {hero.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-[#D8DEE2] sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-[1.55] text-[#D8DEE2] sm:text-lg">
               {hero.description}
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href={hero.primaryCta.href}
-                className="inline-flex min-h-12 items-center justify-center border border-[#35F06A] bg-[#35F06A] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[#050708] transition hover:bg-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708]"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 border border-[#35F06A] bg-[#35F06A] px-6 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[#050708] transition-all duration-200 hover:bg-[#C8F8D2] hover:shadow-[0_0_28px_rgba(53,240,106,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708]"
               >
                 {hero.primaryCta.label}
+                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
               <Link
                 href={hero.secondaryCta.href}
-                className="inline-flex min-h-12 items-center justify-center border border-white/15 bg-white/[0.035] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[#F4F7F8] transition hover:border-[#35F06A]/50 hover:bg-[#35F06A]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708]"
+                className="inline-flex min-h-12 items-center justify-center border border-white/15 bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[#D8DEE2] transition-all duration-200 hover:border-[#35F06A]/45 hover:bg-[#35F06A]/[0.08] hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708]"
               >
                 {hero.secondaryCta.label}
               </Link>
             </div>
 
-            <div className="mt-7 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-9 grid max-w-2xl gap-3 sm:grid-cols-2 lg:max-w-none lg:grid-cols-4">
               {hero.highlights.map((highlight) => (
-                <div key={highlight} className="flex items-center gap-2 border border-white/10 bg-white/[0.035] px-4 py-2.5 text-sm font-medium text-[#D8DEE2] backdrop-blur-sm">
-                  <Check aria-hidden="true" className="h-4 w-4 shrink-0 text-[#35F06A]" />
-                  {highlight}
+                <div
+                  key={highlight}
+                  className="flex min-h-[72px] items-center gap-2.5 border border-white/[0.12] bg-white/[0.025] px-4 py-3.5 text-[15px] font-medium leading-snug text-[#D8DEE2] transition duration-200 hover:-translate-y-px hover:border-[#35F06A]/25 hover:bg-[#35F06A]/[0.06]"
+                >
+                  <Check aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-[#35F06A]" />
+                  <span className="leading-snug">{highlight}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <aside className="group relative overflow-hidden border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm transition hover:border-[#35F06A]/30" aria-label="Frentes de autoridade de Paulo Crispim">
+          <aside className="group relative overflow-hidden border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm transition hover:border-[#35F06A]/30 lg:p-7" aria-label="Frentes de autoridade de Paulo Crispim">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35F06A] to-transparent opacity-70" />
             <div aria-hidden="true" className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#35F06A]/10 blur-3xl" />
             <div className="relative mb-6 overflow-hidden border border-white/10 bg-[#050708]/60 p-4">
@@ -273,29 +279,38 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
               );
             })}
           </div>
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {visibleTalks.map((talk, index) => (
-              <article key={talk.title} className="group relative h-full min-h-64 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition hover:-translate-y-1 hover:border-[#35F06A]/40 hover:bg-[#35F06A]/[0.045]">
-                <div aria-hidden="true" className="absolute right-5 top-5 font-mono text-5xl font-semibold text-white/[0.035] transition group-hover:text-[#35F06A]/10">
-                  0{index + 1}
-                </div>
-                <span className="mb-5 inline-flex border border-[#35F06A]/25 bg-[#35F06A]/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#C8F8D2]">
-                  {talk.category}
-                </span>
-                <div className="mb-8 flex h-10 w-10 items-center justify-center border border-[#35F06A]/35 bg-[#35F06A]/10 font-mono text-sm text-[#35F06A]">
-                  {index + 1}
-                </div>
-                <h3 className="max-w-xs text-xl font-semibold leading-snug text-[#F4F7F8]">
-                  {talk.title}
-                </h3>
-                <p className="mt-5 text-sm leading-7 text-[#A8B2BA]">
-                  {talk.description}
-                </p>
-                <Link href="#contato" className="mt-7 inline-flex text-xs font-bold uppercase tracking-[0.18em] text-[#C8F8D2] transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]">
-                  Ver aplicação desse tema
-                </Link>
-              </article>
-            ))}
+          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+            {visibleTalks.map((talk, index) => {
+              const isOrphanPair = visibleTalks.length % 3 === 2 && index >= visibleTalks.length - 2;
+              const isFirstOrphan = isOrphanPair && index === visibleTalks.length - 2;
+              const orphanColStart = isFirstOrphan ? "xl:col-start-2" : isOrphanPair ? "xl:col-start-4" : "";
+
+              return (
+                <article
+                  key={talk.title}
+                  className={`group relative h-full min-h-64 overflow-hidden border border-white/10 bg-white/[0.035] p-6 transition hover:-translate-y-1 hover:border-[#35F06A]/40 hover:bg-[#35F06A]/[0.045] xl:col-span-2 ${orphanColStart}`}
+                >
+                  <div aria-hidden="true" className="absolute right-5 top-5 font-mono text-5xl font-semibold text-white/[0.035] transition group-hover:text-[#35F06A]/10">
+                    0{index + 1}
+                  </div>
+                  <span className="mb-5 inline-flex border border-[#35F06A]/25 bg-[#35F06A]/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#C8F8D2]">
+                    {talk.category}
+                  </span>
+                  <div className="mb-8 flex h-10 w-10 items-center justify-center border border-[#35F06A]/35 bg-[#35F06A]/10 font-mono text-sm text-[#35F06A]">
+                    {index + 1}
+                  </div>
+                  <h3 className="max-w-xs text-xl font-semibold leading-snug text-[#F4F7F8]">
+                    {talk.title}
+                  </h3>
+                  <p className="mt-5 text-sm leading-7 text-[#A8B2BA]">
+                    {talk.description}
+                  </p>
+                  <Link href="#contato" className="mt-7 inline-flex text-xs font-bold uppercase tracking-[0.18em] text-[#C8F8D2] transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]">
+                    Ver aplicação desse tema
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -379,19 +394,20 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
         </section>
 
         <section className="py-14 lg:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <SectionHeader title={approach.title} />
-            <div className="space-y-4">
-              {approach.items.map((item, index) => (
-                <article key={item.title} className="grid gap-4 border border-white/10 bg-white/[0.035] p-6 sm:grid-cols-[4rem_1fr]">
-                  <span className="font-mono text-2xl text-[#35F06A]">0{index + 1}</span>
-                  <div>
-                    <h3 className="text-xl font-semibold text-[#F4F7F8]">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[#A8B2BA]">{item.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className={`${SECTION_TITLE_CLASS} text-balance`}>{approach.title}</h2>
+          </div>
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3 lg:mt-10">
+            {approach.items.map((item, index) => (
+              <article
+                key={item.title}
+                className="border border-white/10 bg-white/[0.035] p-5 text-center transition duration-200 hover:-translate-y-0.5 hover:border-[#35F06A]/30 sm:text-left"
+              >
+                <span className="font-mono text-sm text-[#35F06A]">0{index + 1}</span>
+                <h3 className="mt-2 text-base font-semibold leading-snug text-[#F4F7F8]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#A8B2BA]">{item.description}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -439,9 +455,11 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </div>
         </section>
 
+        <FaqSection eyebrow={faq.eyebrow} title={faq.title} description={faq.description} items={faq.items} />
+
       </div>
       <SiteFooter />
-      <FloatingContactButton />
+      <LeadAssistant />
     </main>
   );
 }

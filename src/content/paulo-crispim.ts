@@ -367,4 +367,61 @@ export const homeContent = {
       "Canal de contato a confirmar",
     ],
   },
+  faq: {
+    eyebrow: "Perguntas frequentes",
+    title: "Dúvidas frequentes",
+    description:
+      "Tudo o que você precisa saber antes de levar uma palestra de Paulo Crispim para sua empresa, evento ou equipe.",
+    items: [
+      {
+        question: "Como funciona a contratação de uma palestra?",
+        answer:
+          "O primeiro passo é entrar em contato e informar as características do evento e a necessidade da empresa. A partir disso, é indicada a solução mais adequada e alinhados os próximos passos.",
+      },
+      {
+        question: "As palestras podem ser personalizadas para a nossa empresa?",
+        answer:
+          "Sim. O conteúdo pode ser contextualizado de acordo com público, setor, desafios e objetivo do evento, sem perder a essência da palestra.",
+      },
+      {
+        question: "Quais temas podem ser abordados?",
+        answer:
+          "Liderança e gestão, segurança e cultura de prevenção, engenharia e tecnologia, alta performance, comportamento humano e desenvolvimento de equipes, entre outros eixos aplicados à realidade de cada organização.",
+      },
+      {
+        question: "As palestras são presenciais ou online?",
+        answer:
+          "O formato pode ser definido de acordo com as características do evento. Entre em contato para verificar disponibilidade e possibilidades para sua necessidade.",
+      },
+      {
+        question: "Paulo Crispim realiza palestras em outras cidades e estados?",
+        answer: "Consulte disponibilidade para a cidade e data do seu evento através do atendimento.",
+      },
+      {
+        question: "Para quais tipos de público as palestras são indicadas?",
+        answer:
+          "Existem conteúdos para diferentes contextos, incluindo empresas, lideranças, equipes, profissionais técnicos, eventos corporativos e outros públicos contemplados nas palestras do site.",
+      },
+      {
+        question: "Qual é a duração de uma palestra?",
+        answer:
+          "A duração pode variar conforme o formato, tema e programação do evento. Durante o alinhamento inicial é definida a melhor configuração para a necessidade da organização.",
+      },
+      {
+        question: "Com quanto tempo de antecedência devo solicitar uma data?",
+        answer:
+          "Quanto antes o contato for realizado, maior a possibilidade de encontrar uma data adequada. Para eventos próximos, consulte diretamente a disponibilidade.",
+      },
+      {
+        question: "Como saber qual palestra é mais adequada para minha empresa?",
+        answer:
+          "Não é necessário chegar com o tema definido. Você pode informar o objetivo do evento, o perfil do público e o principal desafio da organização. A partir dessas informações é possível orientar qual abordagem faz mais sentido.",
+      },
+      {
+        question: "Como solicitar disponibilidade e proposta?",
+        answer:
+          "Entre em contato pelo WhatsApp e informe data prevista, cidade, formato do evento, público aproximado e objetivo da palestra. Com essas informações, o atendimento consegue avançar de forma muito mais rápida.",
+      },
+    ],
+  },
 };

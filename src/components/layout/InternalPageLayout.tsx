@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { AnimatedBackground } from "@/components/shared/AnimatedBackground";
-import { FloatingContactButton } from "@/components/shared/FloatingContactButton";
+import { LeadAssistant } from "@/components/shared/LeadAssistant";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 
@@ -17,7 +17,7 @@ export function InternalPageLayout({ children, backgroundIntensity = "default", 
       <SiteHeader />
       <div className="relative z-10 pt-28">{children}</div>
       <SiteFooter />
-      <FloatingContactButton />
+      <LeadAssistant />
     </main>
   );
 }
