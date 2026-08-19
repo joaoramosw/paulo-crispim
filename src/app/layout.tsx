@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 800,
-        height: 800,
+        width: 2000,
+        height: 2000,
         alt: "Paulo Crispim — Palestrante e consultor",
         type: "image/png",
       },
@@ -78,12 +78,17 @@ export const metadata: Metadata = {
     icon: "/paulo-crispim/logos/logo-quadrado-minima-paulo-crispim.png",
     apple: "/paulo-crispim/logos/logo-quadrado-minima-paulo-crispim.png",
   },
+  manifest: "/manifest.webmanifest",
   alternates: {
     canonical: SITE_URL,
   },
 };
 
-const jsonLd = {
+export const viewport: Viewport = {
+  themeColor: "#050708",
+};
+
+const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Paulo Crispim",
@@ -100,6 +105,19 @@ const jsonLd = {
     "Alta Performance",
     "Desenvolvimento Profissional",
   ],
+  sameAs: [
+    "https://instagram.com/paulocrispim",
+    "https://tiktok.com/@paulocrispim",
+    "https://youtube.com/@paulocrispim",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Paulo Crispim",
+  url: SITE_URL,
+  inLanguage: "pt-BR",
 };
 
 export default function RootLayout({
@@ -116,7 +134,11 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
