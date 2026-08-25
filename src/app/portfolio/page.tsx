@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Award, BookOpen, BriefcaseBusiness, CheckCircle2, GraduationCap, Mail, MessageCircle, Presentation, ShieldCheck, Target, TrendingUp, Users } from "lucide-react";
 import { InternalPageLayout } from "@/components/layout/InternalPageLayout";
 import { ExpertiseCard } from "@/components/cards/ExpertiseCard";
@@ -67,7 +68,36 @@ export default function PortfolioPage() {
           </div>
         </RevealSection>
 
+        {/*
+          A coluna direita da abertura passa a ser uma pilha: retrato de
+          autoridade em cima, card "Apresentação empresarial" logo abaixo. O
+          card continua idêntico — a fotografia entra antes dele, e não no
+          lugar de nada. Abaixo de lg a ordem do DOM já entrega
+          título → CTAs → fotografia → card.
+        */}
         <RevealSection variant="right" delay={120}>
+          <figure className="portfolio-photo relative m-0 mx-auto mb-7 w-full max-w-[22rem] lg:mb-8 lg:max-w-none">
+            {/* halo de profundidade: o estúdio escuro não encosta em preto chapado */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-[14%] -top-[12%] bottom-[4%] -z-10 bg-[radial-gradient(56%_48%_at_52%_28%,rgba(6,58,70,0.5),transparent_72%),radial-gradient(40%_28%_at_58%_10%,rgba(53,240,106,0.06),transparent_70%)] blur-[26px]"
+            />
+            <div className="pc-portfolio-cover relative aspect-[4/5] w-full overflow-hidden lg:aspect-[5/4]">
+              <Image
+                src="/paulo-crispim/imagens/MRF_6114.jpg"
+                alt="Paulo Crispim em retrato profissional, de terno claro e gravata"
+                fill
+                sizes="(min-width:1536px) 34vw, (min-width:1024px) 36vw, (min-width:640px) 22rem, 100vw"
+                className="object-cover object-[50%_18%] lg:object-[50%_7%]"
+              />
+            </div>
+            <figcaption className="relative mt-5 flex items-center gap-4 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#C8F8D2]">
+              <span>Presença</span>
+              <span aria-hidden="true" className="h-px flex-1 bg-[#35F06A]/45" />
+              <span>Autoridade</span>
+            </figcaption>
+          </figure>
+
           <aside className="portfolio-card relative overflow-hidden border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm sm:p-8">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35F06A] to-transparent" />
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#C8F8D2]">Apresentação empresarial</p>
@@ -129,12 +159,33 @@ export default function PortfolioPage() {
             description="Um repertório de competências e temas que atravessam toda a sua atuação, da engenharia à liderança."
           />
         </RevealSection>
-        <div className="mt-12 flex flex-wrap gap-3">
-          {portfolioIdentityThemes.map((theme, index) => (
-            <RevealSection key={theme} delay={index * 30} variant="scale">
-              <Tag>{theme}</Tag>
-            </RevealSection>
-          ))}
+        {/*
+          A nuvem de temas é leve demais para ocupar a largura inteira. A
+          fotografia entra na direita como pausa — perfil, ajuste do punho:
+          repertório e cuidado profissional, sem competir com as tags.
+        */}
+        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.4fr)] lg:items-start lg:gap-14">
+          <div className="flex flex-wrap gap-3">
+            {portfolioIdentityThemes.map((theme, index) => (
+              <RevealSection key={theme} delay={index * 30} variant="scale">
+                <Tag>{theme}</Tag>
+              </RevealSection>
+            ))}
+          </div>
+
+          <RevealSection variant="right" delay={120} className="portfolio-photo">
+            <figure className="relative m-0 mx-auto w-full max-w-[18rem] lg:max-w-none">
+              <div className="pc-portfolio-aside relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src="/paulo-crispim/imagens/MRF_6103.jpg"
+                  alt="Paulo Crispim ajustando o punho da camisa, de terno claro e gravata"
+                  fill
+                  sizes="(min-width:1024px) 24vw, (min-width:640px) 18rem, 100vw"
+                  className="object-cover object-[50%_12%]"
+                />
+              </div>
+            </figure>
+          </RevealSection>
         </div>
       </section>
 
@@ -174,12 +225,45 @@ export default function PortfolioPage() {
       </section>
 
       <section className="portfolio-section mx-auto w-full max-w-7xl px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+        {/*
+          O pedido comercial ganha o contexto que ele descreve: palco, telão,
+          microfone e plateia. A partir de lg a fotografia é a metade direita do
+          próprio bloco — a área escura da imagem recebe o título e os botões,
+          que ficam contidos em menos da metade da largura para nunca cruzarem
+          Paulo. Abaixo de lg ela vira uma faixa cheia depois dos CTAs, com
+          recorte próprio (mais fechado em Paulo e na plateia).
+        */}
         <RevealSection>
-          <div className="portfolio-card border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-8 sm:p-10 lg:p-14">
-            <SectionHeader title="Solicite uma palestra para o seu evento." description="Use os canais oficiais para iniciar uma conversa sobre tema, público e contexto." />
-            <div className="portfolio-actions mt-9 flex flex-col gap-3 sm:flex-row">
-              <MagneticButton href={getWhatsAppUrl(getDefaultTalkMessage())} external>Solicitar uma palestra</MagneticButton>
-              <MagneticButton href="/contato" variant="secondary">Entrar em contato</MagneticButton>
+          <div className="portfolio-card relative overflow-hidden border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-8 sm:p-10 lg:min-h-[24rem] lg:p-14">
+            <div
+              aria-hidden="true"
+              className="pc-portfolio-stage pointer-events-none absolute inset-y-0 right-0 hidden w-[54%] lg:block"
+            >
+              <Image
+                src="/paulo-crispim/imagens/paulo-crispim-palestrante-palco-hero.png"
+                alt=""
+                fill
+                sizes="(min-width:1280px) 640px, 54vw"
+                className="object-cover object-[76%_42%]"
+              />
+            </div>
+
+            <div className="relative z-10 lg:max-w-[44%]">
+              <SectionHeader title="Solicite uma palestra para o seu evento." description="Use os canais oficiais para iniciar uma conversa sobre tema, público e contexto." />
+              <div className="portfolio-actions mt-9 flex flex-col gap-3 sm:flex-row">
+                <MagneticButton href={getWhatsAppUrl(getDefaultTalkMessage())} external>Solicitar uma palestra</MagneticButton>
+                <MagneticButton href="/contato" variant="secondary">Entrar em contato</MagneticButton>
+              </div>
+            </div>
+
+            <div className="portfolio-photo pc-portfolio-stage-band relative -mx-8 mt-10 aspect-[16/10] sm:-mx-10 sm:aspect-[16/9] lg:hidden">
+              <Image
+                src="/paulo-crispim/imagens/paulo-crispim-palestrante-palco-hero.png"
+                alt="Paulo Crispim durante palestra corporativa diante de uma plateia"
+                fill
+                sizes="100vw"
+                className="object-cover object-[74%_45%]"
+              />
             </div>
           </div>
         </RevealSection>
