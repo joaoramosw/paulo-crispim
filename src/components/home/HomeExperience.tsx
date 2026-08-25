@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Check } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { startTransition, useState } from "react";
 import { AudienceEcosystem } from "@/components/home/AudienceEcosystem";
@@ -193,49 +194,63 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
             </div>
           </div>
 
-          <aside className="group relative overflow-hidden border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm transition hover:border-[#35F06A]/30 lg:p-7" aria-label="Frentes de autoridade de Paulo Crispim">
-            <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35F06A] to-transparent opacity-70" />
-            <div aria-hidden="true" className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#35F06A]/10 blur-3xl" />
-            <div className="relative mb-6 overflow-hidden border border-white/10 bg-[#050708]/60 p-4">
-              <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(53,240,106,0.13),transparent_30%),linear-gradient(135deg,rgba(6,58,70,0.42),transparent)]" />
-              <div className="relative grid h-40 grid-cols-5 gap-2 sm:h-44 lg:h-48">
-                {Array.from({ length: 25 }).map((_, index) => (
-                  <span key={index} className={`border border-white/10 bg-white/[0.025] ${index === 6 || index === 18 ? "bg-[#35F06A]/15 shadow-[0_0_24px_rgba(53,240,106,0.22)]" : ""}`} />
-                ))}
-              </div>
-              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-4 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#C8F8D2]">
-                <span>Palco</span>
-                <span className="h-px flex-1 bg-[#35F06A]/45" />
-                <span>Campo</span>
-              </div>
-            </div>
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#A8B2BA]">
-              Autoridade aplicada
-            </p>
+          <figure className="relative m-0 mx-auto w-full max-w-[22rem] lg:mt-1 lg:max-w-none" data-od-id="hero-portrait">
+            {/* halo de profundidade: a foto não pousa sobre preto chapado */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-[18%] -top-[14%] -bottom-[10%] z-0 bg-[radial-gradient(58%_46%_at_54%_30%,rgba(6,58,70,0.55),transparent_72%),radial-gradient(42%_30%_at_62%_12%,rgba(53,240,106,0.07),transparent_70%)] blur-[28px]"
+            />
 
-            <div className="mt-6 space-y-4">
-              {hero.panelItems.map((item, index) => (
-                <div key={item} className="flex items-center gap-5">
-                  <span className="font-mono text-sm text-[#35F06A]">0{index + 1}</span>
-                  <span className="h-px flex-1 bg-gradient-to-r from-[#35F06A]/70 to-transparent" />
-                  <span className="min-w-36 text-right text-sm font-medium uppercase tracking-[0.18em] text-[#F4F7F8]">
-                    {item}
-                  </span>
-                </div>
-              ))}
+            <div className="pc-hero-portrait relative z-10 aspect-[4/5] w-full overflow-hidden">
+              <picture>
+                <source media="(min-width:1024px)" srcSet="/paulo-crispim/imagens/hero/paulo-crispim-hero-desktop.jpg" />
+                <img
+                  src="/paulo-crispim/imagens/hero/paulo-crispim-hero-mobile.jpg"
+                  alt="Paulo Crispim sentado, de terno claro e gravata verde, sorrindo para a câmera"
+                  width={1240}
+                  height={1550}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </picture>
+
+              {/* véu frio de borda: aproxima o marrom do estúdio do teal da página */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(90deg,rgba(5,7,8,0.35)_0%,rgba(5,7,8,0.12)_7%,rgba(5,7,8,0)_20%),linear-gradient(270deg,rgba(5,7,8,0.28)_0%,rgba(5,7,8,0.09)_8%,rgba(5,7,8,0)_22%),linear-gradient(0deg,rgba(5,7,8,0.40)_0%,rgba(5,7,8,0.11)_9%,rgba(5,7,8,0)_20%),linear-gradient(180deg,rgba(6,44,53,0.22)_0%,rgba(6,44,53,0)_26%)]"
+              />
             </div>
 
-            <div className="mt-6">
-              <div className="grid grid-cols-4 gap-2" aria-hidden="true">
-                {Array.from({ length: 16 }).map((_, index) => (
-                  <span key={index} className="h-1 rounded-full bg-[#A8B2BA]/20" />
-                ))}
+            <figcaption className="relative z-30 -mt-5 flex items-center gap-4 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#C8F8D2]">
+              <span>Palco</span>
+              <span aria-hidden="true" className="h-px flex-1 bg-[#35F06A]/45" />
+              <span>Campo</span>
+            </figcaption>
+          </figure>
+        </section>
+
+        <section
+          aria-label="Frentes de autoridade de Paulo Crispim"
+          className="pb-12"
+          data-od-id="hero-authority-rail"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#A8B2BA]">
+            Autoridade aplicada
+          </p>
+          <div className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-5">
+            {hero.panelItems.map((item, index) => (
+              <div key={item} className="flex items-baseline gap-4 border-t border-white/10 pt-3.5">
+                <span className="font-mono text-sm text-[#35F06A]">0{index + 1}</span>
+                <span className="text-sm font-medium uppercase leading-snug tracking-[0.18em] text-[#F4F7F8]">
+                  {item}
+                </span>
               </div>
-              <p className="mt-5 border-l border-[#35F06A] pl-4 text-sm leading-6 text-[#A8B2BA]">
-                Experiência executiva aplicada à liderança, cultura organizacional, segurança e resultados sustentáveis.
-              </p>
-            </div>
-          </aside>
+            ))}
+          </div>
+          <p className="mt-8 max-w-[44rem] border-l border-[#35F06A] pl-4 text-sm leading-6 text-[#A8B2BA]">
+            Experiência executiva aplicada à liderança, cultura organizacional, segurança e resultados sustentáveis.
+          </p>
         </section>
 
         <section aria-label="Credenciais" className="border-y border-white/10 py-8">
@@ -257,7 +272,23 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
         <PartnersMarquee title={partners.title} description={partners.description} logos={partnerLogos} />
 
         <section id="palestras" className="scroll-mt-8 py-14 lg:py-20">
-          <SectionHeader eyebrow={talks.eyebrow} title={talks.title} description={talks.description} />
+          {/*
+            Cabeçalho próprio em vez de <SectionHeader>: a partir de lg o badge
+            e o título ocupam a coluna esquerda e a descrição a direita, com o
+            texto começando na mesma linha do título (row-start explícito, sem
+            compensar a altura do badge na mão). Abaixo de lg nada disso vale e
+            a ordem do DOM já entrega a pilha badge → título → descrição, igual
+            ao componente compartilhado. Os filtros seguem abaixo, intactos.
+          */}
+          <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-14">
+            <div className="lg:col-start-1 lg:row-start-1">
+              <SectionLabel>{talks.eyebrow}</SectionLabel>
+            </div>
+            <h2 className={`${SECTION_TITLE_CLASS} max-w-3xl lg:col-start-1 lg:row-start-2`}>{talks.title}</h2>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-[#D8DEE2] sm:text-lg lg:col-start-2 lg:row-start-2 lg:mt-0">
+              {talks.description}
+            </p>
+          </div>
           <div className="mt-10 flex flex-wrap gap-3" aria-label="Filtrar palestras por categoria">
             {talkCategories.map((category) => {
               const isActive = category === activeTalkCategory;
@@ -314,7 +345,27 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
           </div>
         </section>
 
-        <section className="border-y border-white/10 py-14 lg:py-20">
+        <section className="relative border-y border-white/10 py-14 lg:py-20">
+          {/* Retrato editorial complementar: ocupa apenas o vazio à direita do
+              bloco introdutório, em posicionamento absoluto — sem coluna nova,
+              sem alterar a altura da seção. Some abaixo de xl, onde o texto já
+              usa toda a largura. */}
+          <RevealSection
+            variant="right"
+            delay={120}
+            className="pointer-events-none absolute right-0 top-10 hidden w-[min(26rem,calc(100%-52rem))] xl:block"
+          >
+            <div className="pc-portrait-audience relative aspect-[4/5] w-full overflow-hidden">
+              <Image
+                src="/paulo-crispim/imagens/MRF_5755.jpg"
+                alt=""
+                fill
+                sizes="(min-width:1400px) 416px, 340px"
+                className="object-cover object-[50%_15%]"
+              />
+            </div>
+          </RevealSection>
+
           <RevealSection>
             <div className="max-w-3xl">
               <SectionLabel>Para quem é</SectionLabel>
@@ -374,10 +425,68 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
         </section>
 
         <section id="trajetoria" className="scroll-mt-8 border-y border-white/10 py-14 lg:py-20">
-          <SectionHeader eyebrow={trajectory.eyebrow} title={trajectory.title} description={trajectory.description} />
-          <p className="mt-5 max-w-3xl border-l border-[#35F06A] pl-4 text-sm leading-7 text-[#A8B2BA]">
-            {trajectory.highlight}
-          </p>
+          {/* Pausa editorial: a fotografia abre a seção ao lado da introdução
+              (lado oposto ao de "Autoridade aplicada") e os blocos de
+              trajetória seguem como protagonistas logo abaixo.
+
+              A composição não é "texto | JPG": o retrato principal dissolve
+              pela borda voltada ao texto (máscara), a régua de acento sai da
+              coluna de texto e passa POR BAIXO desse fade, e um segundo
+              retrato menor invade a lateral do primeiro criando camada. O
+              conjunto lê como uma página editorial, não como um card com foto. */}
+          <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+            <div className="relative z-10">
+              <SectionHeader eyebrow={trajectory.eyebrow} title={trajectory.title} description={trajectory.description} />
+              <p className="mt-5 max-w-3xl border-l border-[#35F06A] pl-4 text-sm leading-7 text-[#A8B2BA]">
+                {trajectory.highlight}
+              </p>
+              {/* atravessa a calha e some sob a borda dissolvida da fotografia */}
+              <div
+                aria-hidden="true"
+                className="mt-9 hidden h-px w-[calc(100%+10rem)] bg-gradient-to-r from-[#35F06A]/55 via-[#35F06A]/18 to-transparent lg:block"
+              />
+            </div>
+
+            <RevealSection variant="right" delay={120} className="relative z-10">
+              <figure className="relative m-0 mx-auto w-full max-w-[21rem] sm:max-w-[23rem] lg:mr-0 lg:ml-auto lg:-mt-6 lg:max-w-[25rem] xl:max-w-[27rem]">
+                {/* halo de profundidade: o retrato não pousa sobre preto chapado */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -inset-x-[16%] -top-[12%] -bottom-[14%] z-0 bg-[radial-gradient(56%_44%_at_56%_28%,rgba(6,58,70,0.5),transparent_72%),radial-gradient(40%_28%_at_64%_10%,rgba(53,240,106,0.06),transparent_70%)] blur-[30px]"
+                />
+
+                <div className="pc-portrait-trajectory relative z-10 aspect-[3/4] w-full overflow-hidden sm:aspect-[4/5]">
+                  <Image
+                    src="/paulo-crispim/imagens/MRF_6069.jpg"
+                    alt="Paulo Crispim em retrato de estúdio, sentado, de terno claro e gravata verde"
+                    fill
+                    sizes="(min-width:1280px) 432px, (min-width:1024px) 400px, (min-width:640px) 368px, 100vw"
+                    className="object-cover object-[50%_26%] sm:object-[50%_28%]"
+                  />
+                  {/* véu frio de borda: aproxima o marrom do estúdio do teal da página */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,44,53,0.2)_0%,rgba(6,44,53,0)_28%),linear-gradient(0deg,rgba(5,7,8,0.34)_0%,rgba(5,7,8,0)_24%)]"
+                  />
+                </div>
+
+                {/* segunda leitura do mesmo ensaio, sobreposta: cria camada e
+                    tira da seção o ar de "uma foto ao lado do texto" */}
+                <div className="absolute -bottom-7 -left-3 z-20 hidden bg-[#050708] p-1.5 sm:block sm:w-[8.5rem] lg:-left-9 lg:-bottom-9 lg:w-[10rem] xl:w-[11rem]">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                      src="/paulo-crispim/imagens/MRF_6132.jpg"
+                      alt=""
+                      fill
+                      sizes="(min-width:1280px) 176px, (min-width:1024px) 160px, 136px"
+                      className="object-cover object-[50%_10%]"
+                    />
+                  </div>
+                </div>
+              </figure>
+            </RevealSection>
+          </div>
+
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {trajectory.items.map((item, index) => (
               <article key={item.title} className="relative h-full border border-white/10 bg-white/[0.03] p-6">

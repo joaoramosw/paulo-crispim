@@ -105,6 +105,55 @@ body {
   animation: pc-flow 10s ease-in-out infinite alternate;
 }
 
+/* Dissolve inferior do Hero de /palestras. Em vez de a fotografia terminar em
+   uma borda reta contra o fundo da pagina, ela perde alfa nos ultimos pixels e
+   o fundo animado volta a aparecer por baixo — a costura entre o Hero e a
+   secao seguinte deixa de ter linha. A rampa e curta de proposito: a plateia
+   no rodape da imagem continua legivel, so a ultima faixa se dissolve. */
+.pc-hero-dissolve {
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 84%,
+    rgba(0, 0, 0, 0.9) 90%,
+    rgba(0, 0, 0, 0.52) 95.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 84%,
+    rgba(0, 0, 0, 0.9) 90%,
+    rgba(0, 0, 0, 0.52) 95.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* A partir de xl a fotografia e o proprio fundo do Hero e a faixa da plateia
+   visivel e mais curta, entao a dissolucao fica ainda mais rasa. */
+@media (min-width: 1280px) {
+  .pc-hero-dissolve {
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 88%,
+      rgba(0, 0, 0, 0.94) 93%,
+      rgba(0, 0, 0, 0.7) 96.5%,
+      rgba(0, 0, 0, 0.3) 98.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 88%,
+      rgba(0, 0, 0, 0.94) 93%,
+      rgba(0, 0, 0, 0.7) 96.5%,
+      rgba(0, 0, 0, 0.3) 98.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
 .pc-draw-line {
   stroke-dasharray: 980;
   animation: pc-draw-line 4s ease-out both;
@@ -177,6 +226,7 @@ body {
   .portfolio-print-root .floating-contact,
   .portfolio-print-root .portfolio-actions,
   .portfolio-print-root .portfolio-print-action,
+  .portfolio-print-root .portfolio-photo,
   .portfolio-print-root .book-affiliate,
   .portfolio-print-root [aria-hidden="true"] {
     display: none !important;
@@ -290,4 +340,236 @@ body {
   .proposal-screen-only {
     display: none !important;
   }
+}
+
+/* Dissolução do retrato do Hero: rampa horizontal ∩ rampa vertical.
+   Sem borda dura, sem moldura, sem efeito de imagem colada. */
+.pc-hero-portrait {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.30) 2%, rgba(0,0,0,.80) 6%,
+      #000 11%, #000 84%,
+      rgba(0,0,0,.75) 92%, rgba(0,0,0,.25) 97%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.50) 2.5%, #000 8%,
+      #000 88%,
+      rgba(0,0,0,.92) 94%, rgba(0,0,0,.50) 97.5%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.30) 2%, rgba(0,0,0,.80) 6%,
+      #000 11%, #000 84%,
+      rgba(0,0,0,.75) 92%, rgba(0,0,0,.25) 97%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.50) 2.5%, #000 8%,
+      #000 88%,
+      rgba(0,0,0,.92) 94%, rgba(0,0,0,.50) 97.5%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Fotografia editorial de "Trajetória aplicada": dissolve por topo/base e,
+   principalmente, pela borda VOLTADA AO TEXTO (esquerda no desktop) — é esse
+   fade que funde fotografia e conteúdo em vez de encostar um no outro. A borda
+   externa (direita) fica quase cheia, para o retrato ter peso na página.
+   Recipe diferente da máscara da Hero de propósito: as duas conversam, não se
+   repetem. Sem borda dura e sem moldura. */
+.pc-portrait-trajectory {
+  -webkit-mask-image:
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.5) 3%, #000 10%,
+      #000 90%, rgba(0,0,0,.6) 96.5%, rgba(0,0,0,0) 100%),
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.4) 4%, rgba(0,0,0,.85) 11%, #000 18%,
+      #000 94%, rgba(0,0,0,.78) 98%, rgba(0,0,0,.42) 100%);
+  mask-image:
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.5) 3%, #000 10%,
+      #000 90%, rgba(0,0,0,.6) 96.5%, rgba(0,0,0,0) 100%),
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.4) 4%, rgba(0,0,0,.85) 11%, #000 18%,
+      #000 94%, rgba(0,0,0,.78) 98%, rgba(0,0,0,.42) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Retrato complementar de "Para quem é": dissolve pelas duas laterais e pela
+   base, para encostar no fundo da página sem virar um retângulo colado.
+   Sem fade no topo — a cabeça começa logo abaixo da borda superior. */
+.pc-portrait-audience {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.42) 5%, rgba(0,0,0,.9) 12%, #000 18%,
+      #000 90%, rgba(0,0,0,.5) 97%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 1.5%, #000 4.5%,
+      #000 78%, rgba(0,0,0,.72) 88%, rgba(0,0,0,.28) 96%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.42) 5%, rgba(0,0,0,.9) 12%, #000 18%,
+      #000 90%, rgba(0,0,0,.5) 97%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 1.5%, #000 4.5%,
+      #000 78%, rgba(0,0,0,.72) 88%, rgba(0,0,0,.28) 96%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* --- Fotografias da página /palestras -------------------------------------
+   Todas as três dissolvem por máscara, sem borda e sem moldura, seguindo o
+   mesmo princípio dos retratos da Home. Cada uma tem a rampa desenhada para o
+   lado em que a fotografia encosta no texto, para que as composições conversem
+   sem ficarem idênticas. */
+
+/* Retrato de "Proposta de valor": fica à direita do texto, então a rampa longa
+   é a da esquerda (borda interna). Topo e base dissolvem para o fundo. */
+.pc-portrait-authority {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 6%, rgba(0,0,0,.85) 14%, #000 20%,
+      #000 92%, rgba(0,0,0,.55) 97.5%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.5) 2.5%, #000 8%,
+      #000 89%, rgba(0,0,0,.6) 96%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 6%, rgba(0,0,0,.85) 14%, #000 20%,
+      #000 92%, rgba(0,0,0,.55) 97.5%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.5) 2.5%, #000 8%,
+      #000 89%, rgba(0,0,0,.6) 96%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Retrato de "Formatos": espelho do anterior — encosta no texto pela direita,
+   então é essa a rampa longa. A base dissolve antes, porque o enquadramento é
+   mais fechado e o corte precisa sumir e não terminar em linha. */
+.pc-portrait-formats {
+  -webkit-mask-image:
+    linear-gradient(270deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 6%, rgba(0,0,0,.85) 14%, #000 20%,
+      #000 92%, rgba(0,0,0,.55) 97.5%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 2%, #000 7%,
+      #000 84%, rgba(0,0,0,.65) 93%, rgba(0,0,0,.2) 98%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(270deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 6%, rgba(0,0,0,.85) 14%, #000 20%,
+      #000 92%, rgba(0,0,0,.55) 97.5%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 2%, #000 7%,
+      #000 84%, rgba(0,0,0,.65) 93%, rgba(0,0,0,.2) 98%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Recorte de palco dentro do painel de CTA: a fotografia sangra na borda
+   direita do painel e desaparece por completo antes de chegar ao texto — a
+   rampa da esquerda é longa de propósito (35% da largura) para que o H2 e os
+   botões nunca fiquem sobre a imagem. */
+.pc-cta-stage {
+  -webkit-mask-image: linear-gradient(90deg,
+    rgba(0,0,0,0) 0%, rgba(0,0,0,.12) 14%, rgba(0,0,0,.42) 24%,
+    rgba(0,0,0,.78) 35%, #000 48%, #000 100%);
+  mask-image: linear-gradient(90deg,
+    rgba(0,0,0,0) 0%, rgba(0,0,0,.12) 14%, rgba(0,0,0,.42) 24%,
+    rgba(0,0,0,.78) 35%, #000 48%, #000 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Fotografias do /portfolio.
+
+   Mesma gramática das máscaras da Home — dissolução por rampa, sem moldura e
+   sem borda dura —, mas com geometrias próprias: aqui a fotografia divide
+   espaço com blocos de texto densos, então ela precisa perder peso justamente
+   na aresta que encosta no conteúdo.
+   ------------------------------------------------------------------------ */
+
+/* Capa do portfólio: retrato em pé na coluna direita da abertura. Dissolve
+   pelas duas laterais e, com rampa mais longa, pela base — de onde sai o card
+   "Apresentação empresarial". O topo quase não desbota: a cabeça começa logo
+   abaixo da borda. */
+.pc-portfolio-cover {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.38) 4%, rgba(0,0,0,.88) 10%, #000 15%,
+      #000 87%, rgba(0,0,0,.6) 95%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 1.5%, #000 5%,
+      #000 74%, rgba(0,0,0,.78) 86%, rgba(0,0,0,.32) 95%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.38) 4%, rgba(0,0,0,.88) 10%, #000 15%,
+      #000 87%, rgba(0,0,0,.6) 95%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 1.5%, #000 5%,
+      #000 74%, rgba(0,0,0,.78) 86%, rgba(0,0,0,.32) 95%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Retratos de apoio ao lado de um cabeçalho de seção. A rampa é simétrica de
+   propósito: a mesma classe serve às fotografias de "Quem é" e de "Identidade
+   profissional", ambas à direita do texto a partir de lg. */
+.pc-portfolio-aside {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 5%, rgba(0,0,0,.92) 12%, #000 17%,
+      #000 83%, rgba(0,0,0,.92) 88%, rgba(0,0,0,.45) 95%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 2%, #000 7%,
+      #000 88%, rgba(0,0,0,.6) 96%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 5%, rgba(0,0,0,.92) 12%, #000 17%,
+      #000 83%, rgba(0,0,0,.92) 88%, rgba(0,0,0,.45) 95%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 2%, #000 7%,
+      #000 88%, rgba(0,0,0,.6) 96%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Faixa de palco dentro do bloco de CTA, a partir de lg. A rampa da esquerda é
+   longa porque é ali que o título e os botões vivem; a área escura da própria
+   fotografia faz o resto do trabalho. Paulo e a plateia ficam na metade cheia
+   da máscara. */
+.pc-portfolio-stage {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.22) 14%, rgba(0,0,0,.62) 30%,
+      rgba(0,0,0,.9) 44%, #000 56%, #000 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 3%, #000 9%,
+      #000 89%, rgba(0,0,0,.55) 97%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.22) 14%, rgba(0,0,0,.62) 30%,
+      rgba(0,0,0,.9) 44%, #000 56%, #000 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 3%, #000 9%,
+      #000 89%, rgba(0,0,0,.55) 97%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Abaixo de lg a mesma fotografia vira uma faixa cheia sob os CTAs: sem rampa
+   lateral pesada (o texto já está fora da imagem), só as bordas do card. */
+.pc-portfolio-stage-band {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 3%, #000 8%,
+      #000 92%, rgba(0,0,0,.7) 97%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 2%, #000 7%,
+      #000 90%, rgba(0,0,0,.5) 97%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 3%, #000 8%,
+      #000 92%, rgba(0,0,0,.7) 97%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 2%, #000 7%,
+      #000 90%, rgba(0,0,0,.5) 97%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
