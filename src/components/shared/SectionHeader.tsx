@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { SectionLabel } from "./SectionLabel";
 
 type SectionHeaderProps = {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   description?: string;
   align?: "left" | "center";
 };
@@ -16,7 +17,7 @@ export function SectionHeader({
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow ? <SectionLabel>{eyebrow}</SectionLabel> : null}
-      <h2 className="text-3xl font-semibold tracking-tight text-[#F4F7F8] sm:text-4xl lg:text-5xl">
+      <h2 className="text-[clamp(1.875rem,4.5vw,3rem)] font-semibold leading-[1.08] tracking-tight text-[#F4F7F8]">
         {title}
       </h2>
       {description ? (

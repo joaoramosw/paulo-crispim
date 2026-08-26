@@ -30,10 +30,10 @@ export const metadata: Metadata = {
 export default function ContatoPage() {
   return (
     <InternalPageLayout>
-      <section className="mx-auto grid min-h-[calc(100svh-7rem)] w-full max-w-7xl items-center gap-12 px-6 py-16 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-14 lg:py-24">
-        <RevealSection>
+      <section className="mx-auto grid min-h-[calc(100svh-7rem)] w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 sm:px-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-14 lg:py-24">
+        <RevealSection className="min-w-0">
           <SectionLabel>Contato oficial</SectionLabel>
-          <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-tight text-[#F4F7F8] sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl text-[clamp(2.4rem,9vw,4.5rem)] font-semibold leading-[0.98] tracking-tight text-[#F4F7F8]">
             Solicite uma palestra com clareza, profissionalismo e baixa fricção.
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-8 text-[#D8DEE2]">
@@ -45,7 +45,7 @@ export default function ContatoPage() {
           </div>
         </RevealSection>
 
-        <RevealSection variant="right" delay={120}>
+        <RevealSection variant="right" delay={120} className="min-w-0">
           <ContactForm />
         </RevealSection>
       </section>

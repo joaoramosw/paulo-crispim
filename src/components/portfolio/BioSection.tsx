@@ -16,7 +16,7 @@ export function BioSection({ about }: { about: typeof portfolioAbout }) {
       </summary>
 
       <div className="pc-disclosure-content border-t border-white/10 p-5 sm:p-6">
-        <div className="space-y-5">
+        <div className="max-w-[68ch] space-y-5">
           {about.paragraphs.map((paragraph, index) => (
             <p key={index} className="text-base leading-8 text-[#D8DEE2]">
               {paragraph}
@@ -25,7 +25,7 @@ export function BioSection({ about }: { about: typeof portfolioAbout }) {
         </div>
 
         <h3 className="mt-10 text-lg font-semibold text-[#F4F7F8]">{about.areasOfPracticeTitle}</h3>
-        <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+        <ul className="mt-5 grid max-w-5xl gap-3 sm:grid-cols-2">
           {about.areasOfPractice.map((area) => (
             <li key={area} className="flex items-start gap-2 text-sm leading-7 text-[#A8B2BA]">
               <Check aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-[#35F06A]" />
@@ -35,7 +35,7 @@ export function BioSection({ about }: { about: typeof portfolioAbout }) {
         </ul>
 
         <h3 className="mt-10 text-lg font-semibold text-[#F4F7F8]">{about.purposeTitle}</h3>
-        <p className="mt-4 border-l border-[#35F06A] pl-4 text-sm leading-7 text-[#A8B2BA]">
+        <p className="mt-4 max-w-[68ch] border-l border-[#35F06A] pl-4 text-sm leading-7 text-[#A8B2BA]">
           {about.purposeQuote}
         </p>
       </div>

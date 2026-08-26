@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --section-space: clamp(3rem, 4.5vw, 4rem);
 }
 
 @theme inline {
@@ -40,7 +41,11 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.pc-section {
+  padding-block: var(--section-space);
 }
 
 @keyframes pc-flow {
@@ -67,6 +72,20 @@ body {
 @keyframes pc-marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+@keyframes pc-chatbot-ping {
+  0% { transform: scale(1); opacity: 0.75; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes pc-chatbot-glow {
+  0%, 100% { box-shadow: 0 0 24px rgba(53, 240, 106, 0.3), 0 0 0 0 rgba(53, 240, 106, 0.35); }
+  50% { box-shadow: 0 0 36px rgba(53, 240, 106, 0.45), 0 0 0 6px rgba(53, 240, 106, 0); }
+}
+
+.pc-chatbot-btn {
+  animation: pc-chatbot-glow 2.4s ease-in-out infinite;
 }
 
 @keyframes pc-disclosure-in {
@@ -530,6 +549,28 @@ body {
   mask-composite: intersect;
 }
 
+/* Retrato da seção "Quem é Paulo Crispim": fica à direita do texto no desktop,
+   então a rampa longa é a da esquerda (borda interna). Dissolução suave pelas
+   laterais e pela base, integrando a imagem ao fundo escuro sem borda visível. */
+.pc-bio-photo {
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.22) 4%, rgba(0,0,0,.68) 10%, rgba(0,0,0,.94) 16%, #000 22%,
+      #000 82%, rgba(0,0,0,.88) 89%, rgba(0,0,0,.5) 95%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 1.5%, rgba(0,0,0,.88) 5%, #000 9%,
+      #000 78%, rgba(0,0,0,.68) 87%, rgba(0,0,0,.28) 95%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.22) 4%, rgba(0,0,0,.68) 10%, rgba(0,0,0,.94) 16%, #000 22%,
+      #000 82%, rgba(0,0,0,.88) 89%, rgba(0,0,0,.5) 95%, rgba(0,0,0,0) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 1.5%, rgba(0,0,0,.88) 5%, #000 9%,
+      #000 78%, rgba(0,0,0,.68) 87%, rgba(0,0,0,.28) 95%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
 /* Faixa de palco dentro do bloco de CTA, a partir de lg. A rampa da esquerda é
    longa porque é ali que o título e os botões vivem; a área escura da própria
    fotografia faz o resto do trabalho. Paulo e a plateia ficam na metade cheia
@@ -555,7 +596,7 @@ body {
 
 /* Abaixo de lg a mesma fotografia vira uma faixa cheia sob os CTAs: sem rampa
    lateral pesada (o texto já está fora da imagem), só as bordas do card. */
-.pc-portfolio-stage-band {
+.pc-stage-band {
   -webkit-mask-image:
     linear-gradient(90deg,
       rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 3%, #000 8%,

@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, Check, MessageCircle, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   getLeadWhatsAppUrl,
   getVisibleSteps,
@@ -37,6 +37,8 @@ export function LeadAssistant() {
   const [answers, setAnswers] = useState<LeadAnswers>(() => readStoredState()?.answers ?? {});
   const [currentIndex, setCurrentIndex] = useState<number>(() => readStoredState()?.currentIndex ?? 0);
   const [phase, setPhase] = useState<Phase>(() => readStoredState()?.phase ?? "flow");
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const visibleSteps = useMemo(() => getVisibleSteps(answers), [answers]);
   const currentStep = visibleSteps[currentIndex];
@@ -49,12 +51,39 @@ export function LeadAssistant() {
   useEffect(() => {
     if (!isOpen) return;
 
+    const dialog = dialogRef.current;
+    const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const focusTimer = window.setTimeout(() => {
+      dialog?.querySelector<HTMLElement>(focusableSelector)?.focus();
+    }, 0);
+
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setIsOpen(false);
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialog) return;
+      const focusableItems = Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector));
+      const firstItem = focusableItems[0];
+      const lastItem = focusableItems.at(-1);
+      if (!firstItem || !lastItem) return;
+
+      if (event.shiftKey && document.activeElement === firstItem) {
+        event.preventDefault();
+        lastItem.focus();
+      } else if (!event.shiftKey && document.activeElement === lastItem) {
+        event.preventDefault();
+        firstItem.focus();
+      }
     }
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen]);
 
   function answerAndAdvance(key: LeadAnswerKey, value: string) {
@@ -92,12 +121,19 @@ export function LeadAssistant() {
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setIsOpen((value) => !value)}
         aria-label={isOpen ? "Fechar assistente de palestras" : "Abrir assistente de palestras"}
         aria-expanded={isOpen}
-        className="group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 inline-flex h-14 w-14 items-center justify-center rounded-full border border-[#35F06A]/45 bg-[#35F06A] text-[#050708] shadow-[0_0_34px_rgba(53,240,106,0.34)] transition hover:scale-105 hover:bg-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708] active:scale-95"
+        className={`group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 inline-flex h-14 w-14 items-center justify-center rounded-full border border-[#35F06A]/45 bg-[#35F06A] text-[#050708] shadow-[0_0_34px_rgba(53,240,106,0.34)] transition hover:scale-105 hover:bg-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708] active:scale-95 ${!isOpen ? "pc-chatbot-btn" : ""}`}
       >
+        {!isOpen && (
+          <span className="pointer-events-none absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+            <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-red-500" />
+          </span>
+        )}
         {isOpen ? (
           <X aria-hidden="true" className="h-6 w-6" />
         ) : (
@@ -112,6 +148,7 @@ export function LeadAssistant() {
 
       {isOpen ? (
         <div
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label="Assistente de palestras"
@@ -127,9 +164,12 @@ export function LeadAssistant() {
             </div>
             <button
               type="button"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                triggerRef.current?.focus();
+              }}
               aria-label="Fechar"
-              className="inline-flex h-8 w-8 shrink-0 items-center justify-center border border-white/10 text-[#A8B2BA] transition hover:border-[#35F06A]/40 hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-white/10 text-[#A8B2BA] transition hover:border-[#35F06A]/40 hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
             >
               <X aria-hidden="true" className="h-4 w-4" />
             </button>
@@ -203,7 +243,7 @@ export function LeadAssistant() {
                 <button
                   type="button"
                   onClick={resetAssistant}
-                  className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-[#A8B2BA] underline decoration-white/20 underline-offset-4 transition hover:text-[#35F06A]"
+                  className="mt-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-[0.14em] text-[#A8B2BA] underline decoration-white/20 underline-offset-4 transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
                 >
                   Iniciar novo atendimento
                 </button>
@@ -264,7 +304,7 @@ function Progress({ current, total, onBack }: { current: number; total: number; 
         <button
           type="button"
           onClick={onBack}
-          className="text-xs font-semibold uppercase tracking-[0.14em] text-[#A8B2BA] transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
+          className="inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-[0.14em] text-[#A8B2BA] transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
         >
           ← Voltar
         </button>

@@ -16,7 +16,7 @@ export function ContactChannelCard({ title, value, href, icon: Icon, external = 
           <Icon aria-hidden="true" className="h-5 w-5" />
         </span>
         <span className="block text-xs font-bold uppercase tracking-[0.22em] text-[#A8B2BA]">{title}</span>
-        <span className="mt-3 block text-lg font-semibold text-[#F4F7F8]">{value}</span>
+        <span className="mt-3 block break-all text-lg font-semibold text-[#F4F7F8]">{value}</span>
       </span>
       <ArrowUpRight aria-hidden="true" className="h-5 w-5 text-[#35F06A] transition group-hover:translate-x-1 group-hover:-translate-y-1" />
     </a>
