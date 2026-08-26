@@ -20,15 +20,15 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-16">
           <div>
-            <BrandMark imageClassName="h-11 w-auto sm:h-12" priority={false} />
+            <BrandMark imageClassName="h-11 w-auto sm:h-12" eager={false} />
             <p className="mt-5 max-w-md text-sm leading-7">
               Palestras corporativas para empresas, líderes e equipes que buscam clareza, direção e evolução profissional.
             </p>
             <div className="mt-5 flex flex-col gap-3 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
-              <a href={getWhatsAppUrl(getDefaultTalkMessage())} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
+              <a href={getWhatsAppUrl(getDefaultTalkMessage())} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
                 <MessageCircle aria-hidden="true" className="h-4 w-4" /> WhatsApp
               </a>
-              <a href={getMailtoUrl("Solicitação de palestra")} className="inline-flex items-center gap-2 transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
+              <a href={getMailtoUrl("Solicitação de palestra")} className="inline-flex min-h-11 items-center gap-2 break-all transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
                 <Mail aria-hidden="true" className="h-4 w-4" /> {contactConfig.email}
               </a>
             </div>
@@ -36,7 +36,7 @@ export function SiteFooter() {
 
           <nav aria-label="Navegação do rodapé" className="flex flex-wrap gap-x-6 gap-y-3 text-xs font-semibold uppercase tracking-[0.22em] lg:justify-end">
             {footerLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
+              <Link key={link.href} href={link.href} className="inline-flex min-h-11 items-center transition hover:text-[#35F06A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
                 {link.label}
               </Link>
             ))}

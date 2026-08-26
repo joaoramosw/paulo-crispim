@@ -54,10 +54,10 @@ export default function PalestrasPage() {
         porque a largura reduzida não comporta texto sobre a imagem.
       */}
       <section className="relative isolate -mt-28 w-full overflow-hidden xl:mx-auto xl:max-w-[1920px]">
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center px-6 pb-12 pt-36 sm:px-10 lg:px-14 xl:min-h-[clamp(720px,calc(42vw+140px),880px)] xl:pb-40 xl:pt-28">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center px-6 pb-12 pt-36 sm:px-10 lg:px-14 xl:min-h-[clamp(640px,calc(35vw+100px),760px)] xl:pb-32 xl:pt-28">
           <RevealSection className="xl:max-w-[560px]">
             <SectionLabel>Palestras corporativas</SectionLabel>
-            <h1 className="max-w-5xl text-5xl font-semibold leading-[0.96] tracking-tight text-[#F4F7F8] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[2.6rem] xl:leading-[1.06] 2xl:text-[3.05rem]">
+            <h1 className="max-w-5xl text-[clamp(2.4rem,8vw,4rem)] font-semibold leading-[1.02] tracking-tight text-[#F4F7F8] xl:text-[clamp(2.75rem,3.2vw,3.35rem)] xl:leading-[1.06]">
               Clareza, liderança e ação para equipes que precisam evoluir com direção.
             </h1>
             <p className="mt-8 max-w-3xl text-lg leading-8 text-[#D8DEE2] sm:text-xl xl:mt-6 xl:text-lg">
@@ -70,7 +70,7 @@ export default function PalestrasPage() {
           </RevealSection>
         </div>
 
-        <div className="pc-hero-dissolve relative mt-4 aspect-[4/3] w-full overflow-hidden md:aspect-[3/2] lg:aspect-[16/10] xl:absolute xl:inset-0 xl:z-0 xl:mt-0 xl:aspect-auto">
+        <div className="pc-hero-dissolve relative mt-4 aspect-[16/11] w-full overflow-hidden md:aspect-[3/2] lg:aspect-[16/10] xl:absolute xl:inset-0 xl:z-0 xl:mt-0 xl:aspect-auto">
           <Image
             src="/paulo-crispim/imagens/paulo-crispim-palestrante-palco-hero.png"
             alt="Paulo Crispim durante palestra corporativa diante de uma plateia"
@@ -110,12 +110,12 @@ export default function PalestrasPage() {
           <aside className="relative overflow-hidden border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm sm:p-8">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35F06A] to-transparent" />
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#C8F8D2]">Pontos de autoridade</p>
-            <div className="mt-8 grid gap-5 lg:grid-cols-2 lg:gap-x-12">
+            <div className="mt-8 grid gap-5 md:grid-cols-2 md:gap-x-12">
               {talkValuePoints.map((point, index) => (
                 <div key={point} className="flex items-center gap-5">
                   <span className="font-mono text-sm text-[#35F06A]">0{index + 1}</span>
                   <span className="h-px flex-1 bg-gradient-to-r from-[#35F06A]/70 to-transparent" />
-                  <span className="max-w-44 text-right text-sm font-medium uppercase tracking-[0.16em] text-[#F4F7F8]">{point}</span>
+                  <span className="min-w-0 max-w-[15rem] text-right text-sm font-medium uppercase tracking-[0.16em] text-[#F4F7F8]">{point}</span>
                 </div>
               ))}
             </div>
@@ -125,7 +125,7 @@ export default function PalestrasPage() {
         </RevealSection>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="pc-section mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14">
         {/*
           Abertura editorial: a partir de lg o cabeçalho divide a linha com um
           retrato de autoridade — a fotografia entra pelo lado direito, oposto
@@ -133,7 +133,7 @@ export default function PalestrasPage() {
           empilha na ordem cabeçalho → fotografia → cards, e o retrato recebe
           largura máxima própria para não virar um bloco alto demais no celular.
         */}
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.85fr)] lg:items-center lg:gap-16">
           <RevealSection>
             <SectionHeader eyebrow="Proposta de valor" title="Uma mensagem para empresas que precisam transformar pressão em evolução." description="A abordagem aproxima liderança, disciplina, comunicação e execução sem recorrer a promessas grandiosas ou fórmulas genéricas." />
           </RevealSection>
@@ -153,7 +153,7 @@ export default function PalestrasPage() {
             </figure>
           </RevealSection>
         </div>
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:mt-16">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4 lg:mt-16">
           {talkBenefits.map((benefit, index) => (
             <RevealSection key={benefit.title} delay={index * 80}>
               <HighlightCard title={benefit.title} description={benefit.description} icon={benefitIcons[index]} />
@@ -162,7 +162,7 @@ export default function PalestrasPage() {
         </div>
       </section>
 
-      <section id="temas" className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section id="temas" className="pc-section mx-auto w-full max-w-7xl scroll-mt-8 px-6 sm:px-10 lg:px-14">
         <RevealSection>
           <SectionHeader eyebrow="Temas de palestra" title="Conteúdos que unem engenharia, gestão e comportamento humano." description="Os temas partem do repertório já apresentado na marca e podem ser adaptados ao contexto do evento e ao perfil do público." />
         </RevealSection>
@@ -175,7 +175,7 @@ export default function PalestrasPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+      <section className="pc-section mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14">
         {/*
           Espelho da composição de "Proposta de valor": aqui a fotografia ocupa
           a coluna da esquerda. A ordem do DOM continua cabeçalho → fotografia
@@ -210,9 +210,9 @@ export default function PalestrasPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-6 pb-24 pt-10 sm:px-10 lg:px-14 lg:pb-32">
+      <section className="pc-section mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14">
         <RevealSection>
-          <div className="relative overflow-hidden border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-8 sm:p-10 lg:p-14">
+          <div className="relative overflow-hidden border border-[#35F06A]/20 bg-[#35F06A]/[0.045] p-8 sm:p-10 lg:min-h-[22rem] lg:p-14">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35F06A] to-transparent" />
             {/*
               Recorte de palco fechando a página no momento da conversão: mesma
@@ -230,7 +230,7 @@ export default function PalestrasPage() {
                 src="/paulo-crispim/imagens/paulo-crispim-palestrante-palco-hero.png"
                 alt=""
                 fill
-                sizes="(min-width:1280px) 540px, 46vw"
+                sizes="(min-width:1280px) 900px, 78vw"
                 className="object-cover object-[86%_46%]"
               />
             </div>
@@ -240,6 +240,15 @@ export default function PalestrasPage() {
             <div className="relative mt-9 flex flex-col gap-3 sm:flex-row">
               <MagneticButton href={getWhatsAppUrl(getDefaultTalkMessage())} external>Solicitar uma palestra</MagneticButton>
               <MagneticButton href="/contato" variant="secondary">Entrar em contato</MagneticButton>
+            </div>
+            <div className="pc-stage-band relative -mx-8 -mb-8 mt-10 aspect-[16/10] overflow-hidden sm:-mx-10 sm:-mb-10 sm:aspect-[16/9] lg:hidden">
+              <Image
+                src="/paulo-crispim/imagens/paulo-crispim-palestrante-palco-hero.png"
+                alt="Paulo Crispim palestrando diante de uma plateia"
+                fill
+                sizes="(max-width: 1023px) calc(100vw - 3rem), 1px"
+                className="object-cover object-[74%_44%]"
+              />
             </div>
           </div>
         </RevealSection>

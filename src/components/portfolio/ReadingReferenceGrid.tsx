@@ -4,7 +4,7 @@ import type { BookReference } from "@/content/books";
 export function ReadingReferenceGrid({ books }: { books: BookReference[] }) {
   return (
     <div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mx-auto grid max-w-sm gap-4 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {books.map((book) => (
           <BookReferenceCard key={book.title} book={book} />
         ))}

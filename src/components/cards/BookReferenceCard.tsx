@@ -11,9 +11,9 @@ export function BookReferenceCard({ book }: { book: BookReference }) {
   const card = (
     <article className="book-card group relative h-full overflow-hidden border border-white/10 bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#35F06A]/35 hover:bg-white/[0.055]">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#35F06A] to-transparent transition duration-500 group-hover:scale-x-100" />
-      <div className="relative aspect-[3/4] overflow-hidden border border-white/10 bg-[#151B20]">
+      <div className="relative aspect-[2/3] overflow-hidden border border-white/10 bg-[#151B20]">
         {cover ? (
-          <Image src={book.coverImage!} alt={`Capa do livro ${book.title}, de ${book.author}`} fill sizes="(max-width: 768px) 45vw, 180px" className="object-cover transition duration-500 group-hover:scale-[1.04]" onError={() => setHasImageError(true)} />
+          <Image src={book.coverImage!} alt={`Capa do livro ${book.title}, de ${book.author}`} fill sizes="(max-width: 639px) calc(100vw - 5rem), (max-width: 1023px) 42vw, (max-width: 1279px) 28vw, 260px" className="object-cover transition duration-500 group-hover:scale-[1.04]" onError={() => setHasImageError(true)} />
         ) : (
           <div className="flex h-full flex-col justify-between bg-[radial-gradient(circle_at_80%_20%,rgba(53,240,106,0.18),transparent_34%),linear-gradient(145deg,#151B20,#050708)] p-4">
             <BookOpen aria-hidden="true" className="h-7 w-7 text-[#35F06A]" />

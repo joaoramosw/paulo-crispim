@@ -35,7 +35,7 @@ export function FaqSection({ eyebrow, title, description, items }: FaqSectionPro
   };
 
   return (
-    <section id="faq" aria-label={title} className="scroll-mt-8 border-y border-white/10 py-14 lg:py-20">
+    <section id="faq" aria-label={title} className="pc-section scroll-mt-8 border-y border-white/10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -46,7 +46,7 @@ export function FaqSection({ eyebrow, title, description, items }: FaqSectionPro
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#35F06A]" />
           {eyebrow}
         </p>
-        <h2 className="text-3xl font-semibold tracking-tight text-[#F4F7F8] sm:text-4xl lg:text-5xl">{title}</h2>
+        <h2 className="text-[clamp(1.875rem,4.5vw,3rem)] font-semibold leading-[1.08] tracking-tight text-[#F4F7F8]">{title}</h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-[#D8DEE2] sm:text-lg">{description}</p>
       </div>
 
@@ -127,7 +127,7 @@ export function FaqSection({ eyebrow, title, description, items }: FaqSectionPro
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 border border-[#35F06A] bg-[#35F06A] px-6 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[#050708] transition-all duration-200 hover:bg-[#C8F8D2] hover:shadow-[0_0_28px_rgba(53,240,106,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708]"
+          className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 border border-[#35F06A] bg-[#35F06A] px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#050708] transition-all duration-200 hover:bg-[#C8F8D2] hover:shadow-[0_0_28px_rgba(53,240,106,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708] sm:w-auto sm:px-6 sm:text-sm sm:tracking-[0.16em]"
         >
           Falar pelo WhatsApp
           <ArrowRight aria-hidden="true" className="h-4 w-4" />

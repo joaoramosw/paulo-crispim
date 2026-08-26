@@ -38,13 +38,13 @@ export function SiteHeader() {
           {navItems.map((item) => {
             const active = pathname === item.href;
             return (
-              <Link key={item.href} href={item.href} className={`group relative rounded-full px-3 py-2 transition hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708] ${active ? "text-[#F4F7F8]" : ""}`}>
+              <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined} className={`group relative inline-flex min-h-11 items-center rounded-full px-3 py-2 transition hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708] ${active ? "text-[#F4F7F8]" : ""}`}>
                 {item.label}
                 <span className={`absolute inset-x-3 -bottom-0.5 h-px origin-left bg-[#35F06A] transition-transform duration-300 ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
               </Link>
             );
           })}
-          <a href={getWhatsAppUrl(getDefaultTalkMessage())} target="_blank" rel="noopener noreferrer" className="ml-2 rounded-full border border-[#35F06A]/40 bg-[#35F06A]/10 px-4 py-2 text-[#C8F8D2] transition hover:bg-[#35F06A] hover:text-[#050708] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]">
+          <a href={getWhatsAppUrl(getDefaultTalkMessage())} target="_blank" rel="noopener noreferrer" className="ml-2 inline-flex min-h-11 items-center rounded-full border border-[#35F06A]/40 bg-[#35F06A]/10 px-4 py-2 text-[#C8F8D2] transition hover:bg-[#35F06A] hover:text-[#050708] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]">
             Solicitar uma palestra
           </a>
         </nav>
@@ -54,14 +54,14 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <div className={`overflow-hidden border-t border-white/10 bg-[#050708]/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 lg:hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+      <div aria-hidden={!isOpen} inert={!isOpen} className={`overflow-hidden border-t border-white/10 bg-[#050708]/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 lg:hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
         <nav aria-label="Menu mobile" className="mx-auto grid w-full max-w-7xl gap-2 px-6 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#A8B2BA] sm:px-10">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)} className={`border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-[#35F06A]/40 hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] ${pathname === item.href ? "border-[#35F06A]/50 text-[#C8F8D2]" : ""}`}>
+            <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={() => setIsOpen(false)} className={`flex min-h-11 items-center border border-white/10 bg-white/[0.03] px-4 py-3 transition hover:border-[#35F06A]/40 hover:text-[#F4F7F8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] ${pathname === item.href ? "border-[#35F06A]/50 text-[#C8F8D2]" : ""}`}>
               {item.label}
             </Link>
           ))}
-          <a href={getWhatsAppUrl(getDefaultTalkMessage())} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="border border-[#35F06A] bg-[#35F06A] px-4 py-3 text-[#050708] transition hover:bg-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
+          <a href={getWhatsAppUrl(getDefaultTalkMessage())} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="flex min-h-11 items-center border border-[#35F06A] bg-[#35F06A] px-4 py-3 text-[#050708] transition hover:bg-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]">
             Solicitar uma palestra
           </a>
         </nav>

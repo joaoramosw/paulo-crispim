@@ -353,18 +353,18 @@ export const homeContent = {
       "Inspirar pessoas, desenvolver líderes e transformar desafios em oportunidades, promovendo crescimento profissional, realização pessoal e resultados consistentes.",
   },
   contact: {
-    isMock: true,
-    status: "em breve",
+    isMock: false,
+    status: "disponível",
     title:
       "Leve uma palestra que transforma experiência em movimento para o seu evento.",
     description:
       "Se a sua empresa, instituição ou equipe precisa fortalecer liderança, segurança, disciplina e alta performance, esta é a próxima conversa.",
-    ctaLabel: "Solicitar palestra em breve",
+    ctaLabel: "Solicitar uma palestra",
     preparationItems: [
       "Briefing do evento",
       "Tema de interesse",
       "Perfil do público",
-      "Canal de contato a confirmar",
+      "Canal de contato oficial",
     ],
   },
   faq: {

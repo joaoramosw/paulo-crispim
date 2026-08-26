@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { PartnerLogo } from "@/lib/partners";
 
@@ -17,7 +18,7 @@ export function PartnersMarquee({ title, description, logos }: PartnersMarqueePr
   const trackLogos = [...logos, ...logos];
 
   return (
-    <section aria-label={title} className="border-y border-white/10 py-14 lg:py-16">
+    <section aria-label={title} className="pc-section border-y border-white/10">
       <div className="mb-8 max-w-3xl">
         <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#C8F8D2]">{title}</p>
         {description ? <p className="mt-3 text-sm leading-6 text-[#A8B2BA]">{description}</p> : null}
@@ -41,13 +42,16 @@ export function PartnersMarquee({ title, description, logos }: PartnersMarqueePr
           {trackLogos.map((logo, index) => (
             <div
               key={`${logo.src}-${index}`}
-              className="flex h-20 w-40 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] p-2.5 sm:h-24 sm:w-48"
+              aria-hidden={index >= logos.length}
+              className="relative h-20 w-40 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] p-4 sm:h-24 sm:w-44"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element -- intrinsic sizing (h-full w-auto) is needed so the rendered box hugs the logo pixels tightly; next/image's `fill` mode leaves letterboxed transparent space that swallows the rounded corners. */}
-              <img
+              <Image
                 src={logo.src}
-                alt={logo.alt}
-                className="h-full w-auto max-w-full rounded-lg object-contain transition-transform duration-300 ease-out hover:scale-105 active:scale-105"
+                alt={index < logos.length ? logo.alt : ""}
+                fill
+                loading="eager"
+                sizes="(max-width: 639px) 160px, 176px"
+                className="rounded-lg object-contain transition-transform duration-300 ease-out hover:scale-105 active:scale-105"
               />
             </div>
           ))}

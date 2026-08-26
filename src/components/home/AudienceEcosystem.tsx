@@ -103,7 +103,7 @@ export function AudienceEcosystem({ contexts }: AudienceEcosystemProps) {
               <button
                 type="button"
                 onClick={scrollPrev}
-                className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/[0.035] text-[#A8B2BA] transition hover:border-[#35F06A]/40 hover:text-[#C8F8D2]"
+                className="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.035] text-[#A8B2BA] transition hover:border-[#35F06A]/40 hover:text-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
                 aria-label="Público anterior"
               >
                 <ChevronLeft aria-hidden="true" className="h-5 w-5" />
@@ -111,7 +111,7 @@ export function AudienceEcosystem({ contexts }: AudienceEcosystemProps) {
               <button
                 type="button"
                 onClick={scrollNext}
-                className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/[0.035] text-[#A8B2BA] transition hover:border-[#35F06A]/40 hover:text-[#C8F8D2]"
+                className="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.035] text-[#A8B2BA] transition hover:border-[#35F06A]/40 hover:text-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
                 aria-label="Próximo público"
               >
                 <ChevronRight aria-hidden="true" className="h-5 w-5" />
@@ -127,19 +127,23 @@ export function AudienceEcosystem({ contexts }: AudienceEcosystemProps) {
             </div>
           </div>
 
-          <div className="mt-5 flex items-center justify-center gap-2" role="tablist" aria-label="Selecionar público e contexto">
+          <div className="mt-4 flex flex-wrap items-center justify-center" role="group" aria-label="Selecionar público e contexto">
             {contexts.map((context, index) => (
               <button
                 key={context.id}
                 type="button"
-                role="tab"
                 onClick={() => scrollTo(index)}
-                aria-selected={index === selectedIndex}
+                aria-pressed={index === selectedIndex}
                 aria-label={`Ir para ${context.title}`}
-                className={`h-1.5 rounded-full transition-all ${
-                  index === selectedIndex ? "w-6 bg-[#35F06A]" : "w-1.5 bg-white/20 hover:bg-white/40"
-                }`}
-              />
+                className="group flex h-11 w-11 items-center justify-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A]"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`h-1.5 rounded-full transition-all ${
+                    index === selectedIndex ? "w-6 bg-[#35F06A]" : "w-1.5 bg-white/20 group-hover:bg-white/40"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>

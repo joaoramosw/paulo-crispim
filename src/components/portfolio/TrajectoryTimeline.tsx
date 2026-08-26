@@ -7,11 +7,7 @@ const DETAILS_GROUP_NAME = "portfolio-trajetoria";
 export function TrajectoryTimeline({ stages }: { stages: TrajectoryStage[] }) {
   return (
     <div className="relative mt-12">
-      <div
-        aria-hidden="true"
-        className="absolute left-5 top-0 hidden h-full w-px bg-gradient-to-b from-[#35F06A] via-white/10 to-transparent md:block lg:hidden"
-      />
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {stages.map((stage, index) => (
           <RevealSection key={stage.id} delay={index * 90}>
             <details
