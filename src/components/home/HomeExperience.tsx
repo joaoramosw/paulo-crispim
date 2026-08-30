@@ -189,6 +189,7 @@ export function HomeExperience({ partnerLogos }: HomeExperienceProps) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href={hero.primaryCta.href}
+                data-track-event="view_palestras_click"
                 className="group inline-flex min-h-12 w-full items-center justify-center gap-2 border border-[#35F06A] bg-[#35F06A] px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#050708] transition-all duration-200 hover:bg-[#C8F8D2] hover:shadow-[0_0_28px_rgba(53,240,106,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-4 focus-visible:ring-offset-[#050708] sm:w-auto sm:px-6 sm:text-sm sm:tracking-[0.16em]"
               >
                 {hero.primaryCta.label}

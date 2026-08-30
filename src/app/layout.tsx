@@ -1,9 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { AnalyticsInteractionTracker } from "@/components/shared/AnalyticsInteractionTracker";
 import "./globals.css";
 
 const SITE_URL = "https://paulocrispim.com.br";
 const OG_IMAGE = "/paulo-crispim/logos/logo-quadrado-minima-paulo-crispim.png";
+const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18412361171";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -140,23 +144,24 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        {/* Google tag (gtag.js) - Google Ads */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18412361171"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-18412361171');
-            `,
-          }}
-        />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+        <AnalyticsInteractionTracker />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', ${JSON.stringify(GOOGLE_ADS_ID)});
+          `}
+        </Script>
+      </body>
     </html>
   );
 }

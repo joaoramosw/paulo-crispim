@@ -4,6 +4,18 @@ Site institucional do palestrante **Paulo Crispim** (engenheiro eletricista, adm
 
 Produção: **https://paulocrispim.com.br**
 
+## Variáveis de ambiente
+
+Para produção, configure na Vercel a variável pública da Google Tag do Google Ads:
+
+```text
+NEXT_PUBLIC_GOOGLE_ADS_ID=AW-18412361171
+```
+
+O projeto mantém o ID informado como fallback para preservar o funcionamento local quando a variável ainda não estiver definida. O identificador é público e não é um segredo.
+
+Os labels de conversão são opcionais e devem ser preenchidos somente com os valores reais copiados do Google Ads. Eles permanecem vazios no `.env.example` para evitar conversões incorretas.
+
 ---
 
 ## ⚠️ Antes de mexer no código
