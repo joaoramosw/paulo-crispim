@@ -1,9 +1,16 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Send } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/contact";
 import { ContactField } from "./ContactField";
+import {
+  trackEvent,
+  trackLeadFormStart,
+  trackLeadFormSubmitError,
+  trackLeadFormSubmitSuccess,
+  trackWhatsAppClick,
+} from "@/lib/analytics";
 
 const interestOptions = [
   "Palestra corporativa",
@@ -35,6 +42,7 @@ export function ContactForm() {
   const [form, setForm] = useState(initialState);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const hasStarted = useRef(false);
 
   function updateField(field: keyof FormState, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -57,21 +65,25 @@ export function ContactForm() {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
+    trackEvent("lead_form_submit_attempt", { page_path: window.location.pathname });
 
     if (Object.keys(nextErrors).length > 0) {
+      trackLeadFormSubmitError("validation");
       return;
     }
 
     setIsRedirecting(true);
     const structuredMessage = `Olá, Paulo Crispim.\n\nGostaria de solicitar informações sobre uma palestra.\n\nNome: ${form.name}\nEmpresa: ${form.company}\nE-mail: ${form.email}\nWhatsApp: ${form.whatsapp}\nInteresse: ${form.interest}\nMensagem: ${form.message}`;
     window.open(getWhatsAppUrl(structuredMessage), "_blank", "noopener,noreferrer");
+    trackWhatsAppClick("contact_form");
+    trackLeadFormSubmitSuccess();
     window.setTimeout(() => setIsRedirecting(false), 900);
   }
 
   return (
     <form onSubmit={handleSubmit} className="border border-white/10 bg-white/[0.035] p-5 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-7">
       <div className="grid gap-5 sm:grid-cols-2">
-        <ContactField label="Nome" name="name" value={form.name} onChange={(event) => updateField("name", event.target.value)} error={errors.name} autoComplete="name" />
+        <ContactField label="Nome" name="name" value={form.name} onFocus={() => { if (!hasStarted.current) { hasStarted.current = true; trackLeadFormStart(); } }} onChange={(event) => updateField("name", event.target.value)} error={errors.name} autoComplete="name" />
         <ContactField label="E-mail" name="email" type="email" value={form.email} onChange={(event) => updateField("email", event.target.value)} error={errors.email} autoComplete="email" />
         <ContactField label="WhatsApp" name="whatsapp" value={form.whatsapp} onChange={(event) => updateField("whatsapp", event.target.value)} error={errors.whatsapp} autoComplete="tel" />
         <ContactField label="Empresa ou organização" name="company" value={form.company} onChange={(event) => updateField("company", event.target.value)} error={errors.company} autoComplete="organization" />
