@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#050708;color:#f2f4f4;font-family:Manrope,system-ui,sans-serif;text-wrap:pretty;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#22c07a;text-decoration:none}
+a:hover{color:#4ad796}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+img{max-width:100%}
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(34,192,122,.45)}70%{box-shadow:0 0 0 14px rgba(34,192,122,0)}100%{box-shadow:0 0 0 0 rgba(34,192,122,0)}}
+</style>
+</helmet>
+
+<div style="width:100%;overflow:hidden">
+
+<header style="position:sticky;top:0;z-index:40;background:rgba(5,7,8,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)">
+  <div style="width:100%;max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <img src="https://www.paulocrispim.com.br/_next/image?url=%2Fpaulo-crispim%2Flogos%2Flogo-paulo-crispim-header.png&amp;w=640&amp;q=75" alt="Paulo Crispim" style="height:34px;width:auto;display:block">
+    <a href="{{ waLink }}" target="_blank" rel="noopener" style="flex:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;min-height:44px;border:1px solid rgba(34,192,122,.5);border-radius:999px;color:#22c07a;font-family:Archivo,sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em">
+      <span style="width:7px;height:7px;border-radius:999px;background:#22c07a;display:block"></span>WhatsApp
+    </a>
+  </div>
+</header>
+
+<section style="position:relative;padding:clamp(28px,6vw,72px) 0 clamp(36px,6vw,80px)">
+  <div style="position:absolute;top:-120px;right:-140px;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(34,192,122,.16),transparent 68%);pointer-events:none"></div>
+  <div style="position:relative;width:100%;max-width:1120px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:center">
+    <div style="min-width:0;animation:riseIn .6s ease both">
+      <p style="margin:0 0 18px;font-family:Archivo,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#22c07a;line-height:1.5">Palestra para SIPAT · Segurança do Trabalho</p>
+      <h1 style="margin:0 0 20px;font-family:Archivo,sans-serif;font-size:clamp(31px,7.4vw,54px);line-height:1.06;letter-spacing:-.025em;font-weight:600;color:#fff">Sua SIPAT pode ser só mais um checklist obrigatório — ou o momento em que a segurança vira cultura.</h1>
+      <p style="margin:0 0 28px;font-size:clamp(15px,4vw,18px);line-height:1.62;color:#a9b1b1;max-width:46ch">Uma palestra conduzida por um engenheiro que viveu o risco no campo. Conteúdo que muda comportamento, não que passa o tempo.</p>
+      <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;min-height:58px;padding:16px 26px;background:#22c07a;color:#04140c;border-radius:12px;font-family:Archivo,sans-serif;font-size:clamp(15px,4vw,17px);font-weight:700;letter-spacing:-.01em;text-align:center;animation:pulseRing 3.2s ease-out 1.2s 3" style-hover="background:#2fd489">Solicitar disponibilidade e proposta</a>
+      <p style="margin:14px 0 0;font-size:13.5px;line-height:1.5;color:#7d8686">Resposta rápida pelo WhatsApp oficial. Sem compromisso.</p>
+    </div>
+    <div style="min-width:0;position:relative">
+      <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.09);background:#0b0f10;aspect-ratio:4/5;max-height:560px">
+        <img src="https://www.paulocrispim.com.br/_next/image?url=%2Fpaulo-crispim%2Fimagens%2Fhero%2Fpaulo-crispim-hero-mobile.jpg&amp;w=1200&amp;q=82" alt="Paulo Crispim, engenheiro eletricista e palestrante corporativo" style="width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block">
+        <div style="position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(5,7,8,.92),transparent)"></div>
+        <div style="position:absolute;left:16px;right:16px;bottom:16px">
+          <p style="margin:0;font-family:Archivo,sans-serif;font-size:15px;font-weight:600;color:#fff;letter-spacing:-.01em">Paulo Crispim</p>
+          <p style="margin:4px 0 0;font-size:12.5px;line-height:1.45;color:#a9b1b1">Engenheiro eletricista · Palestrante corporativo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);background:#080b0c">
+  <div style="width:100%;max-width:1120px;margin:0 auto;padding:clamp(32px,5vw,56px) 20px;display:grid;gap:clamp(28px,4vw,48px)">
+    <blockquote style="margin:0;display:grid;gap:0;border-left:2px solid #22c07a;padding-left:clamp(16px,3vw,26px)">
+      <p style="margin:0;font-family:Archivo,sans-serif;font-size:clamp(20px,4.6vw,30px);line-height:1.28;letter-spacing:-.02em;font-weight:500;color:#fff;max-width:34ch">Não é um palestrante que fala sobre segurança. É um engenheiro eletricista que liderou equipes onde o risco era real.</p>
+    </blockquote>
+    <sc-if value="{{ showPartners }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <p style="margin:0 0 16px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7d8686">Empresas que já confiaram no trabalho</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:stretch">
+        <div style="flex:1 1 150px;min-width:0;background:#fff;border-radius:10px;padding:14px 18px;display:flex;align-items:center;justify-content:center;min-height:72px">
+          <img src="https://www.paulocrispim.com.br/_next/image?url=%2Fparceiros-logos%2Fceneged-logo.jpg&amp;w=384&amp;q=75" alt="Ceneged" style="max-height:42px;width:auto;display:block">
+        </div>
+        <div style="flex:1 1 150px;min-width:0;background:#fff;border-radius:10px;padding:14px 18px;display:flex;align-items:center;justify-content:center;min-height:72px">
+          <img src="https://www.paulocrispim.com.br/_next/image?url=%2Fparceiros-logos%2Fhvidal-solucoesemeng-logo.jpg&amp;w=384&amp;q=75" alt="HVidal Soluções em Engenharia" style="max-height:42px;width:auto;display:block">
+        </div>
+        <div style="flex:1 1 150px;min-width:0;background:#fff;border-radius:10px;padding:14px 18px;display:flex;align-items:center;justify-content:center;min-height:72px">
+          <img src="https://www.paulocrispim.com.br/_next/image?url=%2Fparceiros-logos%2Fagnus-logo.jpg&amp;w=384&amp;q=75" alt="Agnus" style="max-height:42px;width:auto;display:block">
+        </div>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+</section>
+
+<section style="width:100%;max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px">
+  <p style="margin:0 0 14px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7d8686">01 · O problema</p>
+  <h2 style="margin:0 0 clamp(24px,4vw,40px);font-family:Archivo,sans-serif;font-size:clamp(25px,5.6vw,40px);line-height:1.14;letter-spacing:-.025em;font-weight:600;color:#fff;max-width:26ch">Toda empresa cumpre a SIPAT. Poucas mudam alguma coisa depois dela.</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
+    <div style="border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px;background:#0a0d0e" style-hover="border-color:rgba(34,192,122,.35)">
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#cfd4d4">A palestra genérica que a equipe esquece já na segunda-feira.</p>
+    </div>
+    <div style="border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px;background:#0a0d0e" style-hover="border-color:rgba(34,192,122,.35)">
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#cfd4d4">Conteúdo desconectado da realidade de quem está na operação.</p>
+    </div>
+    <div style="border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px;background:#0a0d0e" style-hover="border-color:rgba(34,192,122,.35)">
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#cfd4d4">Ninguém muda de postura — e o risco que a SIPAT deveria reduzir continua ali.</p>
+    </div>
+    <div style="border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px;background:#0a0d0e" style-hover="border-color:rgba(34,192,122,.35)">
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#cfd4d4">O evento vira obrigação de calendário, não investimento em pessoas.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:#080b0c;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)">
+  <div style="width:100%;max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px">
+    <p style="margin:0 0 14px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#22c07a">02 · Da experiência à atitude</p>
+    <h2 style="margin:0 0 clamp(28px,4vw,48px);font-family:Archivo,sans-serif;font-size:clamp(25px,5.6vw,40px);line-height:1.14;letter-spacing:-.025em;font-weight:600;color:#fff;max-width:26ch">Não é palestra de prateleira. É um processo que gera movimento.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,3vw,28px)">
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:20px">
+        <p style="margin:0 0 12px;font-family:Archivo,sans-serif;font-size:34px;line-height:1;font-weight:600;color:rgba(34,192,122,.9);letter-spacing:-.03em">01</p>
+        <h3 style="margin:0 0 10px;font-family:Archivo,sans-serif;font-size:19px;line-height:1.25;font-weight:600;color:#fff;letter-spacing:-.015em">Entender o contexto</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#a9b1b1">Cada operação tem seu risco e sua pressão. A palestra parte da realidade da sua equipe.</p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:20px">
+        <p style="margin:0 0 12px;font-family:Archivo,sans-serif;font-size:34px;line-height:1;font-weight:600;color:rgba(34,192,122,.9);letter-spacing:-.03em">02</p>
+        <h3 style="margin:0 0 10px;font-family:Archivo,sans-serif;font-size:19px;line-height:1.25;font-weight:600;color:#fff;letter-spacing:-.015em">Conectar prática e reflexão</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#a9b1b1">Experiências reais de engenharia, campo e liderança traduzidas em mensagem clara e aplicável.</p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:20px">
+        <p style="margin:0 0 12px;font-family:Archivo,sans-serif;font-size:34px;line-height:1;font-weight:600;color:rgba(34,192,122,.9);letter-spacing:-.03em">03</p>
+        <h3 style="margin:0 0 10px;font-family:Archivo,sans-serif;font-size:19px;line-height:1.25;font-weight:600;color:#fff;letter-spacing:-.015em">Transformar consciência em atitude</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#a9b1b1">O objetivo é mudança de postura, responsabilidade e compromisso real com segurança.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="width:100%;max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px">
+  <p style="margin:0 0 14px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7d8686">03 · Resultados</p>
+  <h2 style="margin:0 0 clamp(24px,4vw,40px);font-family:Archivo,sans-serif;font-size:clamp(25px,5.6vw,40px);line-height:1.14;letter-spacing:-.025em;font-weight:600;color:#fff;max-width:24ch">O que a sua organização leva junto com a palestra.</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden">
+    <div style="background:#050708;padding:clamp(20px,3vw,28px);display:flex;gap:14px;align-items:flex-start">
+      <span style="flex:none;width:9px;height:9px;margin-top:7px;border-radius:2px;background:#22c07a;display:block"></span>
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#e2e6e6">Equipe que sai engajada e consciente — não com sono.</p>
+    </div>
+    <div style="background:#050708;padding:clamp(20px,3vw,28px);display:flex;gap:14px;align-items:flex-start">
+      <span style="flex:none;width:9px;height:9px;margin-top:7px;border-radius:2px;background:#22c07a;display:block"></span>
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#e2e6e6">Segurança tratada como valor da cultura, não como obrigação legal.</p>
+    </div>
+    <div style="background:#050708;padding:clamp(20px,3vw,28px);display:flex;gap:14px;align-items:flex-start">
+      <span style="flex:none;width:9px;height:9px;margin-top:7px;border-radius:2px;background:#22c07a;display:block"></span>
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#e2e6e6">Um evento que a diretoria percebe como investimento, com retorno visível.</p>
+    </div>
+    <div style="background:#050708;padding:clamp(20px,3vw,28px);display:flex;gap:14px;align-items:flex-start">
+      <span style="flex:none;width:9px;height:9px;margin-top:7px;border-radius:2px;background:#22c07a;display:block"></span>
+      <p style="margin:0;font-size:15.5px;line-height:1.55;color:#e2e6e6">Conteúdo personalizado para o setor e os desafios reais da sua operação.</p>
+    </div>
+  </div>
+  <a href="{{ waLink }}" target="_blank" rel="noopener" style="margin-top:clamp(24px,4vw,36px);display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;min-height:58px;padding:16px 26px;background:#22c07a;color:#04140c;border-radius:12px;font-family:Archivo,sans-serif;font-size:clamp(15px,4vw,17px);font-weight:700;letter-spacing:-.01em" style-hover="background:#2fd489">Solicitar disponibilidade e proposta</a>
+</section>
+
+<section style="background:#080b0c;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)">
+  <div style="width:100%;max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px">
+    <p style="margin:0 0 14px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7d8686">04 · Para quem é</p>
+    <h2 style="margin:0 0 clamp(10px,2vw,16px);font-family:Archivo,sans-serif;font-size:clamp(25px,5.6vw,40px);line-height:1.14;letter-spacing:-.025em;font-weight:600;color:#fff;max-width:24ch">Feita para quem leva segurança a sério.</h2>
+    <p style="margin:0 0 clamp(24px,4vw,36px);font-size:15.5px;line-height:1.6;color:#a9b1b1;max-width:52ch">Conteúdo desenhado para eventos corporativos — SIPATs, convenções, treinamentos e encontros de segurança.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">SESMT</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Técnicos de segurança</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Engenheiros de segurança</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">RH</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Gestores de evento</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Indústrias</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Concessionárias de energia</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Construtoras</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Agronegócio</span>
+      <span style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:14px;color:#e2e6e6;background:rgba(255,255,255,.02)">Órgãos públicos</span>
+    </div>
+  </div>
+</section>
+
+<section style="width:100%;max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(28px,4vw,52px);align-items:center">
+    <div style="min-width:0;order:2">
+      <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.09);aspect-ratio:4/5;max-height:520px;background:#0b0f10">
+        <img src="https://www.paulocrispim.com.br/_next/image?url=%2Fpaulo-crispim%2Fimagens%2FMRF_6069.jpg&amp;w=1200&amp;q=75" alt="Paulo Crispim em contexto de palestra e campo" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+    </div>
+    <div style="min-width:0;order:1">
+      <p style="margin:0 0 14px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7d8686">05 · Trajetória</p>
+      <h2 style="margin:0 0 20px;font-family:Archivo,sans-serif;font-size:clamp(25px,5.6vw,40px);line-height:1.14;letter-spacing:-.025em;font-weight:600;color:#fff;max-width:24ch">Uma trajetória construída no campo, não só no palco.</h2>
+      <p style="margin:0 0 16px;font-size:15.5px;line-height:1.65;color:#cfd4d4">Engenheiro eletricista com atuação em operações críticas, manutenção, eletrificação e segurança. Liderou equipes multidisciplinares em ambientes de alta exigência, onde decisão errada custa gente.</p>
+      <p style="margin:0;font-size:15.5px;line-height:1.65;color:#a9b1b1">Hoje leva essa vivência à educação corporativa: a mesma linguagem de quem já esteve na ponta da operação.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:#080b0c;border-top:1px solid rgba(255,255,255,.07)">
+  <div style="width:100%;max-width:820px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px">
+    <p style="margin:0 0 14px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7d8686">06 · Dúvidas frequentes</p>
+    <h2 style="margin:0 0 clamp(24px,4vw,36px);font-family:Archivo,sans-serif;font-size:clamp(25px,5.6vw,36px);line-height:1.14;letter-spacing:-.025em;font-weight:600;color:#fff">Antes de falar com a gente.</h2>
+    <div style="display:grid;gap:2px;background:rgba(255,255,255,.08);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)">
+      <details style="background:#080b0c">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 4px;min-height:56px;font-family:Archivo,sans-serif;font-size:16.5px;font-weight:500;color:#fff;letter-spacing:-.01em">A palestra é personalizada para a minha empresa?<span style="flex:none;color:#22c07a;font-size:20px;line-height:1">+</span></summary>
+        <p style="margin:0;padding:0 4px 22px;font-size:15px;line-height:1.6;color:#a9b1b1;max-width:60ch">Sim. O conteúdo é contextualizado por setor, público e desafios, sem perder a essência.</p>
+      </details>
+      <details style="background:#080b0c">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 4px;min-height:56px;font-family:Archivo,sans-serif;font-size:16.5px;font-weight:500;color:#fff;letter-spacing:-.01em">Presencial ou online?<span style="flex:none;color:#22c07a;font-size:20px;line-height:1">+</span></summary>
+        <p style="margin:0;padding:0 4px 22px;font-size:15px;line-height:1.6;color:#a9b1b1;max-width:60ch">Os dois formatos são possíveis; definimos conforme o evento.</p>
+      </details>
+      <details style="background:#080b0c">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 4px;min-height:56px;font-family:Archivo,sans-serif;font-size:16.5px;font-weight:500;color:#fff;letter-spacing:-.01em">Atende a minha cidade ou estado?<span style="flex:none;color:#22c07a;font-size:20px;line-height:1">+</span></summary>
+        <p style="margin:0;padding:0 4px 22px;font-size:15px;line-height:1.6;color:#a9b1b1;max-width:60ch">Consulte disponibilidade para a data e o local do seu evento.</p>
+      </details>
+      <details style="background:#080b0c">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 4px;min-height:56px;font-family:Archivo,sans-serif;font-size:16.5px;font-weight:500;color:#fff;letter-spacing:-.01em">Com quanta antecedência devo solicitar?<span style="flex:none;color:#22c07a;font-size:20px;line-height:1">+</span></summary>
+        <p style="margin:0;padding:0 4px 22px;font-size:15px;line-height:1.6;color:#a9b1b1;max-width:60ch">Quanto antes, maior a chance de garantir a data.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative;overflow:hidden;background:#050708">
+  <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:680px;height:340px;background:radial-gradient(ellipse at top,rgba(34,192,122,.2),transparent 70%);pointer-events:none"></div>
+  <div style="position:relative;width:100%;max-width:760px;margin:0 auto;padding:clamp(56px,9vw,110px) 20px;text-align:center">
+    <h2 style="margin:0 0 18px;font-family:Archivo,sans-serif;font-size:clamp(27px,6.4vw,44px);line-height:1.1;letter-spacing:-.03em;font-weight:600;color:#fff">Sua próxima SIPAT pode ser a que a equipe lembra o ano inteiro.</h2>
+    <p style="margin:0 auto 30px;font-size:clamp(15px,4vw,17px);line-height:1.62;color:#a9b1b1;max-width:48ch">Conte o objetivo do evento, o perfil do público e a data prevista. O atendimento avança a partir daí.</p>
+    <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;margin:0 auto;min-height:58px;padding:16px 26px;background:#22c07a;color:#04140c;border-radius:12px;font-family:Archivo,sans-serif;font-size:clamp(15px,4vw,17px);font-weight:700;letter-spacing:-.01em" style-hover="background:#2fd489">Solicitar disponibilidade e proposta</a>
+    <p style="margin:14px 0 0;font-size:13.5px;line-height:1.5;color:#7d8686">Resposta rápida pelo WhatsApp oficial. Sem compromisso.</p>
+  </div>
+</section>
+
+<footer style="border-top:1px solid rgba(255,255,255,.07);background:#080b0c">
+  <div style="width:100%;max-width:1120px;margin:0 auto;padding:clamp(32px,5vw,48px) 20px calc(clamp(32px,5vw,48px) + 76px);display:grid;gap:24px">
+    <img src="https://www.paulocrispim.com.br/_next/image?url=%2Fpaulo-crispim%2Flogos%2Flogo-paulo-crispim-header.png&amp;w=640&amp;q=75" alt="Paulo Crispim" style="height:32px;width:auto;display:block">
+    <div style="display:flex;flex-wrap:wrap;gap:12px 28px">
+      <a href="{{ waLink }}" target="_blank" rel="noopener" style="font-size:14.5px;color:#22c07a">WhatsApp · (81) 99965-9147</a>
+      <a href="mailto:palestras@paulocrispim.com.br?subject=Palestra%20SIPAT" style="font-size:14.5px;color:#cfd4d4">palestras@paulocrispim.com.br</a>
+    </div>
+    <p style="margin:0;font-size:12.5px;line-height:1.5;color:#6d7676">© 2026 Paulo Crispim. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(5,7,8,.94);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.09);padding:10px 16px calc(10px + env(safe-area-inset-bottom));animation:riseIn .3s ease both">
+  <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:520px;margin:0 auto;min-height:52px;padding:14px 22px;background:#22c07a;color:#04140c;border-radius:11px;font-family:Archivo,sans-serif;font-size:15.5px;font-weight:700;letter-spacing:-.01em" style-hover="background:#2fd489">Solicitar disponibilidade e proposta</a>
+</div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showStickyCta&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Conversão&quot;},
+  &quot;showPartners&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Conversão&quot;},
+  &quot;waPhone&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;5581999659147&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;WhatsApp&quot;},
+  &quot;waMessage&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Olá, Paulo Crispim. Gostaria de informações sobre uma palestra de SIPAT / segurança do trabalho para a minha empresa.&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;WhatsApp&quot;}
+}">
+class Component extends DCLogic {
+  state = { showBar: false };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      const show = y > window.innerHeight * 0.85;
+      if (show !== this.state.showBar) this.setState({ showBar: show });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  renderVals() {
+    const msg = this.props.waMessage ?? 'Olá, Paulo Crispim. Gostaria de informações sobre uma palestra de SIPAT / segurança do trabalho para a minha empresa.';
+    const phone = this.props.waPhone ?? '5581999659147';
+    return {
+      waLink: 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg),
+      showBar: (this.props.showStickyCta ?? true) && this.state.showBar,
+      showPartners: this.props.showPartners ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

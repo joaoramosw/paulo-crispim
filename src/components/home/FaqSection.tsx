@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import { useId, useState } from "react";
 import { getDefaultTalkMessage, getWhatsAppUrl } from "@/lib/contact";
+import { trackFaqOpen } from "@/lib/analytics";
 
 type FaqItem = {
   question: string;
@@ -65,7 +66,13 @@ export function FaqSection({ eyebrow, title, description, items }: FaqSectionPro
                   type="button"
                   aria-expanded={isOpen}
                   aria-controls={panelId}
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  onClick={() => {
+                    const nextIndex = isOpen ? null : index;
+                    setOpenIndex(nextIndex);
+                    if (nextIndex !== null) {
+                      trackFaqOpen({ faqId: `faq_${index + 1}`, faqPosition: index + 1 });
+                    }
+                  }}
                   className="flex w-full items-center justify-between gap-6 py-5 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050708]"
                 >
                   <span className="text-sm font-semibold text-[#F4F7F8] sm:text-base">{item.question}</span>

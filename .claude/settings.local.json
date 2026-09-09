@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /mnt/c/Desenvolvimento/paulo-crispim status --porcelain)",
+      "Bash(sort -t: -k2 -rn)",
+      "Bash(awk '/trajectory:/,/^  },$/' /mnt/c/Desenvolvimento/paulo-crispim/src/content/paulo-crispim.ts)",
+      "Bash(git status *)"
+    ]
+  }
+}

@@ -3,11 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { AnalyticsInteractionTracker } from "@/components/shared/AnalyticsInteractionTracker";
+import { PageViewTracker } from "@/components/shared/PageViewTracker";
+import { getGa4MeasurementId, getGoogleAdsId } from "@/lib/analytics";
 import "./globals.css";
 
 const SITE_URL = "https://paulocrispim.com.br";
 const OG_IMAGE = "/paulo-crispim/logos/logo-quadrado-minima-paulo-crispim.png";
-const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18412361171";
+const GOOGLE_ADS_ID = getGoogleAdsId();
+const GA4_MEASUREMENT_ID = getGa4MeasurementId();
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -149,6 +152,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <AnalyticsInteractionTracker />
+        <PageViewTracker />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
@@ -158,7 +162,12 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', ${JSON.stringify(GOOGLE_ADS_ID)});
+            // send_page_view desativado: navegação client-side do App Router não
+            // dispara reload, então o page_view é enviado manualmente pelo
+            // PageViewTracker (evita perder pageviews de rota e evita duplicidade
+            // no load inicial).
+            gtag('config', ${JSON.stringify(GOOGLE_ADS_ID)}, { send_page_view: false });
+            ${GA4_MEASUREMENT_ID ? `gtag('config', ${JSON.stringify(GA4_MEASUREMENT_ID)}, { send_page_view: false });` : ""}
           `}
         </Script>
       </body>

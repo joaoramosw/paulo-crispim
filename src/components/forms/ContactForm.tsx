@@ -1,16 +1,20 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Send } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/contact";
 import { ContactField } from "./ContactField";
 import {
-  trackEvent,
-  trackLeadFormStart,
-  trackLeadFormSubmitError,
-  trackLeadFormSubmitSuccess,
+  setEnhancedConversionUserData,
+  trackFormError,
+  trackFormStart,
+  trackGenerateLead,
   trackWhatsAppClick,
 } from "@/lib/analytics";
+
+const FORM_NAME = "contato_palestras";
+const CONFIRMATION_PATH = "/solicitacao-enviada";
 
 const interestOptions = [
   "Palestra corporativa",
@@ -39,6 +43,7 @@ const initialState: FormState = {
 };
 
 export function ContactForm() {
+  const router = useRouter();
   const [form, setForm] = useState(initialState);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -65,25 +70,34 @@ export function ContactForm() {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
-    trackEvent("lead_form_submit_attempt", { page_path: window.location.pathname });
 
     if (Object.keys(nextErrors).length > 0) {
-      trackLeadFormSubmitError("validation");
+      const [firstInvalidField] = Object.keys(nextErrors) as (keyof FormState)[];
+      trackFormError({ formName: FORM_NAME, fieldName: firstInvalidField, errorType: "validation" });
       return;
     }
 
     setIsRedirecting(true);
     const structuredMessage = `Olá, Paulo Crispim.\n\nGostaria de solicitar informações sobre uma palestra.\n\nNome: ${form.name}\nEmpresa: ${form.company}\nE-mail: ${form.email}\nWhatsApp: ${form.whatsapp}\nInteresse: ${form.interest}\nMensagem: ${form.message}`;
+
+    // Ordem exigida: validado → generate_lead (GA4 + conversão Ads) → abrir
+    // WhatsApp → confirmação. window.open é síncrono dentro do handler de
+    // clique, então a abertura nunca fica bloqueada por gtag ausente/AdBlock.
+    setEnhancedConversionUserData(form.email, form.whatsapp);
+    trackGenerateLead({ formName: FORM_NAME, leadInterest: form.interest });
+    trackWhatsAppClick(FORM_NAME, "after_form");
     window.open(getWhatsAppUrl(structuredMessage), "_blank", "noopener,noreferrer");
-    trackWhatsAppClick("contact_form");
-    trackLeadFormSubmitSuccess();
-    window.setTimeout(() => setIsRedirecting(false), 900);
+    // Só chega aqui com a validação aprovada e o handoff do WhatsApp disparado;
+    // erro de validação retorna acima e mantém o usuário no formulário.
+    // isRedirecting segue true de propósito: o botão fica travado até a
+    // navegação concluir e desmontar o formulário.
+    router.push(CONFIRMATION_PATH);
   }
 
   return (
     <form onSubmit={handleSubmit} className="border border-white/10 bg-white/[0.035] p-5 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-7">
       <div className="grid gap-5 sm:grid-cols-2">
-        <ContactField label="Nome" name="name" value={form.name} onFocus={() => { if (!hasStarted.current) { hasStarted.current = true; trackLeadFormStart(); } }} onChange={(event) => updateField("name", event.target.value)} error={errors.name} autoComplete="name" />
+        <ContactField label="Nome" name="name" value={form.name} onFocus={() => { if (!hasStarted.current) { hasStarted.current = true; trackFormStart(FORM_NAME); } }} onChange={(event) => updateField("name", event.target.value)} error={errors.name} autoComplete="name" />
         <ContactField label="E-mail" name="email" type="email" value={form.email} onChange={(event) => updateField("email", event.target.value)} error={errors.email} autoComplete="email" />
         <ContactField label="WhatsApp" name="whatsapp" value={form.whatsapp} onChange={(event) => updateField("whatsapp", event.target.value)} error={errors.whatsapp} autoComplete="tel" />
         <ContactField label="Empresa ou organização" name="company" value={form.company} onChange={(event) => updateField("company", event.target.value)} error={errors.company} autoComplete="organization" />
