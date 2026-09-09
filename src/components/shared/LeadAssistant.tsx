@@ -9,8 +9,29 @@ import {
   type LeadAnswers,
   type LeadFlowStep,
 } from "@/lib/leadAssistant";
+import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 
 const STORAGE_KEY = "pc-lead-assistant-v1";
+const LEAD_REPORTED_KEY = "pc-lead-assistant-reported-v1";
+const FORM_NAME = "lead_assistant_palestras";
+
+function hasReportedLead(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.sessionStorage.getItem(LEAD_REPORTED_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markLeadReported() {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(LEAD_REPORTED_KEY, "1");
+  } catch {
+    // sessionStorage indisponível (modo privado etc.): segue sem persistir a guarda.
+  }
+}
 
 type Phase = "flow" | "summary";
 
@@ -87,6 +108,10 @@ export function LeadAssistant() {
   }, [isOpen]);
 
   function answerAndAdvance(key: LeadAnswerKey, value: string) {
+    if (Object.keys(answers).length === 0 && currentIndex === 0) {
+      trackFormStart(FORM_NAME);
+    }
+
     const nextAnswers = { ...answers, [key]: value };
     setAnswers(nextAnswers);
 
@@ -111,7 +136,10 @@ export function LeadAssistant() {
     setAnswers({});
     setCurrentIndex(0);
     setPhase("flow");
-    if (typeof window !== "undefined") window.sessionStorage.removeItem(STORAGE_KEY);
+    if (typeof window !== "undefined") {
+      window.sessionStorage.removeItem(STORAGE_KEY);
+      window.sessionStorage.removeItem(LEAD_REPORTED_KEY);
+    }
   }
 
   const canGoBack = phase === "summary" || currentIndex > 0;
@@ -230,7 +258,19 @@ export function LeadAssistant() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
+                  data-whatsapp-type="after_form"
+                  data-cta-name="continuar_no_whatsapp"
+                  data-cta-location="lead_assistant"
+                  onClick={() => {
+                    setIsOpen(false);
+                    // Formulário (assistente) concluído imediatamente antes de
+                    // abrir o WhatsApp: dispara generate_lead + conversão do
+                    // Google Ads uma única vez por atendimento.
+                    if (!hasReportedLead()) {
+                      markLeadReported();
+                      trackGenerateLead({ formName: FORM_NAME, leadInterest: answers.intent });
+                    }
+                  }}
                   className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 border border-[#35F06A] bg-[#35F06A] px-5 py-3 text-sm font-bold uppercase tracking-[0.14em] text-[#050708] transition hover:bg-[#C8F8D2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#35F06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0E11]"
                 >
                   Continuar no WhatsApp

@@ -14,7 +14,9 @@ NEXT_PUBLIC_GOOGLE_ADS_ID=AW-18412361171
 
 O projeto mantém o ID informado como fallback para preservar o funcionamento local quando a variável ainda não estiver definida. O identificador é público e não é um segredo.
 
-Os labels de conversão são opcionais e devem ser preenchidos somente com os valores reais copiados do Google Ads. Eles permanecem vazios no `.env.example` para evitar conversões incorretas.
+O label da conversão principal (`generate_lead`) também tem fallback no código (`NI0iCOy9uegcENOr2ctE`, valor real da conta). Os demais labels de conversão (WhatsApp, telefone, e-mail) são opcionais e devem ser preenchidos somente com valores reais copiados do Google Ads — ficam vazios no `.env.example` até existirem.
+
+O GA4 (`NEXT_PUBLIC_GA_MEASUREMENT_ID`) ainda não está configurado — não há propriedade/measurement ID real disponível, então o código não inventa um. Ver `docs/TRACKING.md` para o status completo do rastreamento e o que falta configurar manualmente.
 
 ---
 

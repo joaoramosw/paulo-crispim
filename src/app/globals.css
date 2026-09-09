@@ -614,3 +614,58 @@ body {
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
+
+/* ---------------------------------------------------------------------------
+   Landing de SIPAT (/sipat).
+
+   Peça de campanha independente do site institucional: tipografia própria
+   (Archivo nos títulos, Manrope no texto) e verde próprio (#22C07A, mais
+   contido que o #35F06A da marca no site). As duas famílias entram por
+   next/font no layout da rota, então aqui só existe o mapeamento das
+   variáveis — nada de @import de fonte.
+   ------------------------------------------------------------------------ */
+
+.sipat-root {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+.sipat-display {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+}
+
+@keyframes sipat-rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Anel de atenção do CTA principal: três pulsos após 1,2s e para. É um
+   chamariz de abertura, não uma animação perpétua. */
+@keyframes sipat-pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(34, 192, 122, 0.45); }
+  70% { box-shadow: 0 0 0 14px rgba(34, 192, 122, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 192, 122, 0); }
+}
+
+.sipat-rise-in {
+  animation: sipat-rise-in 0.6s ease both;
+}
+
+.sipat-pulse-ring {
+  animation: sipat-pulse-ring 3.2s ease-out 1.2s 3;
+}
+
+/* Faixa de palco da /sipat: a fotografia sangra de borda a borda e dissolve
+   no topo e na base, para a seção anterior e a seguinte encostarem nela sem
+   linha de corte. Mesma gramática das máscaras do site. */
+.sipat-stage-band {
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 6%, #000 16%,
+    #000 82%, rgba(0, 0, 0, 0.6) 93%, rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 6%, #000 16%,
+    #000 82%, rgba(0, 0, 0, 0.6) 93%, rgba(0, 0, 0, 0) 100%
+  );
+}
